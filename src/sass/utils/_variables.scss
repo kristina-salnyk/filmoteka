@@ -1,0 +1,18 @@
+$primary-text-color: #000;
+$secondary-text-color: #fff;
+
+$accent-text-color: #FF001B;
+$hover-text-color: #918c8d;
+
+$primary-brg-color: #fff;
+$secondary-bgr-color: #000;
+
+$timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+body {
+  font-family: 'Roboto', 'sans-serif';
+  background-color: $primary-brg-color;
+  color: $primary-text-color;
+  font-size: 14px;
+  line-height: 1.14;
+}

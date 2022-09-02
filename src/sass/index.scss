@@ -1,2 +1,15 @@
-@import './common';
-@import './example';
+// MIXINS START
+@import './mixins/breakpoints';
+@import './mixins/ratio';
+// MIXINS END
+
+// ULITLS START
+@import './utils/variables';
+@import './utils/common';
+@import './utils/container';
+@import './utils/visually-hidden';
+// UTILS END
+
+// COMPONTENTS START
+@import './components/header';
+// COMPONENTS END
