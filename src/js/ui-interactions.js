@@ -3,7 +3,7 @@ import example from '../templates/example.hbs';
 
 const setCurrentPage = () => {
   const pagePath = document.location.pathname;
-  if (pagePath === '/') return;
+  if (!pagePath.includes('.html')) return;
 
   const lastPageRef = refs.pages.querySelector('.pages__link--current');
   const currentPageRef = refs.pages.querySelector(
