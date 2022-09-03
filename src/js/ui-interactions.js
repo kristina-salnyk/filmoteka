@@ -1,5 +1,5 @@
 import refs from './refs';
-import example from '../templates/example.hbs';
+import example from '../templates/movie-card.hbs';
 
 const setCurrentPage = () => {
   const pagePath = document.location.pathname;
