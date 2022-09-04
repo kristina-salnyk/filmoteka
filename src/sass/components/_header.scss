@@ -1,13 +1,19 @@
 .header {
   padding-top: 40px;
-  padding-bottom: 44px;
 
-  background-color: $secondary-bgr-color;
+  height: 238px;
+
+  background-color: $header-bgr-color;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
 
+  @include for-tablet-up {
+    height: 220px;
+  }
+
   &--home-page {
+    padding-bottom: 44px;
     background-image: url('../images/home-page-header-bgr-mobile.jpg');
 
     @include for-2x-pixel-ratio {
@@ -32,6 +38,7 @@
   }
 
   &--library-page {
+    padding-bottom: 60px;
     background-image: url('../images/library-page-header-bgr-mobile.jpg');
 
     @include for-2x-pixel-ratio {
@@ -135,10 +142,6 @@
   }
 }
 
-.search-form {
-  min-height: 73px;
-}
-
 .search-form__container {
   margin: 0 auto;
 
@@ -217,6 +220,14 @@
   display: flex;
   justify-content: center;
   gap: 20px;
+
+  @include for-tablet-only{
+    gap: 32px;
+  }
+
+  @include for-desktop-only{
+    gap: 16px;
+  }
 }
 
 .tabs__btn {
@@ -231,10 +242,27 @@
   border-radius: 5px;
 
   text-transform: uppercase;
+  cursor: pointer;
 
-  &--current{
+  &:hover{
+    background-color: $btn-hover-color;
+  }
+
+  &--current {
     background-color: $btn-accent-color;
     border: none;
   }
-}
 
+  &--current:hover {
+    background-color: $btn-accent-hover-color;
+    border: none;
+  }
+
+  @include for-tablet-up{
+    width: 152px;
+  }
+
+  @include for-desktop-only{
+    width: 148px;
+  }
+}

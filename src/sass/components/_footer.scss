@@ -1,0 +1,22 @@
+.footer{
+  padding: 30px 0;
+  background-color: $footer-brg-color;
+}
+
+.copy-rights{
+  margin: 0 auto;
+  
+  line-height: 1.86;
+  text-align: center;
+  color: $footer-text-color;
+
+  @include for-phone-only{
+    width: 236px;
+  }
+}
+
+.copy-rights__link{
+  color: inherit;
+
+  text-decoration: underline;
+}

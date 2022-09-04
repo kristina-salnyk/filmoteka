@@ -1,19 +1,24 @@
 $primary-text-color: #000;
 $secondary-text-color: #fff;
+$footer-text-color: #545454;
 
 $accent-text-color: #FF001B;
 $hover-text-color: #918c8d;
 
 $primary-brg-color: #fff;
-$secondary-bgr-color: #000;
+$header-bgr-color: #000;
+$footer-brg-color: #F7F7F7;
 
 $primary-border-color: #fff;
 
 $btn-accent-color: #FF6B01;
+$btn-accent-hover-color: #e15f03;
+$btn-hover-color: rgba(255, 255, 255, 0.2);
 
 $timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
 body {
+  min-height: 100vh;
   font-family: 'Roboto', 'sans-serif';
   background-color: $primary-brg-color;
   color: $primary-text-color;

@@ -1,23 +1,19 @@
 import refs from './refs';
+import { watchedBtnClickHandler } from './watchedBtnClickHandler';
+import { queueBtnClickHandler } from './queueBtnClickHandler';
+import { searchFormSubmitHandler } from './searchFormSubmitHandler';
 import example from '../templates/movie-card.hbs';
 
-const setCurrentPage = () => {
-  const pagePath = document.location.pathname;
-  if (!pagePath.includes('.html')) return;
+const setHomePageEventListeners = () => {
+  refs.searchForm.addEventListener('submit', searchFormSubmitHandler);
+};
 
-  const lastPageRef = refs.pages.querySelector('.pages__link--current');
-  const currentPageRef = refs.pages.querySelector(
-    `.pages__link[href$='${pagePath}']`
-  );
-
-  if (lastPageRef) {
-    if (lastPageRef === currentPageRef) return;
-    lastPageRef.classList.remove('pages__link--current');
-  }
-
-  currentPageRef.classList.add('pages__link--current');
+const setLibraryPageEventListeners = () => {
+  refs.watchedBtn.addEventListener('click', watchedBtnClickHandler);
+  refs.queueBtn.addEventListener('click', queueBtnClickHandler);
 };
 
 export default {
-  setCurrentPage,
+  setHomePageEventListeners,
+  setLibraryPageEventListeners,
 };
