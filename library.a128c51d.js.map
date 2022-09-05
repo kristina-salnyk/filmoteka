@@ -1,1 +1,0 @@
-{"mappings":"oeAAAA,EAAA,S,WAGAC,QAAGC","sources":["src/library.js"],"sourcesContent":["import api from './js/api';\nimport ui from './js/ui-interactions';\n\nui.setLibraryPageEventListeners();\n"],"names":["parcelRequire","default","setLibraryPageEventListeners"],"version":3,"file":"library.a128c51d.js.map"}

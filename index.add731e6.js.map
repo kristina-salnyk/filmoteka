@@ -1,1 +1,0 @@
-{"mappings":"oeAAAA,EAAA,S,WAGAC,QAAGC","sources":["src/index.js"],"sourcesContent":["import api from './js/api';\nimport ui from './js/ui-interactions';\n\nui.setHomePageEventListeners();\n"],"names":["parcelRequire","default","setHomePageEventListeners"],"version":3,"file":"index.add731e6.js.map"}
