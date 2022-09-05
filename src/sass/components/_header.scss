@@ -12,52 +12,52 @@
     height: 220px;
   }
 
-  &--home-page {
+  &--home {
     padding-bottom: 44px;
-    background-image: url('../images/home-page-header-bgr-mobile.jpg');
+    background-image: url('../images/home-header-bgr-mobile.jpg');
 
     @include for-2x-pixel-ratio {
-      background-image: url('../images/home-page-header-bgr-mobile@2x.jpg');
+      background-image: url('../images/home-header-bgr-mobile@2x.jpg');
     }
 
     @include for-tablet-only {
-      background-image: url('../images/home-page-header-bgr-tablet.jpg');
+      background-image: url('../images/home-header-bgr-tablet.jpg');
 
       @include for-2x-pixel-ratio {
-        background-image: url('../images/home-page-header-bgr-tablet@2x.jpg');
+        background-image: url('../images/home-header-bgr-tablet@2x.jpg');
       }
     }
 
     @include for-desktop-only {
-      background-image: url('../images/home-page-header-bgr-desktop.jpg');
+      background-image: url('../images/home-header-bgr-desktop.jpg');
 
       @include for-2x-pixel-ratio {
-        background-image: url('../images/home-page-header-bgr-desktop@2x.jpg');
+        background-image: url('../images/home-header-bgr-desktop@2x.jpg');
       }
     }
   }
 
-  &--library-page {
+  &--library {
     padding-bottom: 60px;
-    background-image: url('../images/library-page-header-bgr-mobile.jpg');
+    background-image: url('../images/library-header-bgr-mobile.jpg');
 
     @include for-2x-pixel-ratio {
-      background-image: url('../images/library-page-header-bgr-mobile@2x.jpg');
+      background-image: url('../images/library-header-bgr-mobile@2x.jpg');
     }
 
     @include for-tablet-only {
-      background-image: url('../images/library-page-header-bgr-tablet.jpg');
+      background-image: url('../images/library-header-bgr-tablet.jpg');
 
       @include for-2x-pixel-ratio {
-        background-image: url('../images/library-page-header-bgr-tablet@2x.jpg');
+        background-image: url('../images/library-header-bgr-tablet@2x.jpg');
       }
     }
 
     @include for-desktop-only {
-      background-image: url('../images/library-page-header-bgr-desktop.jpg');
+      background-image: url('../images/library-header-bgr-desktop.jpg');
 
       @include for-2x-pixel-ratio {
-        background-image: url('../images/library-page-header-bgr-desktop@2x.jpg');
+        background-image: url('../images/library-header-bgr-desktop@2x.jpg');
       }
     }
   }
@@ -70,11 +70,11 @@
 }
 
 .header__nav {
-  &--home-page {
+  &--home {
     margin-bottom: 54px;
   }
 
-  &--library-page {
+  &--library {
     margin-bottom: 60px;
   }
 
@@ -174,7 +174,7 @@
   }
 }
 
-.search-form__error-info {
+.search-form__error {
   display: none;
 
   margin-top: 16px;

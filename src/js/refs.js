@@ -1,6 +1,6 @@
 export default {
   searchForm: document.getElementById('search-form'),
-  searchErrorInfo: document.getElementById('search-error-info'),
+  searchError: document.getElementById('search-error'),
   watchedBtn: document.getElementById('watched-btn'),
   queueBtn: document.getElementById('queue-btn'),
 };

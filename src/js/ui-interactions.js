@@ -4,16 +4,16 @@ import { queueBtnClickHandler } from './queueBtnClickHandler';
 import { searchFormSubmitHandler } from './searchFormSubmitHandler';
 import example from '../templates/movie-card.hbs';
 
-const setHomePageEventListeners = () => {
+const setHomeEventListeners = () => {
   refs.searchForm.addEventListener('submit', searchFormSubmitHandler);
 };
 
-const setLibraryPageEventListeners = () => {
+const setLibraryEventListeners = () => {
   refs.watchedBtn.addEventListener('click', watchedBtnClickHandler);
   refs.queueBtn.addEventListener('click', queueBtnClickHandler);
 };
 
 export default {
-  setHomePageEventListeners,
-  setLibraryPageEventListeners,
+  setHomeEventListeners,
+  setLibraryEventListeners,
 };
