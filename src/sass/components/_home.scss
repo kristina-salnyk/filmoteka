@@ -22,6 +22,7 @@
   }
 
   @include for-desktop-only{
+    grid-template-columns: repeat(auto-fit, minmax(292px, 1fr));
     grid-column-gap: 16px;
   }
 }
