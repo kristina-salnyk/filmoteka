@@ -137,7 +137,7 @@
   }
 
   &--current {
-    text-decoration: 3px underline $accent-text-color;
+    text-decoration: 3px underline $accent-border-color;
     text-underline-offset: 3px;
   }
 }
