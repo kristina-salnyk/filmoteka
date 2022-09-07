@@ -1,1 +1,0 @@
-{"mappings":"gfAAAA,EAAA,S,WAGAC,QAAGC,0B","sources":["src/library.js"],"sourcesContent":["import api from './js/api';\nimport ui from './js/ui-interactions';\n\nui.setLibraryEventListeners();\n"],"names":["parcelRequire","default","setLibraryEventListeners"],"version":3,"file":"library.49965152.js.map"}
