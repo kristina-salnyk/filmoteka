@@ -1,6 +1,11 @@
 .footer{
   padding: 30px 0;
+  height: 112px;
   background-color: $footer-brg-color;
+
+  @include for-tablet-up{
+    height: 86px;
+  }
 }
 
 .copy-rights{
