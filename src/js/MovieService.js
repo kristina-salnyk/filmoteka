@@ -5,8 +5,10 @@ export default class MovieService {
     TRENDING: '/trending',
     SEARCH: '/search/movie',
     MOVIE: '/movie',
+    GENRES: '/genre/movie/list',
   };
 
+  #genres;
   #searchQuery;
   #page;
   #mediaType;
@@ -51,6 +53,19 @@ export default class MovieService {
     const url = `${MovieService.Url.MOVIE}/${id}`;
     const response = await api.get(url);
     return response.data;
+  }
+
+  async fetchGenresList() {
+    const url = `${MovieService.Url.GENRES}`;
+    const response = await api.get(url);
+    const data = await response.data;
+    const { genres } = data;
+    this.#genres = genres;
+  }
+
+  getGenreById(id) {
+    const genre = this.#genres.find(item => item.id === id);
+    return genre.name;
   }
 
   incrementPage() {
