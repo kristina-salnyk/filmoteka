@@ -32,6 +32,8 @@ async function loadTrendingMovies() {
     newItem.genres = item.genre_ids
       .map(id => movieService.getGenreById(id))
       .join(', ');
+    const releaseDate = new Date(item.release_date);
+    newItem.year = releaseDate.getFullYear();
     return newItem;
   });
 
