@@ -1,7 +1,7 @@
 export default {
   searchForm: document.getElementById('search-form'),
   searchError: document.getElementById('search-error'),
-  watchedBtn: document.getElementById('watched-btn'),
-  queueBtn: document.getElementById('queue-btn'),
+  watchedTab: document.getElementById('watched-tab'),
+  queueTab: document.getElementById('queue-tab'),
   homeGallery: document.getElementById('home-gallery'),
 };

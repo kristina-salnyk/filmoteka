@@ -1,6 +1,6 @@
 import refs from './refs';
-import { watchedBtnClickHandler } from './watchedBtnClickHandler';
-import { queueBtnClickHandler } from './queueBtnClickHandler';
+import { watchedTabClickHandler } from './watchedTabClickHandler';
+import { queueTabClickHandler } from './queueTabClickHandler';
 import { searchFormSubmitHandler } from './searchFormSubmitHandler';
 import movieCards from '../templates/movie-card.hbs';
 
@@ -9,8 +9,8 @@ const setHomeEventListeners = () => {
 };
 
 const setLibraryEventListeners = () => {
-  refs.watchedBtn.addEventListener('click', watchedBtnClickHandler);
-  refs.queueBtn.addEventListener('click', queueBtnClickHandler);
+  refs.watchedTab.addEventListener('click', watchedTabClickHandler);
+  refs.queueTab.addEventListener('click', queueTabClickHandler);
 };
 
 const appendGalleryMarkup = movies => {
