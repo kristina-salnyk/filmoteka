@@ -34,6 +34,7 @@ async function loadTrendingMovies() {
       .join(', ');
     const releaseDate = new Date(item.release_date);
     newItem.year = releaseDate.getFullYear();
+    newItem.vote = item.vote_average.toFixed(1);
     return newItem;
   });
 

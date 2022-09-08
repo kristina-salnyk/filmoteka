@@ -52,3 +52,15 @@
   margin-top: 5px;
   color: $accent-text-color;
 }
+
+.movie-card__genres{
+  margin-right: 8px;
+}
+
+.movie-card__vote{
+  padding: 0 9px;
+
+  color: $secondary-text-color;
+  background-color: $accent-text-color;
+  border-radius: 5px;
+}
