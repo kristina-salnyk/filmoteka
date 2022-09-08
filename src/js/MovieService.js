@@ -16,6 +16,7 @@ export default class MovieService {
   #includeAdult;
 
   constructor() {
+    this.#genres = [];
     this.#searchQuery = '';
     this.#page = 1;
     this.#mediaType = 'movie';

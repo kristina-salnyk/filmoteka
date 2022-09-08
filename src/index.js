@@ -1,44 +1,21 @@
 import ui from './js/ui-interactions';
 import notifications from './js/notifications';
 import MovieService from './js/MovieService';
+import { loadTrendingMovies } from './js/loadTrendingMovies';
+
+export const movieService = new MovieService();
 
 ui.setHomeEventListeners();
 
-const movieService = new MovieService();
-
-loadTrendingMovies().catch(error => {
+initHomePage().catch(error => {
   notifications.failedRequest();
   console.log(error);
   // TODO: handle error of fetching movies in home page
 });
 
-async function loadTrendingMovies() {
+async function initHomePage() {
   await movieService.fetchGenresList();
-  const data = await movieService.fetchTrendingMovies();
-
-  const {
-    results: movies,
-    total_pages: totalPages,
-    total_results: totalResults,
-  } = data;
-
-  if (totalResults === 0) {
-    notifications.notFoundResults();
-    return;
-  }
-
-  const moviesData = movies.map(item => {
-    const newItem = { ...item };
-    newItem.genres = item.genre_ids
-      .map(id => movieService.getGenreById(id))
-      .join(', ');
-    const releaseDate = new Date(item.release_date);
-    newItem.year = releaseDate.getFullYear();
-    newItem.vote = item.vote_average.toFixed(1);
-    return newItem;
-  });
-
-  ui.appendGalleryMarkup(moviesData);
+  await loadTrendingMovies();
 }
 
 // movieService.searchQuery = 'Time';

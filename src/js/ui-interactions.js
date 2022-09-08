@@ -14,7 +14,7 @@ const setLibraryEventListeners = () => {
 };
 
 const appendGalleryMarkup = movies => {
-  refs.homeGallery.insertAdjacentHTML('beforeend', movieCards(movies));
+  refs.homeGallery.innerHTML = movieCards(movies);
 };
 
 export default {
