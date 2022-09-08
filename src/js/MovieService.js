@@ -72,11 +72,18 @@ export default class MovieService {
   incrementPage() {
     this.#page += 1;
   }
-
+  decrementPage() {
+    this.#page -= 1;
+  }
   resetPage() {
     this.#page = 1;
   }
-
+  getPage() {
+    return this.#page;
+  }
+  setPage(page) {
+    this.#page=page
+  }
   set searchQuery(newSearchQuery) {
     this.#searchQuery = newSearchQuery;
     this.resetPage();
