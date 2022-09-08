@@ -17,8 +17,13 @@ const appendGalleryMarkup = movies => {
   refs.homeGallery.innerHTML = movieCards(movies);
 };
 
+const scrollToUp = () => {
+  window.scrollBy(0, 0);
+};
+
 export default {
   setHomeEventListeners,
   setLibraryEventListeners,
   appendGalleryMarkup,
+  scrollToUp,
 };

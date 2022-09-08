@@ -15,7 +15,7 @@ initHomePage().catch(error => {
 
 async function initHomePage() {
   await movieService.fetchGenresList();
-  await loadTrendingMovies();
+  return loadTrendingMovies();
 }
 
 // movieService.searchQuery = 'Time';
