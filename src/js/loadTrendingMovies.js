@@ -1,6 +1,7 @@
 import { movieService } from '../index';
 import notifications from './notifications';
 import ui from './ui-interactions';
+import paginationMarup from './pagination';
 
 export async function loadTrendingMovies() {
   const data = await movieService.fetchTrendingMovies();
@@ -10,7 +11,8 @@ export async function loadTrendingMovies() {
     total_pages: totalPages,
     total_results: totalResults,
   } = data;
-
+  paginationMarup(totalPages, movieService.getPage());
+  
   if (totalResults === 0) {
     notifications.notFoundResults();
     return;
