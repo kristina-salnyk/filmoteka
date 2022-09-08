@@ -2,6 +2,7 @@ import ui from './js/ui-interactions';
 import notifications from './js/notifications';
 import MovieService from './js/MovieService';
 import { loadTrendingMovies } from './js/loadTrendingMovies';
+import './js/pagination';
 
 export const movieService = new MovieService();
 

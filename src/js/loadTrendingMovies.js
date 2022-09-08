@@ -27,6 +27,5 @@ export async function loadTrendingMovies() {
     return newItem;
   });
 
-  ui.scrollToUp();
   ui.appendGalleryMarkup(moviesData);
 }
