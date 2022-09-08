@@ -1,4 +1,4 @@
-const KEY_1 = 'key1';
-const KEY_2 = 'key2';
+const WATCHED_MOVIES = 'watched-movies';
+const QUEUE_MOVIES = 'queue-movies';
 
-export default { KEY_1, KEY_2 };
+export default { WATCHED_MOVIES, QUEUE_MOVIES };
