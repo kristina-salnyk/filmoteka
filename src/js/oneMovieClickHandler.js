@@ -3,7 +3,7 @@ import refs from './refs.js';
 import modalMovie from '../templates/modal-for-movie.hbs';
 import ui from '../js/ui-interactions';
 
-export const homeGalleryClickHandler = async event => {
+export const oneMovieClickHandler = async event => {
   const movieId = event.target.closest('a').dataset.id;
   const data = await movieService.fetchMovie(movieId);
 
