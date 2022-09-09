@@ -17,6 +17,7 @@ function startYoutybe(e) {
   // body.classList.add('no_scroll');
   clik(e);
 }
+console.log();
 
 document.addEventListener('keydown', keydown);
 function keydown(e) {
