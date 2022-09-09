@@ -13,6 +13,11 @@ export const searchFormSubmitHandler = async event => {
   }
 
   movieService.searchQuery = searchQuery;
-  const data = await movieService.fetchSearchedMovie();
-  renderMoviesData(data);
+
+  try {
+    const data = await movieService.fetchSearchedMovie();
+    renderMoviesData(data);
+  } catch (error) {
+    refs.searchError.style.display = 'block';
+  }
 };
