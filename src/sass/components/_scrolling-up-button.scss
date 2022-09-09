@@ -1,0 +1,38 @@
+.back-to-top {
+    position: fixed;
+    bottom: 15vh;
+    right: 2vw;
+    z-index: 1000;
+    width: 50px;
+    height: 50px;
+    color: white;
+    background-color: $btn-accent-color;
+    cursor: pointer;
+    border-radius: 50%;
+    border-color: none;
+    border: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.25)) drop-shadow(0 4px 4px rgba(0, 0, 0, 0.25));
+    transition: all 500ms ease-in-out;
+
+    &:hover,
+    &:focus {
+        background-color: #ffffff;
+        color: #000;
+    }
+
+
+    @include for-tablet-up {
+        width: 60px;
+        height: 60px;
+    }
+
+    &_show {
+        opacity: 1;
+        visibility: visible;
+    }
+}
