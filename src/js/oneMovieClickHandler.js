@@ -3,6 +3,8 @@ import ui from '../js/ui-interactions';
 import notifications from './notifications';
 
 export const oneMovieClickHandler = async event => {
+  event.preventDefault();
+
   const movieId = event.target.closest('a').dataset.id;
   try {
     const data = await movieService.fetchMovie(movieId);
@@ -23,7 +25,7 @@ export const oneMovieClickHandler = async event => {
     //закриття і відкриття модалки, в якій буде div із классом "movie-data" //
     ui.appendMovieMarkup(movie);
   } catch (error) {
-    notifications.failedRequest();
+    notifications.showCustomMessage('ДОБАВЬТЕ МОДАЛКУ');
     return;
   }
 };
