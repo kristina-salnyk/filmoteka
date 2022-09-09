@@ -1,12 +1,13 @@
-import { movieService } from '../index.js';
-import ui from '../js/ui-interactions';
+import { movieService } from '../index';
 import notifications from './notifications';
 import modalActions from './modal-film-card';
+import homePageUi from './home-page-ui';
 
 export const oneMovieClickHandler = async event => {
   event.preventDefault();
 
   const movieId = event.target.closest('a').dataset.id;
+
   try {
     const data = await movieService.fetchMovie(movieId);
 
@@ -22,11 +23,12 @@ export const oneMovieClickHandler = async event => {
       movieGenres,
       posterPath: data.poster_path,
     };
+
     modalActions.onOpenModalBtn();
-    //закриття і відкриття модалки, в якій буде div із классом "movie-data" //
-    ui.appendMovieMarkup(movie);
+
+    homePageUi.appendMovieMarkup(movie);
   } catch (error) {
-    notifications.showCustomMessage('ДОБАВЬТЕ МОДАЛКУ');
+    notifications.failedRequest();
     return;
   }
 };

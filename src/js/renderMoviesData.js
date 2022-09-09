@@ -1,7 +1,7 @@
-import paginationMarup from './pagination';
 import { movieService } from '../index';
-import ui from './ui-interactions';
 import refs from './refs';
+import homePageUi from './home-page-ui';
+import paginationMarup from './pagination';
 
 export const renderMoviesData = data => {
   const {
@@ -28,5 +28,5 @@ export const renderMoviesData = data => {
     return newItem;
   });
 
-  ui.appendGalleryMarkup(moviesData);
+  homePageUi.appendGalleryMarkup(moviesData);
 };
