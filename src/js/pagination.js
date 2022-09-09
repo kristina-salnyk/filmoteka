@@ -91,7 +91,7 @@ export default async function paginationMarup(amountPages, currentPage) {
 }
 
 
-pagin.addEventListener('click', getNewPage);
+paginList.addEventListener('click', getNewPage);
 
 export function getNewPage(e) {
   e.preventDefault();
