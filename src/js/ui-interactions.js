@@ -5,6 +5,7 @@ import { searchFormSubmitHandler } from './searchFormSubmitHandler';
 import { oneMovieClickHandler } from './oneMovieClickHandler';
 import movieCards from '../templates/movie-card.hbs';
 import modalMovie from '../templates/modal-for-movie.hbs';
+import { dynamicRefs } from './dynamicRefs';
 
 const setHomeEventListeners = () => {
   refs.searchForm.addEventListener('submit', searchFormSubmitHandler);
@@ -25,7 +26,7 @@ const scrollToUp = () => {
 };
 
 const appendMovieMarkup = movie => {
-  refs.movieData.innerHTML = modalMovie(movie);
+  dynamicRefs().movieData.innerHTML = modalMovie(movie);
 };
 
 export default {
