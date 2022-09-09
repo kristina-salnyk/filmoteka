@@ -3,6 +3,7 @@ import notifications from './js/notifications';
 import MovieService from './js/MovieService';
 import { loadTrendingMovies } from './js/loadTrendingMovies';
 import './js/pagination';
+import './js/youtube';
 
 export const movieService = new MovieService();
 ui.setHomeEventListeners();
