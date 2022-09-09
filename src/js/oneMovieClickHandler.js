@@ -1,6 +1,7 @@
 import { movieService } from '../index.js';
 import ui from '../js/ui-interactions';
 import notifications from './notifications';
+import modalActions from './modal-film-card';
 
 export const oneMovieClickHandler = async event => {
   event.preventDefault();
@@ -21,7 +22,7 @@ export const oneMovieClickHandler = async event => {
       movieGenres,
       posterPath: data.poster_path,
     };
-
+    modalActions.onOpenModalBtn();
     //закриття і відкриття модалки, в якій буде div із классом "movie-data" //
     ui.appendMovieMarkup(movie);
   } catch (error) {

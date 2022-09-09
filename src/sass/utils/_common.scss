@@ -1,5 +1,9 @@
 @import '~node_modules/modern-normalize/modern-normalize.css';
 
+body.on-open-modal {
+  overflow: hidden;
+}
+
 p,
 h1,
 h2,
