@@ -1,10 +1,11 @@
 import ui from './js/ui-interactions';
 import notifications from './js/notifications';
 import MovieService from './js/MovieService';
+import refs from './js/refs';
 
 ui.setHomeEventListeners();
 
-const movieService = new MovieService();
+export const movieService = new MovieService();
 
 loadTrendingMovies().catch(error => {
   notifications.failedRequest();
@@ -15,7 +16,6 @@ loadTrendingMovies().catch(error => {
 async function loadTrendingMovies() {
   await movieService.fetchGenresList();
   const data = await movieService.fetchTrendingMovies();
-
   const {
     results: movies,
     total_pages: totalPages,
