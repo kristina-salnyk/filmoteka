@@ -2,10 +2,13 @@ import refs from './refs';
 import { watchedTabClickHandler } from './watchedTabClickHandler';
 import { queueTabClickHandler } from './queueTabClickHandler';
 import { searchFormSubmitHandler } from './searchFormSubmitHandler';
+import { oneMovieClickHandler } from './oneMovieClickHandler';
 import movieCards from '../templates/movie-card.hbs';
+import modalMovie from '../templates/modal-for-movie.hbs';
 
 const setHomeEventListeners = () => {
   refs.searchForm.addEventListener('submit', searchFormSubmitHandler);
+  refs.homeGallery.addEventListener('click', oneMovieClickHandler);
 };
 
 const setLibraryEventListeners = () => {
@@ -21,9 +24,14 @@ const scrollToUp = () => {
   window.scrollBy(0, 0);
 };
 
+const appendMovieMarkup = movie => {
+  refs.movieData.innerHTML = modalMovie(movie);
+};
+
 export default {
   setHomeEventListeners,
   setLibraryEventListeners,
   appendGalleryMarkup,
+  appendMovieMarkup,
   scrollToUp,
 };

@@ -5,7 +5,6 @@ import { loadTrendingMovies } from './js/loadTrendingMovies';
 import './js/pagination';
 
 export const movieService = new MovieService();
-
 ui.setHomeEventListeners();
 
 initHomePage().catch(error => {
@@ -18,8 +17,3 @@ async function initHomePage() {
   await movieService.fetchGenresList();
   return loadTrendingMovies();
 }
-
-// movieService.searchQuery = 'Time';
-// movieService.fetchTrendingMovies().then(data => console.log(data));
-
-// movieService.fetchMovie('370172').then(data => console.log(data));
