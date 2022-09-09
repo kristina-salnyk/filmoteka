@@ -1,12 +1,8 @@
-const refs = {
-  closeModalBtn: document.querySelector('[data-action="close-modal"]'),
-  backdrop: document.querySelector('.js-modal-close-btn'),
-};
-
-refs.closeModalBtn.addEventListener('click', onCloseModalBtn);
-refs.backdrop.addEventListener('click', onBackdropClick);
+import { dynamicRefs } from './dynamicRefs';
 
 function onOpenModalBtn() {
+  dynamicRefs().closeModalBtn.addEventListener('click', onCloseModalBtn);
+  dynamicRefs().backdrop.addEventListener('click', onBackdropClick);
   window.addEventListener('keydown', onEscKeyPress);
   document.body.classList.add('on-open-modal');
 }

@@ -1,7 +1,7 @@
 import { movieService } from '../index';
 import refs from './refs';
 import homePageUi from './home-page-ui';
-import paginationMarup from './pagination';
+import paginationMarkup from './pagination';
 
 export const renderMoviesData = data => {
   const {
@@ -15,7 +15,7 @@ export const renderMoviesData = data => {
     return;
   }
 
-  paginationMarup(totalPages, movieService.getPage());
+  paginationMarkup(totalPages, movieService.getPage());
 
   const moviesData = movies.map(item => {
     const newItem = { ...item };
