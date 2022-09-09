@@ -27,10 +27,18 @@
   }
 }
 
+.movie-card:hover{
+  display: inline-block;
+  transform: scale(1.05);
+  cursor: pointer;
+  transition: transform .25s linear;
+}
+
 .movie-card__image{
   width: 100%;
   object-fit: cover;
   border-radius: 5px;
+  
 }
 
 .movie-card__link{
