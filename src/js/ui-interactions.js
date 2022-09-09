@@ -17,7 +17,11 @@ const setLibraryEventListeners = () => {
 };
 
 const appendGalleryMarkup = movies => {
-  refs.homeGallery.insertAdjacentHTML('beforeend', movieCards(movies));
+  refs.homeGallery.innerHTML = movieCards(movies);
+};
+
+const scrollToUp = () => {
+  window.scrollBy(0, 0);
 };
 
 const appendMovieMarkup = movie => {
@@ -29,4 +33,5 @@ export default {
   setLibraryEventListeners,
   appendGalleryMarkup,
   appendMovieMarkup,
+  scrollToUp,
 };
