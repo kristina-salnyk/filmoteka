@@ -130,25 +130,3 @@
     width: 136px;
   }
 }
-
-.close-button {
-  position: absolute;
-  z-index: 70;
-  right: 0;
-  top: 0;
-  //   transform: translate(-8px, 8px);
-  width: 30px;
-  height: 30px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  cursor: pointer;
-}
-
-.close-button__icon {
-  display: block;
-  width: 100%;
-  height: 100%;
-  fill: currentColor;
-}
