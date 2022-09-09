@@ -4,6 +4,7 @@ import MovieService from './js/MovieService';
 import { loadTrendingMovies } from './js/loadTrendingMovies';
 import './js/pagination';
 import './js/youtube';
+import './js/scroll-to-up-btn';
 
 export const movieService = new MovieService();
 ui.setHomeEventListeners();
