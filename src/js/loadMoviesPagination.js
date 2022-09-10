@@ -1,12 +1,10 @@
+import refs from './refs/refs';
+import { movieConfigs } from '../index';
+import homePageUi from './ui/home-page-ui';
+import { dynamicRefs } from './refs/dynamicRefs';
+import paginationMarup from './pagination'
+import { fetchTrendingMovies } from './api/movie-api/fetchTrendingMovies';
 
-import refs from "./refs/refs";
-import {movieConfigs} from "../index";
-import {dynamicRefs} from "./refs/dynamicRefs";
-import {fetchTrendingMovies} from "./api/movie-api/fetchTrendingMovies";
-import {renderMoviesData} from "./render/renderMoviesData";
-import notifications from "./notifications";
-import storege from './local-storage/local-storage-service';
-import key from './local-storage/local-storage-keys'
 
 dynamicRefs().paginList.addEventListener('click', getNewPage);
 dynamicRefs().leftArrow.addEventListener('click', leftBtnClick);
@@ -21,7 +19,6 @@ export default function leftBtnClick() {
 
 export default function rightBtnClick() {
   movieConfigs.incrementPage();
- 
   refs.homeGallery.innerHTML = '';
   loadMovies();
 }
@@ -42,14 +39,20 @@ export default function getNewPage(e) {
 }
 
 async function loadMovies() {
-  console.log(storege.load(key.LAST_FETCH))
-  if (storege.load(key.LAST_FETCH) === 'TRENDING') {
-    try {
-      const trendingData = await fetchTrendingMovies();
-      renderMoviesData(trendingData);
-    } catch (error) {
-      notifications.failedRequest();
-    }
-    
-  }
+  const data = await fetchTrendingMovies();
+  const { results: movies, total_pages: totalPages } = data;
+
+  const moviesData = movies.map(item => {
+    const newItem = { ...item };
+    newItem.genres = item.genre_ids
+      .map(id => movieConfigs.getGenreById(id))
+      .join(', ');
+    const releaseDate = new Date(item.release_date);
+    newItem.year = releaseDate.getFullYear();
+    newItem.vote = item.vote_average.toFixed(1);
+    return newItem;
+  });
+
+  homePageUi.appendGalleryMarkup(moviesData);
+  paginationMarup(totalPages, movieConfigs.page);
 }

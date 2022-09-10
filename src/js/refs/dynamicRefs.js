@@ -5,12 +5,9 @@ export const dynamicRefs = () => ({
   closeModalBtn: document.querySelector('[data-action="close-modal"]'),
   backdrop: document.querySelector('.js-modal-close-btn'),
   paginList: document.querySelector('.pagination__list'),
-
   leftArrow: document.querySelector('[data-arrow="left"]'),
   rightArrow: document.querySelector('[data-arrow="right"]'),
-
   btnCloseModalYoutybe: document.querySelector(
     'button[data-action="btn_close"]'
   ),
-  playTrailer: document.getElementById('play-trailer'),
 });
