@@ -3,6 +3,7 @@ export const REQUEST_URL = {
   SEARCH: '/search/movie',
   MOVIE: '/movie',
   GENRES: '/genre/movie/list',
+  VIDEOS: '/videos',
 };
 
 export const REQUEST_TYPES = {

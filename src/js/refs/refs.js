@@ -5,4 +5,5 @@ export default {
   queueTab: document.getElementById('queue-tab'),
   homeGallery: document.getElementById('home-gallery'),
   goTopBtn: document.getElementById('back-to-top'),
+  youTubeVideo: document.querySelector('div[data-action="video"]'),
 };

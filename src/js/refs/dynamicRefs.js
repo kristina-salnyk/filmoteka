@@ -7,4 +7,5 @@ export const dynamicRefs = () => ({
   btnCloseModalYoutybe: document.querySelector(
     'button[data-action="btn_close"]'
   ),
+  playTrailer: document.getElementById('play-trailer'),
 });

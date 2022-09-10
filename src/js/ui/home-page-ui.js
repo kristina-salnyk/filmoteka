@@ -10,6 +10,7 @@ import {
   modalQueueBtnClickHandler,
   onOpenModal,
 } from '../handlers/modalBtnsClickHandler';
+import { httpsYouTubeVideo } from '../you-tube';
 
 const setHomeEventListeners = () => {
   refs.searchForm.addEventListener('submit', searchFormSubmitHandler);
@@ -32,6 +33,7 @@ const appendMovieMarkup = movie => {
   );
   dynamicRefs().queueBtn.addEventListener('click', modalQueueBtnClickHandler);
   onOpenModal(movie.id);
+  dynamicRefs().playTrailer.addEventListener('click', httpsYouTubeVideo);
 };
 
 const scrollToUp = () => {
