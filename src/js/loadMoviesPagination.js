@@ -1,14 +1,8 @@
 import refs from "./refs/refs";
 import {movieConfigs} from "../index";
-import {dynamicRefs} from "./refs/dynamicRefs";
 import {fetchTrendingMovies} from "./api/movie-api/fetchTrendingMovies";
 import {renderMoviesData} from "./render/renderMoviesData";
 import notifications from "./notifications";
-
-
-dynamicRefs().paginList.addEventListener('click', getNewPage);
-dynamicRefs().leftArrow.addEventListener('click', leftBtnClick);
-dynamicRefs().rightArrow.addEventListener('click', rightBtnClick);
 
 
 export default function leftBtnClick() {
