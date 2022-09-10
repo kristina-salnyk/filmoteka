@@ -1,4 +1,4 @@
-import { dynamicRefs } from './dynamicRefs';
+import { dynamicRefs } from './refs/dynamicRefs';
 
 function onOpenModalBtn() {
   dynamicRefs().closeModalBtn.addEventListener('click', onCloseModalBtn);

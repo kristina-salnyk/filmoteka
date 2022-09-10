@@ -1,6 +1,6 @@
-import { movieService } from '../index';
-import refs from './refs';
-import { renderMoviesData } from './renderMoviesData';
+import { movieService } from '../../index';
+import refs from '../refs/refs';
+import { renderMoviesData } from '../renderMoviesData';
 
 export const searchFormSubmitHandler = async event => {
   event.preventDefault();

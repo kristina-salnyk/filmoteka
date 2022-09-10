@@ -1,4 +1,4 @@
-import refs from './refs';
+import refs from '../refs/refs';
 
 export const watchedTabClickHandler = event => {
   refs.watchedTab.classList.add('tabs__btn--current');

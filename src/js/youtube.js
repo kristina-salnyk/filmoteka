@@ -1,4 +1,4 @@
-import refs from './refs';
+import refs from './refs/refs';
 import cardsYoutebe from '../templates/youtybe.hbs';
 import YoutybeApiServer from './youtybe.det';
 

@@ -1,7 +1,7 @@
-import { movieService } from '../index';
-import notifications from './notifications';
-import modalActions from './modal-film-card';
-import homePageUi from './home-page-ui';
+import { movieService } from '../../index';
+import notifications from '../notifications';
+import modalActions from '../modal-film-card';
+import homePageUi from '../ui/home-page-ui';
 
 export const oneMovieClickHandler = async event => {
   event.preventDefault();

@@ -1,5 +1,5 @@
 import MovieService from './js/MovieService';
-import homePageUi from './js/home-page-ui';
+import homePageUi from './js/ui/home-page-ui';
 import notifications from './js/notifications';
 import { loadTrendingMovies } from './js/loadTrendingMovies';
 import './js/footer-modal';

@@ -1,4 +1,4 @@
-import refs from './refs';
+import refs from '../refs/refs';
 
 export const queueTabClickHandler = event => {
   refs.queueTab.classList.add('tabs__btn--current');

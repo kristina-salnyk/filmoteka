@@ -1,7 +1,5 @@
-import refs from './refs';
+import refs from './refs/refs';
 import { movieService } from '../index';
-
-
 
 const paginList = document.querySelector('.pagination__list');
 
@@ -11,8 +9,6 @@ const rightArrow = document.querySelector('[data-arrow="right"]');
 let paginationList = '';
 
 export default async function paginationMarup(amountPages, currentPage) {
-
-
   if (paginList) {
     paginList.innerHTML = '';
     paginationList = '';
@@ -20,14 +16,13 @@ export default async function paginationMarup(amountPages, currentPage) {
     ///////////////// Left Arrow////////////////////////
     if (currentPage !== 1) {
       leftArrow.classList.remove('visually-hidden');
-      leftArrow.addEventListener('click', leftBtnClick)
+      leftArrow.addEventListener('click', leftBtnClick);
     }
 
     if (currentPage === 1) leftArrow.classList.add('visually-hidden');
-    
+
     if (amountPages < 9) {
       for (let i = 1; i <= amountPages; i += 1) {
-
         if (i === currentPage) {
           paginationList += `<button type="button" class="link link--active" data-nunber='${i}'>${i}</button>`;
           continue;
@@ -43,21 +38,20 @@ export default async function paginationMarup(amountPages, currentPage) {
           continue;
         }
         if (currentPage > amountPages - 4) {
-          
           if (i === 1) {
             paginationList += `<button type="button" class="link" data-nunber='${i}'>${i}</button>`;
           }
-          
+
           if (i > amountPages - 5) {
             paginationList += `<button type="button" class="link" data-nunber='${i}'>${i}</button>`;
             console.log(i);
           }
           if (i === amountPages - 6) {
-             paginationList +=
-               '<button type="button" class="link" >...</button>';
+            paginationList +=
+              '<button type="button" class="link" >...</button>';
           }
         }
-        if (currentPage >=  5 && currentPage <= amountPages - 4) {
+        if (currentPage >= 5 && currentPage <= amountPages - 4) {
           if (i === currentPage) {
             paginationList += `<button type="button" class="link link--active" data-nunber='${i}'>${i}</button>`;
             continue;
@@ -94,8 +88,6 @@ export default async function paginationMarup(amountPages, currentPage) {
           if (i === amountPages) {
             paginationList += `<button type="button" class="link" data-nunber='${i}'>${i}</button>`;
           }
-
-        
         }
       }
     }
@@ -105,13 +97,12 @@ export default async function paginationMarup(amountPages, currentPage) {
     if (currentPage !== amountPages) {
       rightArrow.classList.remove('visually-hidden');
       rightArrow.addEventListener('click', rightBtnClick);
-    };
+    }
     if (currentPage === amountPages)
       rightArrow.classList.add('visually-hidden');
   }
   /////////////////////////////////////////////
 }
-
 
 paginList.addEventListener('click', getNewPage);
 
@@ -122,14 +113,10 @@ function leftBtnClick() {
 }
 
 function rightBtnClick() {
- movieService.incrementPage();
- refs.homeGallery.innerHTML = '';
- loadMovies();
+  movieService.incrementPage();
+  refs.homeGallery.innerHTML = '';
+  loadMovies();
 }
-
-
-
-
 
 export function getNewPage(e) {
   console.log(e.target);
@@ -138,11 +125,7 @@ export function getNewPage(e) {
     return;
   }
 
-  
-  if (  
-
-    e.target.innerHTML !== '...'
-  ) {
+  if (e.target.innerHTML !== '...') {
     const page = Number(e.target.innerHTML);
     movieService.setPage(page);
     refs.homeGallery.innerHTML = '';
@@ -150,29 +133,21 @@ export function getNewPage(e) {
   }
 }
 
-
 async function loadMovies() {
   const data = await movieService.fetchTrendingMovies();
-  const {
-    results: movies,
-    total_pages: totalPages,
-   
-  } = data;
-  
- 
-  
+  const { results: movies, total_pages: totalPages } = data;
+
   const moviesData = movies.map(item => {
     const newItem = { ...item };
     newItem.genres = item.genre_ids
-    .map(id => movieService.getGenreById(id))
-    .join(', ');
+      .map(id => movieService.getGenreById(id))
+      .join(', ');
     const releaseDate = new Date(item.release_date);
     newItem.year = releaseDate.getFullYear();
     newItem.vote = item.vote_average.toFixed(1);
     return newItem;
   });
-  
+
   ui.appendGalleryMarkup(moviesData);
   paginationMarup(totalPages, movieService.getPage());
 }
-

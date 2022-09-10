@@ -1,5 +1,5 @@
 import MovieService from './js/MovieService';
-import libraryPageUi from './js/library-page-ui';
+import libraryPageUi from './js/ui/library-page-ui';
 import notifications from './js/notifications';
 
 export const movieService = new MovieService();

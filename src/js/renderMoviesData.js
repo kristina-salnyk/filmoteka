@@ -1,6 +1,6 @@
 import { movieService } from '../index';
-import refs from './refs';
-import homePageUi from './home-page-ui';
+import refs from './refs/refs';
+import homePageUi from './ui/home-page-ui';
 import paginationMarkup from './pagination';
 
 export const renderMoviesData = data => {

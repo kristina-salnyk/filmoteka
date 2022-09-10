@@ -1,4 +1,4 @@
-import api from './api';
+import api from './api/movie-api/api';
 
 export default class MovieService {
   static Url = {
@@ -82,7 +82,7 @@ export default class MovieService {
     return this.#page;
   }
   setPage(page) {
-    this.#page=page
+    this.#page = page;
   }
   set searchQuery(newSearchQuery) {
     this.#searchQuery = newSearchQuery;
