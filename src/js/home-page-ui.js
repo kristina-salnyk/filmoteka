@@ -19,6 +19,11 @@ const appendGalleryMarkup = movies => {
 
 const appendMovieMarkup = movie => {
   dynamicRefs().movieData.innerHTML = modalMovie(movie);
+
+  
+  dynamicRefs().watchedBtn.addEventListener('click', modalWatchedBtnClickHandler);
+  dynamicRefs().queueBtn.addEventListener('click', modalQueueBtnClickHandler);
+
 };
 
 const scrollToUp = () => {
