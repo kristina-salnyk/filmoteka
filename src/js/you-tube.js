@@ -14,7 +14,7 @@ export async function httpsYouTubeVideo(event) {
         return video.key;
       }
     });
-    console.log(videoKey);
+    // console.log(videoKey);
     markupModalYouTube(videoKey);
   } catch (error) {
     notifications.failedRequest();
