@@ -146,7 +146,11 @@ async function loadMovies() {
       .join(', ');
     const releaseDate = new Date(item.release_date);
     newItem.year = releaseDate.getFullYear();
-    newItem.vote = item.vote_average.toFixed(1);
+    if (item.vote_average === 0) {
+      newItem.vote = 'votes not found';
+    } else {
+      newItem.vote = item.vote_average.toFixed(1);
+    }
     return newItem;
   });
 
