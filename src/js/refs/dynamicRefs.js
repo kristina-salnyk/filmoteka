@@ -8,4 +8,8 @@ export const dynamicRefs = () => ({
     'button[data-action="btn_close"]'
   ),
   playTrailer: document.getElementById('play-trailer'),
+
+  paginList: document.querySelector('.pagination__list'),
+  leftArrow: document.querySelector('[data-arrow="left"]'),
+  rightArrow: document.querySelector('[data-arrow="right"]'),
 });
