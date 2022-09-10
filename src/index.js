@@ -2,9 +2,10 @@ import MovieConfigs from './js/MovieConfigs';
 import homePageUi from './js/ui/home-page-ui';
 import notifications from './js/notifications';
 import { fetchGenresList } from './js/api/movie-api/fetchGenresList';
+import { fetchTrendingMovies } from './js/api/movie-api/fetchTrendingMovies';
+import { renderMoviesData } from './js/render/renderMoviesData';
 import './js/footer-modal';
 import './js/loadMoviesPagination';
-import { loadMovies } from './js/loadMoviesPagination';
 // import Swiper, { Navigation, Pagination } from 'swiper';
 // import 'swiper/css';
 // import 'swiper/css/navigation';
@@ -19,9 +20,14 @@ initHomePage().catch(error => {
 async function initHomePage() {
   homePageUi.setHomeEventListeners();
 
-  const genresData = await fetchGenresList();
-  const { genres } = genresData;
-  movieConfigs.genres = genres;
+  try {
+    const genresData = await fetchGenresList();
+    const { genres } = genresData;
+    movieConfigs.genres = genres;
 
-  await loadMovies();
+    const trendingData = await fetchTrendingMovies();
+    renderMoviesData(trendingData);
+  } catch (error) {
+    notifications.failedRequest();
+  }
 }
