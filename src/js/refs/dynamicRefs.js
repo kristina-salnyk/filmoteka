@@ -9,4 +9,7 @@ export const dynamicRefs = () => ({
 leftArrow:document.querySelector('[data-arrow="left"]'),
 rightArrow:document.querySelector('[data-arrow="right"]'),
 
+  btnCloseModalYoutybe: document.querySelector(
+    'button[data-action="btn_close"]'
+  ),
 });

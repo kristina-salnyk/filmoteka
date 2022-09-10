@@ -1,47 +1,36 @@
-import refs from './refs';
+import refs from './refs/refs';
 import cardsYoutebe from '../templates/youtybe.hbs';
-import YoutybeApiServer from './youtybe.det';
+import YoutybeApiServer from './youtybe.api';
+import { dynamicRefs } from './dynamicRefs';
 
 const youtybeApiServer = new YoutybeApiServer();
 
-const modalYoutebe = document.querySelector('.modal_youtebe');
-const btn = document.querySelector('.modal_btn');
+const modalYoutebe = document.querySelector('.modal_window');
+// const playVideo = document.querySelector('button[data-action="youtybe_play"]');
 const body = document.querySelector('body');
-const tectYou = document.querySelector('.video');
+const tectYou = document.querySelector('div[data-action="video"]');
 
-// btn.addEventListener('click', closeVideo);
-refs.homeGallery.addEventListener('click', startYoutybe);
+//клік на картку фільму
+refs.homeGallery.addEventListener('click', clickCardsFilm);
 
-function startYoutybe(e) {
-  // modalYoutebe.classList.remove('visually-hidden');
-  // body.classList.add('no_scroll');
-  clik(e);
-}
-console.log();
-
-document.addEventListener('keydown', keydown);
-function keydown(e) {
-  if (e.code === 'Escape') {
-    removeYoutybe();
-    modalYoutebe.classList.add('visually-hidden');
-    body.classList.remove('no_scroll');
-  }
+function clickCardsFilm(e) {
+  caveKey(e);
 }
 
-function closeVideo() {
-  modalYoutebe.classList.add('visually-hidden');
-  body.classList.remove('no_scroll');
-}
-
-function clik(e) {
+//  зберігаєм ключ фільму
+function caveKey(e) {
   youtybeApiServer.query = e.target.parentNode.getAttribute('data-id');
-  httpsYoutybeVideo();
 }
+// --------------
+
+// запит відео по ключу
+// playVideo.addEventListener('click', httpsYoutybeVideo);
 
 async function httpsYoutybeVideo() {
   const video = await youtybeApiServer.fethApiServes();
   const sas = await video.results;
   const videoKey = sas.find(videos => {
+    // console.log(videos.name);
     if (videos.name === 'Official Trailer') {
       return videos.key;
     }
@@ -49,11 +38,28 @@ async function httpsYoutybeVideo() {
   console.log(videoKey);
   markupModalYoutybe(videoKey);
 }
-
+//  рендер модального вікна
 function markupModalYoutybe(then) {
   removeYoutybe();
   tectYou.insertAdjacentHTML('beforeend', cardsYoutebe(then));
+  dynamicRefs().btnCloseModalYoutybe.addEventListener('click', closeVideo);
 }
+// ---------------
+
+// закриття моданки по Escape (пока не працює)
+document.addEventListener('keydown', keydown);
+function keydown(e) {
+  if (e.code === 'Escape') {
+    // removeYoutybe();
+  }
+}
+// ----------------
+
+// закриття моданки по кнопці
+function closeVideo() {
+  removeYoutybe();
+}
+// --------------
 
 function removeYoutybe() {
   tectYou.innerHTML = '';

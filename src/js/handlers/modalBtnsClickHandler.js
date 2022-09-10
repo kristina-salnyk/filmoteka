@@ -1,6 +1,6 @@
-import localStorageService from './local-storage-service';
-import keys from './local-storage-keys';
-import { dynamicRefs } from './dynamicRefs';
+import localStorageService from '../local-storage/local-storage-service';
+import keys from '../local-storage/local-storage-keys';
+import { dynamicRefs } from '../refs/dynamicRefs';
 
 export const modalWatchedBtnClickHandler = event => {
   const movieId = event.target.dataset.id;
@@ -52,11 +52,10 @@ export const onOpenModal = movieId => {
   }
 
   const watchedMoviesIds = localStorageService.load(keys.WATCHED_MOVIES);
-  if(watchedMoviesIds){
+  if (watchedMoviesIds) {
     if (watchedMoviesIds.includes(String(movieId))) {
       dynamicRefs().watchedBtn.classList.remove('tabs__btn--current');
       dynamicRefs().watchedBtn.textContent = 'delete from watched';
-    } 
+    }
   }
-
 };

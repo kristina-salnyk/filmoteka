@@ -4,5 +4,5 @@ export default {
   watchedTab: document.getElementById('watched-tab'),
   queueTab: document.getElementById('queue-tab'),
   homeGallery: document.getElementById('home-gallery'),
-  goTopBtn: document.querySelector('.back-to-top'),
+  goTopBtn: document.getElementById('back-to-top'),
 };

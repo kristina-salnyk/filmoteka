@@ -1,7 +1,7 @@
-import { movieService } from '../index';
-import refs from './refs';
-import homePageUi from './home-page-ui';
-import paginationMarkup from './pagination';
+import { movieConfigs } from '../../index';
+import refs from '../refs/refs';
+import homePageUi from '../ui/home-page-ui';
+import paginationMarkup from '../pagination';
 
 export const renderMoviesData = data => {
   const {
@@ -15,12 +15,12 @@ export const renderMoviesData = data => {
     return;
   }
 
-  paginationMarkup(totalPages, movieService.getPage());
+  paginationMarkup(totalPages, movieConfigs.page);
 
   const moviesData = movies.map(item => {
     const newItem = { ...item };
     newItem.genres = item['genre_ids']
-      .map(id => movieService.getGenreById(id))
+      .map(id => movieConfigs.getGenreById(id))
       .join(', ');
     const releaseDate = new Date(item['release_date']);
     newItem.year = releaseDate.getFullYear();
