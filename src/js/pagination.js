@@ -1,17 +1,17 @@
 import ui from './ui-interactions';
 import refs from './refs';
 import { movieService } from '../index';
-import { loadTrendingMovies } from './loadTrendingMovies';
 
-// const pagin = document.querySelector('.pagination');
+
 const paginList = document.querySelector('.pagination__list');
 
 const leftArrow = document.querySelector('[data-arrow="left"]');
 const rightArrow = document.querySelector('[data-arrow="right"]');
-console.log(leftArrow.dataset.arrow);
+
 let paginationList = '';
 
 export default async function paginationMarup(amountPages, currentPage) {
+
   if (paginList) {
     paginList.innerHTML = '';
     paginationList = '';
@@ -40,7 +40,22 @@ export default async function paginationMarup(amountPages, currentPage) {
           paginationList += `<button type="button" class="link link--active" data-nunber='${i}'>${i}</button>`;
           continue;
         }
-        if (currentPage >= 5) {
+        if (currentPage > amountPages - 4) {
+          
+          if (i === 1) {
+            paginationList += `<button type="button" class="link" data-nunber='${i}'>${i}</button>`;
+          }
+          
+          if (i > amountPages - 5) {
+            paginationList += `<button type="button" class="link" data-nunber='${i}'>${i}</button>`;
+            console.log(i);
+          }
+          if (i === amountPages - 6) {
+             paginationList +=
+               '<button type="button" class="link" >...</button>';
+          }
+        }
+        if (currentPage >=  5 && currentPage <= amountPages - 4) {
           if (i === currentPage) {
             paginationList += `<button type="button" class="link link--active" data-nunber='${i}'>${i}</button>`;
             continue;
@@ -106,6 +121,8 @@ function rightBtnClick() {
  refs.homeGallery.innerHTML = '';
  loadMovies();
 }
+
+
 export function getNewPage(e) {
   console.log(e.target);
   e.preventDefault();
