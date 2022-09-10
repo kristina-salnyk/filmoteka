@@ -1,28 +1,22 @@
-import refs from './refs/refs';
-import { movieConfigs } from '../index';
-import homePageUi from './ui/home-page-ui';
-import { fetchTrendingMovies } from './api/movie-api/fetchTrendingMovies';
+import { dynamicRefs } from './refs/dynamicRefs';
 
-const paginList = document.querySelector('.pagination__list');
 
-const leftArrow = document.querySelector('[data-arrow="left"]');
-const rightArrow = document.querySelector('[data-arrow="right"]');
+
 
 let paginationList = '';
 
 export default async function paginationMarup(amountPages, currentPage) {
-  if (paginList) {
-    paginList.innerHTML = '';
+  if (dynamicRefs().paginList) {
+    dynamicRefs().paginList.innerHTML = '';
     paginationList = '';
 
     ///////////////// Left Arrow////////////////////////
-    if (currentPage !== 1) {
-      leftArrow.classList.remove('visually-hidden');
-      leftArrow.addEventListener('click', leftBtnClick);
-    }
+    if (currentPage !== 1)
+      dynamicRefs().leftArrow.classList.remove('visually-hidden');
 
-    if (currentPage === 1) leftArrow.classList.add('visually-hidden');
-
+    if (currentPage === 1)
+      dynamicRefs().leftArrow.classList.add('visually-hidden');
+// /////////////////////////////////////////////////////
     if (amountPages < 9) {
       for (let i = 1; i <= amountPages; i += 1) {
         if (i === currentPage) {
@@ -93,67 +87,14 @@ export default async function paginationMarup(amountPages, currentPage) {
         }
       }
     }
-    paginList.insertAdjacentHTML('beforeend', paginationList);
+    dynamicRefs().paginList.insertAdjacentHTML('beforeend', paginationList);
 
     /////////////////Right Arrow////////////////////////
     if (currentPage !== amountPages) {
-      rightArrow.classList.remove('visually-hidden');
-      rightArrow.addEventListener('click', rightBtnClick);
+      dynamicRefs().rightArrow.classList.remove('visually-hidden');
     }
     if (currentPage === amountPages)
-      rightArrow.classList.add('visually-hidden');
+      dynamicRefs().rightArrow.classList.add('visually-hidden');
   }
   /////////////////////////////////////////////
-}
-
-paginList.addEventListener('click', getNewPage);
-
-function leftBtnClick() {
-  movieConfigs.decrementPage();
-  refs.homeGallery.innerHTML = '';
-  loadMovies();
-}
-
-function rightBtnClick() {
-  movieConfigs.incrementPage();
-  refs.homeGallery.innerHTML = '';
-  loadMovies();
-}
-
-export function getNewPage(e) {
-  console.log(e.target);
-  e.preventDefault();
-  if (e.target.nodeName !== 'BUTTON') {
-    return;
-  }
-
-  if (e.target.innerHTML !== '...') {
-    const page = Number(e.target.innerHTML);
-    movieConfigs.page = page;
-    refs.homeGallery.innerHTML = '';
-    loadMovies();
-  }
-}
-
-async function loadMovies() {
-  const data = await fetchTrendingMovies();
-  const { results: movies, total_pages: totalPages } = data;
-
-  const moviesData = movies.map(item => {
-    const newItem = { ...item };
-    newItem.genres = item.genre_ids
-      .map(id => movieConfigs.getGenreById(id))
-      .join(', ');
-    const releaseDate = new Date(item.release_date);
-    newItem.year = releaseDate.getFullYear();
-    if (item.vote_average === 0) {
-      newItem.vote = 'votes not found';
-    } else {
-      newItem.vote = item.vote_average.toFixed(1);
-    }
-    return newItem;
-  });
-
-  homePageUi.appendGalleryMarkup(moviesData);
-  paginationMarup(totalPages, movieConfigs.page);
 }
