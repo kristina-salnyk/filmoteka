@@ -7,6 +7,8 @@
 .modal-image {
   width: 240px;
   height: 357px;
+  object-fit: cover;
+  border-radius: 5px;
 
   @include for-tablet-up {
     width: 264px;
@@ -115,7 +117,6 @@
   &--current {
     background-color: $btn-accent-color;
     border: none;
-    
   }
 
   &--current:hover {

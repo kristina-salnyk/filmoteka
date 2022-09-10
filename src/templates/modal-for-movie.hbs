@@ -1,7 +1,11 @@
 <div class='modal-card'>
   <img
     class='modal-image'
-    src='https://image.tmdb.org/t/p/w500{{posterPath}}'
+    {{#if posterPath}}
+          src='https://image.tmdb.org/t/p/w500{{posterPath}}'
+          {{else}}
+          src='https://media.istockphoto.com/vectors/cat-sits-in-a-box-with-a-404-sign-page-or-file-not-found-connection-vector-id1278808623?k=20&m=1278808623&s=612x612&w=0&h=tmzYgVK5yF-dtVvW81zz-Ebpeqd6EvD38KYGRjczuiw='
+          {{/if}}
     alt='Poster of {{title}} movie'
   />
   <div class='movie-description'>
@@ -14,7 +18,7 @@
         <li>Genre</li>
       </ul>
       <ul>
-        <li>{{vote}} {{votes}}</li>
+        <li><span class='movie-card__vote'>{{vote}}</span>   / <span class='movie-card__vote movie-card__vote--votes'>{{votes}}</span> </li>
         <li>{{popularity}}</li>
         <li>{{originalTitle}}</li>
         <li>{{movieGenres}}</li>
