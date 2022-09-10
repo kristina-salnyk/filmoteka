@@ -1,8 +1,8 @@
-import MovieService from './js/MovieService';
+import MovieConfigs from './js/MovieConfigs';
 import libraryPageUi from './js/ui/library-page-ui';
 import notifications from './js/notifications';
 
-export const movieService = new MovieService();
+export const movieConfigs = new MovieConfigs();
 
 initLibraryPage().catch(error => {
   notifications.failedRequest();

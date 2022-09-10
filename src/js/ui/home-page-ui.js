@@ -1,6 +1,6 @@
 import refs from '../refs/refs';
 import { searchFormSubmitHandler } from '../handlers/searchFormSubmitHandler';
-import { oneMovieClickHandler } from '../handlers/oneMovieClickHandler';
+import { homeGalleryClickHandler } from '../handlers/homeGalleryClickHandler';
 import { dynamicRefs } from '../refs/dynamicRefs';
 import { trackScroll, backToTop } from '../handlers/scrollUpClickHandler';
 import movieCards from '../../templates/movie-card.hbs';
@@ -13,9 +13,10 @@ import {
 
 const setHomeEventListeners = () => {
   refs.searchForm.addEventListener('submit', searchFormSubmitHandler);
-  refs.homeGallery.addEventListener('click', oneMovieClickHandler);
-  window.addEventListener('scroll', trackScroll);
+  refs.homeGallery.addEventListener('click', homeGalleryClickHandler);
+
   refs.goTopBtn.addEventListener('click', backToTop);
+  window.addEventListener('scroll', trackScroll);
 };
 
 const appendGalleryMarkup = movies => {

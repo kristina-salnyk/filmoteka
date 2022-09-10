@@ -1,6 +1,7 @@
-import { movieService } from '../../index';
+import { movieConfigs } from '../../index';
 import refs from '../refs/refs';
-import { renderMoviesData } from '../renderMoviesData';
+import { fetchSearchMovie } from '../api/movie-api/fetchSearchMovie';
+import { renderMoviesData } from '../render/renderMoviesData';
 
 export const searchFormSubmitHandler = async event => {
   event.preventDefault();
@@ -14,11 +15,11 @@ export const searchFormSubmitHandler = async event => {
     return;
   }
 
-  movieService.searchQuery = searchQuery;
+  movieConfigs.setSearchQuery(searchQuery);
 
   try {
-    const data = await movieService.fetchSearchedMovie();
-    renderMoviesData(data);
+    const searchData = await fetchSearchMovie();
+    renderMoviesData(searchData);
   } catch (error) {
     refs.searchError.style.display = 'block';
   }

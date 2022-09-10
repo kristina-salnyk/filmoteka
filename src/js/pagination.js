@@ -1,5 +1,7 @@
 import refs from './refs/refs';
-import { movieService } from '../index';
+import { movieConfigs } from '../index';
+import homePageUi from './ui/home-page-ui';
+import { fetchTrendingMovies } from './api/movie-api/fetchTrendingMovies';
 
 const paginList = document.querySelector('.pagination__list');
 
@@ -107,13 +109,13 @@ export default async function paginationMarup(amountPages, currentPage) {
 paginList.addEventListener('click', getNewPage);
 
 function leftBtnClick() {
-  movieService.decrementPage();
+  movieConfigs.decrementPage();
   refs.homeGallery.innerHTML = '';
   loadMovies();
 }
 
 function rightBtnClick() {
-  movieService.incrementPage();
+  movieConfigs.incrementPage();
   refs.homeGallery.innerHTML = '';
   loadMovies();
 }
@@ -127,20 +129,20 @@ export function getNewPage(e) {
 
   if (e.target.innerHTML !== '...') {
     const page = Number(e.target.innerHTML);
-    movieService.setPage(page);
+    movieConfigs.page = page;
     refs.homeGallery.innerHTML = '';
     loadMovies();
   }
 }
 
 async function loadMovies() {
-  const data = await movieService.fetchTrendingMovies();
+  const data = await fetchTrendingMovies();
   const { results: movies, total_pages: totalPages } = data;
 
   const moviesData = movies.map(item => {
     const newItem = { ...item };
     newItem.genres = item.genre_ids
-      .map(id => movieService.getGenreById(id))
+      .map(id => movieConfigs.getGenreById(id))
       .join(', ');
     const releaseDate = new Date(item.release_date);
     newItem.year = releaseDate.getFullYear();
@@ -148,6 +150,6 @@ async function loadMovies() {
     return newItem;
   });
 
-  ui.appendGalleryMarkup(moviesData);
-  paginationMarup(totalPages, movieService.getPage());
+  homePageUi.appendGalleryMarkup(moviesData);
+  paginationMarup(totalPages, movieConfigs.page);
 }

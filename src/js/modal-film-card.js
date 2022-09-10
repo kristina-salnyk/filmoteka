@@ -28,7 +28,4 @@ function onEscKeyPress(evn) {
 
 export default {
   onOpenModalBtn,
-  onCloseModalBtn,
-  onBackdropClick,
-  onEscKeyPress,
 };
