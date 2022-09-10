@@ -1,27 +1,30 @@
-.footer{
+.footer {
   padding: 30px 0;
   height: 112px;
   background-color: $footer-brg-color;
 
-  @include for-tablet-up{
+  @include for-tablet-up {
     height: 86px;
   }
 }
 
-.copy-rights{
+.copy-rights {
   margin: 0 auto;
 
   line-height: 1.86;
   text-align: center;
   color: $footer-text-color;
 
-  @include for-phone-only{
+  @include for-phone-only {
     width: 236px;
   }
 }
 
-.copy-rights__link{
+.copy-rights__btn {
   color: inherit;
 
+  background-color: $footer-brg-color;
+  border: none;
+  cursor: pointer;
   text-decoration: underline;
 }
