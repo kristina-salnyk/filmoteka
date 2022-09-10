@@ -1,19 +1,12 @@
-import refs from './refs';
+import { dynamicRefs } from './refs/dynamicRefs';
 
-import { dynamicRefs } from './dynamicRefs';
-
-
- 
 export const paginList = document.querySelector('.pagination__list');
-
 export const leftArrow = document.querySelector('[data-arrow="left"]');
 export const rightArrow = document.querySelector('[data-arrow="right"]');
 
 let paginationList = '';
 
-export default async function paginationMarup(amountPages, currentPage) {
-
-
+export default async function paginationMarkup(amountPages, currentPage) {
   if (dynamicRefs().paginList) {
     dynamicRefs().paginList.innerHTML = '';
     paginationList = '';
@@ -21,10 +14,10 @@ export default async function paginationMarup(amountPages, currentPage) {
     ///////////////// Left Arrow////////////////////////
     if (currentPage !== 1) {
       dynamicRefs().leftArrow.classList.remove('visually-hidden');
-    
     }
     // //////////////////////////////////////////////////////
-    if (currentPage === 1) dynamicRefs().leftArrow.classList.add('visually-hidden');
+    if (currentPage === 1)
+      dynamicRefs().leftArrow.classList.add('visually-hidden');
 
     if (amountPages < 9) {
       for (let i = 1; i <= amountPages; i += 1) {
@@ -100,13 +93,10 @@ export default async function paginationMarup(amountPages, currentPage) {
 
     /////////////////Right Arrow////////////////////////
     if (currentPage !== amountPages) {
-     dynamicRefs().rightArrow.classList.remove('visually-hidden');
-     
+      dynamicRefs().rightArrow.classList.remove('visually-hidden');
     }
     if (currentPage === amountPages)
       dynamicRefs().rightArrow.classList.add('visually-hidden');
   }
   /////////////////////////////////////////////
 }
-
-

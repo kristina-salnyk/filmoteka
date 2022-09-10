@@ -1,23 +1,24 @@
-import refs from './refs';
-import { movieService } from '../index';
-import homePageUi from './home-page-ui';
-import { dynamicRefs } from './dynamicRefs'
-import paginationMarup from './pagination'
+import refs from "./refs/refs";
+import {movieConfigs} from "../index";
+import {dynamicRefs} from "./refs/dynamicRefs";
+import {fetchTrendingMovies} from "./api/movie-api/fetchTrendingMovies";
+import {renderMoviesData} from "./render/renderMoviesData";
+import notifications from "./notifications";
 
 
 dynamicRefs().paginList.addEventListener('click', getNewPage);
 dynamicRefs().leftArrow.addEventListener('click', leftBtnClick);
 dynamicRefs().rightArrow.addEventListener('click', rightBtnClick);
 
-   
+
 export default function leftBtnClick() {
-  movieService.decrementPage();
+  movieConfigs.decrementPage();
   refs.homeGallery.innerHTML = '';
   loadMovies();
 }
 
 export default function rightBtnClick() {
-  movieService.incrementPage();
+  movieConfigs.incrementPage();
   refs.homeGallery.innerHTML = '';
   loadMovies();
 }
@@ -31,27 +32,18 @@ export default function getNewPage(e) {
 
   if (e.target.innerHTML !== '...') {
     const page = Number(e.target.innerHTML);
-    movieService.setPage(page);
+    movieConfigs.page = page;
     refs.homeGallery.innerHTML = '';
     loadMovies();
   }
 }
 
 async function loadMovies() {
-  const data = await movieService.fetchTrendingMovies();
-  const { results: movies, total_pages: totalPages } = data;
+  try {
+    const trendingData = await fetchTrendingMovies();
+    renderMoviesData(trendingData);
+  } catch (error) {
+    notifications.failedRequest();
+  }
 
-  const moviesData = movies.map(item => {
-    const newItem = { ...item };
-    newItem.genres = item.genre_ids
-      .map(id => movieService.getGenreById(id))
-      .join(', ');
-    const releaseDate = new Date(item.release_date);
-    newItem.year = releaseDate.getFullYear();
-    newItem.vote = item.vote_average.toFixed(1);
-    return newItem;
-  });
-
-  homePageUi.appendGalleryMarkup(moviesData);
-  paginationMarup(totalPages, movieService.getPage());
 }
