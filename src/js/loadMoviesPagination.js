@@ -38,12 +38,11 @@ export default function getNewPage(e) {
   }
 }
 
-async function loadMovies() {
+export async function loadMovies() {
   try {
     const trendingData = await fetchTrendingMovies();
     renderMoviesData(trendingData);
   } catch (error) {
     notifications.failedRequest();
   }
-
 }
