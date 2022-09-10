@@ -3,7 +3,11 @@ import notifications from './js/notifications';
 import MovieService from './js/MovieService';
 import { loadTrendingMovies } from './js/loadTrendingMovies';
 import './js/pagination';
-
+import './js/footer-modal';
+import Swiper, { Navigation, Pagination } from 'swiper';
+// import 'swiper/css';
+// import 'swiper/css/navigation';
+// import 'swiper/css/pagination';
 export const movieService = new MovieService();
 
 ui.setHomeEventListeners();
