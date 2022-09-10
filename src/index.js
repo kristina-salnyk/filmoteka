@@ -5,7 +5,7 @@ import { fetchGenresList } from './js/api/movie-api/fetchGenresList';
 import { fetchTrendingMovies } from './js/api/movie-api/fetchTrendingMovies';
 import { renderMoviesData } from './js/render/renderMoviesData';
 import './js/loadMoviesPagination';
-import './js/footer-modal';
+// import './js/footer-modal';
 // import Swiper, { Navigation, Pagination } from 'swiper';
 // import 'swiper/css';
 // import 'swiper/css/navigation';
