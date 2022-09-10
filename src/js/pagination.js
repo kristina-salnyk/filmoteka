@@ -6,7 +6,7 @@ export const rightArrow = document.querySelector('[data-arrow="right"]');
 
 let paginationList = '';
 
-export default async function paginationMarkup(amountPages, currentPage) {
+export default async function paginationMarup(amountPages, currentPage) {
   if (dynamicRefs().paginList) {
     dynamicRefs().paginList.innerHTML = '';
     paginationList = '';

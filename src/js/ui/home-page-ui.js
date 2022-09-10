@@ -11,6 +11,9 @@ import {
   onOpenModal,
 } from '../handlers/modalBtnsClickHandler';
 import { httpsYouTubeVideo } from '../you-tube';
+import getNewPage from '../loadMoviesPagination';
+import leftBtnClick from '../loadMoviesPagination';
+import rightBtnClick from '../loadMoviesPagination';
 
 const setHomeEventListeners = () => {
   refs.searchForm.addEventListener('submit', searchFormSubmitHandler);
@@ -18,6 +21,10 @@ const setHomeEventListeners = () => {
 
   refs.goTopBtn.addEventListener('click', backToTop);
   window.addEventListener('scroll', trackScroll);
+
+  dynamicRefs().paginList.addEventListener('click', getNewPage);
+  dynamicRefs().leftArrow.addEventListener('click', leftBtnClick);
+  dynamicRefs().rightArrow.addEventListener('click', rightBtnClick);
 };
 
 const appendGalleryMarkup = movies => {

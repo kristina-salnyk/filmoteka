@@ -1,3 +1,4 @@
+
 import refs from "./refs/refs";
 import {movieConfigs} from "../index";
 import {dynamicRefs} from "./refs/dynamicRefs";
@@ -51,5 +52,4 @@ async function loadMovies() {
     }
     
   }
-
 }
