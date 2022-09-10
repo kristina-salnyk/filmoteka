@@ -1,6 +1,6 @@
-import refs from './refs';
 import { movieService } from '../index';
-import ui from './ui-interactions';
+import refs from './refs';
+import { renderMoviesData } from './renderMoviesData';
 
 export const searchFormSubmitHandler = async event => {
   event.preventDefault();
@@ -13,33 +13,13 @@ export const searchFormSubmitHandler = async event => {
     refs.searchError.style.display = 'block';
     return;
   }
+
   movieService.searchQuery = searchQuery;
 
-
+  try {
     const data = await movieService.fetchSearchedMovie();
-
-    const {
-      results: movies,
-      total_pages: totalPages,
-      total_results: totalResults,
-    } = data;
-
-    if (totalResults === 0) {
-      notifications.notFoundResults();
-      return;
-    }
-
-    const moviesData = movies.map(item => {
-      const newItem = { ...item };
-      newItem.genres = item.genre_ids
-        .map(id => movieService.getGenreById(id))
-        .join(', ');
-      const releaseDate = new Date(item.release_date);
-      newItem.year = releaseDate.getFullYear();
-      newItem.vote = item.vote_average.toFixed(1);
-      return newItem;
-    });
-
-    ui.scrollToUp();
-    ui.appendGalleryMarkup(moviesData);
+    renderMoviesData(data);
+  } catch (error) {
+    refs.searchError.style.display = 'block';
+  }
 };

@@ -1,6 +1,6 @@
-import ui from './ui-interactions';
 import refs from './refs';
 import { movieService } from '../index';
+
 
 
 const paginList = document.querySelector('.pagination__list');
@@ -12,6 +12,7 @@ let paginationList = '';
 
 export default async function paginationMarup(amountPages, currentPage) {
 
+
   if (paginList) {
     paginList.innerHTML = '';
     paginationList = '';
@@ -21,16 +22,17 @@ export default async function paginationMarup(amountPages, currentPage) {
       leftArrow.classList.remove('visually-hidden');
       leftArrow.addEventListener('click', leftBtnClick)
     }
+
     if (currentPage === 1) leftArrow.classList.add('visually-hidden');
     
-    ////////////////////////////////////////////
-
     if (amountPages < 9) {
       for (let i = 1; i <= amountPages; i += 1) {
+
         if (i === currentPage) {
           paginationList += `<button type="button" class="link link--active" data-nunber='${i}'>${i}</button>`;
           continue;
         }
+
         paginationList += `<button type="button" class="link" data-nunber='${i}'>${i}</button>`;
       }
     }
@@ -92,6 +94,8 @@ export default async function paginationMarup(amountPages, currentPage) {
           if (i === amountPages) {
             paginationList += `<button type="button" class="link" data-nunber='${i}'>${i}</button>`;
           }
+
+        
         }
       }
     }
@@ -108,6 +112,7 @@ export default async function paginationMarup(amountPages, currentPage) {
   /////////////////////////////////////////////
 }
 
+
 paginList.addEventListener('click', getNewPage);
 
 function leftBtnClick() {
@@ -123,14 +128,19 @@ function rightBtnClick() {
 }
 
 
+
+
+
 export function getNewPage(e) {
   console.log(e.target);
   e.preventDefault();
   if (e.target.nodeName !== 'BUTTON') {
     return;
   }
+
   
   if (  
+
     e.target.innerHTML !== '...'
   ) {
     const page = Number(e.target.innerHTML);
@@ -139,6 +149,7 @@ export function getNewPage(e) {
     loadMovies();
   }
 }
+
 
 async function loadMovies() {
   const data = await movieService.fetchTrendingMovies();
@@ -164,3 +175,4 @@ async function loadMovies() {
   ui.appendGalleryMarkup(moviesData);
   paginationMarup(totalPages, movieService.getPage());
 }
+

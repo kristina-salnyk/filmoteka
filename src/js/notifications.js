@@ -14,4 +14,8 @@ export default {
   repeatedRequest() {
     Notify.info('Search results are already displayed.');
   },
+
+  showCustomMessage(message) {
+    Notify.info(message);
+  },
 };

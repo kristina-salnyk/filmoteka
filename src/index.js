@@ -1,25 +1,22 @@
-import ui from './js/ui-interactions';
-import notifications from './js/notifications';
 import MovieService from './js/MovieService';
+import homePageUi from './js/home-page-ui';
+import notifications from './js/notifications';
 import { loadTrendingMovies } from './js/loadTrendingMovies';
-import './js/pagination';
+import './js/footer-modal';
+import Swiper, { Navigation, Pagination } from 'swiper';
+// import 'swiper/css';
+// import 'swiper/css/navigation';
+// import 'swiper/css/pagination';
 
 export const movieService = new MovieService();
 
-ui.setHomeEventListeners();
-
 initHomePage().catch(error => {
   notifications.failedRequest();
-  console.log(error);
-  // TODO: handle error of fetching movies in home page
 });
 
 async function initHomePage() {
+  homePageUi.setHomeEventListeners();
+
   await movieService.fetchGenresList();
   return loadTrendingMovies();
 }
-
-// movieService.searchQuery = 'Time';
-// movieService.fetchTrendingMovies().then(data => console.log(data));
-
-// movieService.fetchMovie('370172').then(data => console.log(data));
