@@ -4,7 +4,8 @@ import {dynamicRefs} from "./refs/dynamicRefs";
 import {fetchTrendingMovies} from "./api/movie-api/fetchTrendingMovies";
 import {renderMoviesData} from "./render/renderMoviesData";
 import notifications from "./notifications";
-
+import storege from './local-storage/local-storage-service';
+import key from './local-storage/local-storage-keys'
 
 dynamicRefs().paginList.addEventListener('click', getNewPage);
 dynamicRefs().leftArrow.addEventListener('click', leftBtnClick);
@@ -19,6 +20,7 @@ export default function leftBtnClick() {
 
 export default function rightBtnClick() {
   movieConfigs.incrementPage();
+ 
   refs.homeGallery.innerHTML = '';
   loadMovies();
 }
@@ -39,11 +41,15 @@ export default function getNewPage(e) {
 }
 
 async function loadMovies() {
-  try {
-    const trendingData = await fetchTrendingMovies();
-    renderMoviesData(trendingData);
-  } catch (error) {
-    notifications.failedRequest();
+  console.log(storege.load(key.LAST_FETCH))
+  if (storege.load(key.LAST_FETCH) === 'TRENDING') {
+    try {
+      const trendingData = await fetchTrendingMovies();
+      renderMoviesData(trendingData);
+    } catch (error) {
+      notifications.failedRequest();
+    }
+    
   }
 
 }
