@@ -1,8 +1,8 @@
 import { dynamicRefs } from './refs/dynamicRefs';
 
-export const paginList = document.querySelector('.pagination__list');
-export const leftArrow = document.querySelector('[data-arrow="left"]');
-export const rightArrow = document.querySelector('[data-arrow="right"]');
+// export const paginList = document.querySelector('.pagination__list');
+// export const leftArrow = document.querySelector('[data-arrow="left"]');
+// export const rightArrow = document.querySelector('[data-arrow="right"]');
 
 let paginationList = '';
 
