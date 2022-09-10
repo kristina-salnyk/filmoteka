@@ -15,6 +15,8 @@ export const renderMoviesData = data => {
     return;
   }
 
+  paginationMarkup(totalPages, movieConfigs.page);
+
   const moviesData = movies.map(item => {
     const newItem = { ...item };
     newItem.genres = item['genre_ids']
@@ -27,5 +29,4 @@ export const renderMoviesData = data => {
   });
 
   homePageUi.appendGalleryMarkup(moviesData);
-  paginationMarkup(totalPages, movieConfigs.page);
 };

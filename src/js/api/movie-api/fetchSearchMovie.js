@@ -2,8 +2,6 @@ import api from './api';
 import { REQUEST_URL } from '../../constants';
 import { movieConfigs } from '../../../index';
 import notifications from '../../notifications';
-import storege from '../../local-storage/local-storage-service';
-import key from '../../local-storage/local-storage-keys';
 
 export const fetchSearchMovie = async () => {
   const config = {
@@ -18,7 +16,6 @@ export const fetchSearchMovie = async () => {
 
   try {
     const response = await api.get(url, config);
-     storege.save(key.LAST_FETCH, 'SEARCH');
     return response.data;
   } catch (error) {
     notifications.failedRequest();
