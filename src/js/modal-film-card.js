@@ -3,6 +3,7 @@ import { dynamicRefs } from './dynamicRefs';
 function onOpenModalBtn() {
   dynamicRefs().closeModalBtn.addEventListener('click', onCloseModalBtn);
   dynamicRefs().backdrop.addEventListener('click', onBackdropClick);
+
   window.addEventListener('keydown', onEscKeyPress);
   document.body.classList.add('on-open-modal');
 }

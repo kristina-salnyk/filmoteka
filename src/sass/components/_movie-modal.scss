@@ -93,33 +93,31 @@
   }
 }
 
-.modal-tabs__btn {
+.modal-tabs__watched {
   padding-top: 14px;
   padding-bottom: 12px;
 
-  width: 110px;
-  height: 44px;
+  width: 120px;
+  height: 54px;
 
-  background-color: inherit;
-  color: #000000;
-  border: 1px solid #000000;
+  background-color: $btn-accent-color;
+  color: $secondary-text-color;
+  border: none;
   border-radius: 5px;
 
   text-transform: uppercase;
   cursor: pointer;
 
+  font: Roboto;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  align-items: center;
+
   &:hover {
-    background-color: $btn-hover-color;
-  }
-
-  &--current {
-    background-color: $btn-accent-color;
-    border: none;
-  }
-
-  &--current:hover {
-    background-color: $btn-accent-hover-color;
-    border: none;
+    background-color: $btn-second-color;
+    color: $primary-text-color;
+    border: 1px solid #000000;
   }
 
   @include for-tablet-up {
@@ -129,4 +127,76 @@
   @include for-desktop-only {
     width: 136px;
   }
+}
+
+.modal-tabs__watched--current {
+  background-color: $btn-second-color;
+  color: $primary-text-color;
+  border: 1px solid #000000;
+
+  font: Roboto;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  align-items: center;
+}
+
+.modal-tabs__watched--current:hover {
+  background-color: $btn-accent-hover-color;
+  border: none;
+  color: $secondary-text-color;
+}
+
+.modal-tabs__queue {
+  padding-top: 14px;
+  padding-bottom: 12px;
+
+  width: 110px;
+  height: 54px;
+
+  background-color: $btn-accent-color;
+  color: $secondary-text-color;
+  border: none;
+  border-radius: 5px;
+
+  text-transform: uppercase;
+  cursor: pointer;
+
+  font: Roboto;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  align-items: center;
+
+  &:hover {
+    background-color: $btn-second-color;
+    color: $primary-text-color;
+    border: 1px solid #000000;
+  }
+
+  @include for-tablet-up {
+    width: 125.03px;
+  }
+
+  @include for-desktop-only {
+    width: 136px;
+  }
+}
+
+.modal-tabs__queue--current {
+  background-color: $btn-second-color;
+  color: $primary-text-color;
+  border: 1px solid #000000;
+
+  font: Roboto;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  align-items: center;
+}
+
+.modal-tabs__queue--current:hover {
+  background-color: $btn-accent-hover-color;
+  border: none;
+  color: $secondary-text-color;
 }
