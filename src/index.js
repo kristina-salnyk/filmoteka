@@ -2,8 +2,6 @@ import MovieConfigs from './js/MovieConfigs';
 import homePageUi from './js/ui/home-page-ui';
 import notifications from './js/notifications';
 import { fetchGenresList } from './js/api/movie-api/fetchGenresList';
-import { fetchTrendingMovies } from './js/api/movie-api/fetchTrendingMovies';
-import { renderMoviesData } from './js/render/renderMoviesData';
 import './js/footer-modal';
 import './js/loadMoviesPagination';
 import { loadMovies } from './js/loadMoviesPagination';
