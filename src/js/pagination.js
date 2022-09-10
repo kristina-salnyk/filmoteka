@@ -1,114 +1,178 @@
 import refs from './refs';
 import { movieService } from '../index';
-import { loadTrendingMovies } from './loadTrendingMovies';
 
-const pagin = document.querySelector('.pagination');
+
+
 const paginList = document.querySelector('.pagination__list');
 
-const leftArrowmarcup = `<a class="link left__arrow" href="" id="leftArrow">' < '</a>`;
-const rightArrowMarcup = `<a class="link right__arrow" href="" id="rightArrow">' > '</a>`;
+const leftArrow = document.querySelector('[data-arrow="left"]');
+const rightArrow = document.querySelector('[data-arrow="right"]');
 
 let paginationList = '';
 
 export default async function paginationMarup(amountPages, currentPage) {
-  paginList.innerHTML = '';
-  paginationList = '';
 
-  ///////////////// Left Arrow////////////////////////
-  if (currentPage !== 1) {
-    paginList.insertAdjacentHTML('beforeend', leftArrowmarcup);
-  }
-  ////////////////////////////////////////////
 
-  if (amountPages < 9) {
-    for (let i = 1; i <= amountPages; i += 1) {
-      if (i === currentPage) {
-        paginationList += `<a class="link link--active" href="" >${i}</a>`;
-        continue;
-      }
-      paginationList += `<a class="link" href="" >${i}</a>`;
+  if (paginList) {
+    paginList.innerHTML = '';
+    paginationList = '';
+
+    ///////////////// Left Arrow////////////////////////
+    if (currentPage !== 1) {
+      leftArrow.classList.remove('visually-hidden');
+      leftArrow.addEventListener('click', leftBtnClick)
     }
-  }
-  if (amountPages > 9) {
-    for (let i = 1; i <= amountPages; i += 1) {
-      if (i === currentPage) {
-        paginationList += `<a class="link link--active" href="" >${i}</a>`;
-        continue;
-      }
-      if (currentPage >= 5) {
+
+    if (currentPage === 1) leftArrow.classList.add('visually-hidden');
+    
+    if (amountPages < 9) {
+      for (let i = 1; i <= amountPages; i += 1) {
+
         if (i === currentPage) {
-          paginationList += `<a class="link link--active" href="" >${i}</a>`;
+          paginationList += `<button type="button" class="link link--active" data-nunber='${i}'>${i}</button>`;
           continue;
         }
-        if (i === 1) {
-          paginationList += `<a class="link" href="" >${i}</a>`;
-        }
-        if (i === currentPage - 3) {
-          paginationList += '<a class="link" href="" >...</a>';
-        }
-        if (i === currentPage + 3) {
-          paginationList += '<a class="link" href="" >...</a>';
-        }
-        if (i < currentPage - 2 && i > currentPage + 2) {
-          continue;
-        }
-        if (i > currentPage - 3 && i < currentPage + 3 && i !== amountPages) {
-          paginationList += `<a class="link" href="" >${i}</a>`;
-        }
-        if (i === amountPages) {
-          paginationList += `<a class="link" href="" >${i}</a>`;
-        }
+
+        paginationList += `<button type="button" class="link" data-nunber='${i}'>${i}</button>`;
       }
-      if (currentPage < 5) {
-        if (i <= 5) {
-          paginationList += `<a class="link" href="" >${i}</a>`;
+    }
+    if (amountPages > 9) {
+      for (let i = 1; i <= amountPages; i += 1) {
+        if (i === currentPage) {
+          paginationList += `<button type="button" class="link link--active" data-nunber='${i}'>${i}</button>`;
+          continue;
         }
-        if (i === 6) {
-          paginationList += '<a class="link" href="" >...</a>';
+        if (currentPage > amountPages - 4) {
+          
+          if (i === 1) {
+            paginationList += `<button type="button" class="link" data-nunber='${i}'>${i}</button>`;
+          }
+          
+          if (i > amountPages - 5) {
+            paginationList += `<button type="button" class="link" data-nunber='${i}'>${i}</button>`;
+            console.log(i);
+          }
+          if (i === amountPages - 6) {
+             paginationList +=
+               '<button type="button" class="link" >...</button>';
+          }
         }
-        if (i === amountPages) {
-          paginationList += `<a class="link" href="" >${i}</a>`;
+        if (currentPage >=  5 && currentPage <= amountPages - 4) {
+          if (i === currentPage) {
+            paginationList += `<button type="button" class="link link--active" data-nunber='${i}'>${i}</button>`;
+            continue;
+          }
+          if (i === 1) {
+            paginationList += `<button type="button" class="link" data-nunber='${i}'>${i}</button>`;
+          }
+          if (i === currentPage - 3) {
+            paginationList +=
+              '<button type="button" class="link" >...</button>';
+          }
+          if (i === currentPage + 3) {
+            paginationList +=
+              '<button type="button" class="link" >...</button>';
+          }
+          if (i < currentPage - 2 && i > currentPage + 2) {
+            continue;
+          }
+          if (i > currentPage - 3 && i < currentPage + 3 && i !== amountPages) {
+            paginationList += `<button type="button" class="link" data-nunber='${i}'>${i}</button>`;
+          }
+          if (i === amountPages) {
+            paginationList += `<button type="button" class="link" data-nunber='${i}'>${i}</button>`;
+          }
+        }
+        if (currentPage < 5) {
+          if (i <= 5) {
+            paginationList += `<button type="button" class="link" data-nunber='${i}'>${i}</button>`;
+          }
+          if (i === 6) {
+            paginationList +=
+              '<button type="button" class="link" >...</button>';
+          }
+          if (i === amountPages) {
+            paginationList += `<button type="button" class="link" data-nunber='${i}'>${i}</button>`;
+          }
+
+        
         }
       }
     }
-  }
+    paginList.insertAdjacentHTML('beforeend', paginationList);
 
-  paginList.insertAdjacentHTML('beforeend', paginationList);
-  /////////////////Right Arrow////////////////////////
-  if (currentPage !== amountPages) {
-    paginList.insertAdjacentHTML('beforeend', rightArrowMarcup);
+    /////////////////Right Arrow////////////////////////
+    if (currentPage !== amountPages) {
+      rightArrow.classList.remove('visually-hidden');
+      rightArrow.addEventListener('click', rightBtnClick);
+    };
+    if (currentPage === amountPages)
+      rightArrow.classList.add('visually-hidden');
   }
   /////////////////////////////////////////////
 }
 
+
 paginList.addEventListener('click', getNewPage);
 
-export function getNewPage(e) {
-  e.preventDefault();
+function leftBtnClick() {
+  movieService.decrementPage();
+  refs.homeGallery.innerHTML = '';
+  loadMovies();
+}
 
-  if (e.target.nodeName !== 'A') {
+function rightBtnClick() {
+ movieService.incrementPage();
+ refs.homeGallery.innerHTML = '';
+ loadMovies();
+}
+
+
+
+
+
+export function getNewPage(e) {
+  console.log(e.target);
+  e.preventDefault();
+  if (e.target.nodeName !== 'BUTTON') {
     return;
   }
 
-  if (e.target.classList.contains('left__arrow')) {
-    movieService.decrementPage();
-    refs.homeGallery.innerHTML = '';
-    loadTrendingMovies();
-  }
+  
+  if (  
 
-  if (e.target.classList.contains('right__arrow')) {
-    movieService.incrementPage();
-    refs.homeGallery.innerHTML = '';
-    loadTrendingMovies();
-  }
-  if (
-    !e.target.classList.contains('right__arrow') &&
-    !e.target.classList.contains('left__arrow') &&
     e.target.innerHTML !== '...'
   ) {
     const page = Number(e.target.innerHTML);
     movieService.setPage(page);
     refs.homeGallery.innerHTML = '';
-    loadTrendingMovies();
+    loadMovies();
   }
 }
+
+
+async function loadMovies() {
+  const data = await movieService.fetchTrendingMovies();
+  const {
+    results: movies,
+    total_pages: totalPages,
+   
+  } = data;
+  
+ 
+  
+  const moviesData = movies.map(item => {
+    const newItem = { ...item };
+    newItem.genres = item.genre_ids
+    .map(id => movieService.getGenreById(id))
+    .join(', ');
+    const releaseDate = new Date(item.release_date);
+    newItem.year = releaseDate.getFullYear();
+    newItem.vote = item.vote_average.toFixed(1);
+    return newItem;
+  });
+  
+  ui.appendGalleryMarkup(moviesData);
+  paginationMarup(totalPages, movieService.getPage());
+}
+
