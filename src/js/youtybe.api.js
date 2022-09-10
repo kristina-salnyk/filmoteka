@@ -16,15 +16,7 @@ export default class YoutybeApiServer {
         language: this.language,
       },
     });
-    this.nextPage();
     return resp.data;
-  }
-  nextPage() {
-    this.page += 1;
-  }
-
-  resetPege() {
-    this.page = 1;
   }
 
   get query() {
