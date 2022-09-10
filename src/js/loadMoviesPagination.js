@@ -38,7 +38,7 @@ export default function getNewPage(e) {
   }
 }
 
-export async function loadMovies() {
+async function loadMovies() {
   try {
     const trendingData = await fetchTrendingMovies();
     renderMoviesData(trendingData);
