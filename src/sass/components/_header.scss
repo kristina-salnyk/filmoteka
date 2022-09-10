@@ -233,12 +233,12 @@
 .tabs__btn {
   padding-top: 14px;
   padding-bottom: 12px;
-
+ 
   width: 130px;
 
   background-color: inherit;
-  color: $secondary-text-color;
-  border: 1px solid $primary-border-color;
+  color: $primary-text-color;
+  border: 1px solid $header-bgr-color;
   border-radius: 5px;
 
   text-transform: uppercase;
@@ -250,12 +250,15 @@
 
   &--current {
     background-color: $btn-accent-color;
+    columns: $primary-text-color;
     border: none;
+  
   }
 
   &--current:hover {
     background-color: $btn-accent-hover-color;
     border: none;
+   
   }
 
   @include for-tablet-up{
@@ -265,4 +268,12 @@
   @include for-desktop-only{
     width: 148px;
   }
+}
+
+.title-add{
+  color: $primary-text-color;
+   font-size: 0 
+}
+.title-delet{
+  display: none;
 }

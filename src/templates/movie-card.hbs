@@ -13,14 +13,18 @@
       </div>
       <div class="tabs">
         <button
-          id="add-to-watched-btn"
+          id="watched-btn"
           class="tabs__btn tabs__btn--current"
           type="button"
-          data-id='{{id}}'
-        >
-          Add to watched
+          data-id='{{id}}'>
+           <span class="title-add">Add to watched</span> 
+           <span class="title-delet">delete to wotched</span>
         </button>
-        <button style="color: black; border-color: black" id="add-to-queue-btn" class="tabs__btn" type="button" data-id='{{id}}'>Add to queue</button>
+        <button style="color: black; border-color: black" 
+        id="queue-btn" 
+        class="tabs__btn tabs__btn--current" 
+        type="button" 
+        data-id='{{id}}'>Add to queue</button>
       </div>
     </a>
   </div>
