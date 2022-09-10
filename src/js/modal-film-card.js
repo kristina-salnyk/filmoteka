@@ -1,5 +1,4 @@
 import { dynamicRefs } from './dynamicRefs';
-import { modalQueueBtnClickHandler, modalWatchedBtnClickHandler } from './modalBtnsClickHandler';
 
 function onOpenModalBtn() {
   dynamicRefs().closeModalBtn.addEventListener('click', onCloseModalBtn);
@@ -7,7 +6,6 @@ function onOpenModalBtn() {
 
   window.addEventListener('keydown', onEscKeyPress);
   document.body.classList.add('on-open-modal');
-
 }
 
 function onCloseModalBtn() {

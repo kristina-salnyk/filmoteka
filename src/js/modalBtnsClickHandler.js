@@ -29,10 +29,14 @@ export const modalQueueBtnClickHandler = event => {
   if (newQueueMoviesIds.includes(movieId)) {
     newQueueMoviesIds.splice(newQueueMoviesIds.indexOf(movieId), 1);
     event.target.classList.remove('tabs__btn--current');
+    event.target.textContent = 'delete';
   } else {
     newQueueMoviesIds.push(movieId);
     event.target.classList.add('tabs__btn--current');
+    event.target.textContent = 'add';
   }
 
   localStorageService.save(keys.QUEUE_MOVIES, newQueueMoviesIds);
 };
+
+

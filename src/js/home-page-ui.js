@@ -5,6 +5,7 @@ import { dynamicRefs } from './dynamicRefs';
 import { trackScroll, backToTop } from './scroll-to-up-btn';
 import movieCards from '../templates/movie-card.hbs';
 import modalMovie from '../templates/modal-for-movie.hbs';
+import { modalWatchedBtnClickHandler, modalQueueBtnClickHandler} from './modalBtnsClickHandler';
 
 const setHomeEventListeners = () => {
   refs.searchForm.addEventListener('submit', searchFormSubmitHandler);
