@@ -22,6 +22,7 @@ export const oneMovieClickHandler = async event => {
       overview: data.overview,
       movieGenres,
       posterPath: data.poster_path,
+      id: data.id,
     };
 
     modalActions.onOpenModalBtn();

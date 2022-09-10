@@ -5,6 +5,7 @@ import { dynamicRefs } from './dynamicRefs';
 import { trackScroll, backToTop } from './scroll-to-up-btn';
 import movieCards from '../templates/movie-card.hbs';
 import modalMovie from '../templates/modal-for-movie.hbs';
+import { modalWatchedBtnClickHandler, modalQueueBtnClickHandler, onOpenModal} from './modalBtnsClickHandler';
 
 const setHomeEventListeners = () => {
   refs.searchForm.addEventListener('submit', searchFormSubmitHandler);
@@ -19,6 +20,12 @@ const appendGalleryMarkup = movies => {
 
 const appendMovieMarkup = movie => {
   dynamicRefs().movieData.innerHTML = modalMovie(movie);
+
+  
+  dynamicRefs().watchedBtn.addEventListener('click', modalWatchedBtnClickHandler);
+  dynamicRefs().queueBtn.addEventListener('click', modalQueueBtnClickHandler);
+  onOpenModal(movie.id);
+
 };
 
 const scrollToUp = () => {
