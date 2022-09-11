@@ -43,7 +43,6 @@ export const modalQueueBtnClickHandler = event => {
 };
 
 export const onOpenModal = movieId => {
-
   const queueMoviesIds = localStorageService.load(keys.QUEUE_MOVIES);
   if (queueMoviesIds) {
     if (queueMoviesIds.includes(String(movieId))) {

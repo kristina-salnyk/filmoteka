@@ -1,0 +1,143 @@
+.registration-backdrop {
+  position: fixed;
+  z-index: 200;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+  padding: 20px 20px 40px 20px;
+
+  overflow-y: scroll;
+  background-color: rgba(0, 0, 0, 0.25);
+  transition: opacity 250ms $timing-function;
+  opacity: 1;
+
+  &.hidden {
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+  }
+}
+
+.registration-modal {
+  opacity: 1;
+  transform: scale(1);
+  padding: 40px 39px 40px 41px;
+  background-color: #242526;
+  color: $secondary-text-color;
+  border-radius: 5px;
+  box-shadow: 0 2px 1px 0 #00000033, 0 1px 1px 0 #00000024,
+    0 1px 3px 0 #0000001f;
+  transition: transform 250ms $timing-function;
+
+  @include for-tablet-up {
+    position: absolute;
+    z-index: 70;
+    top: 50%;
+    left: 50%;
+    max-width: 528px;
+    width: 100%;
+    min-height: 400px;
+
+    transform: translate(-50%, -50%);
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  &__title {
+    text-align: center;
+    margin-bottom: 15px;
+  }
+
+  &__text {
+    font-size: 14px;
+    text-align: center;
+  }
+}
+
+.form__field {
+  display: flex;
+  flex-direction: column;
+
+  &:not(:last-child) {
+    margin-bottom: 10px;
+  }
+}
+
+.form__label {
+  margin-bottom: 5px;
+}
+
+.form__input {
+  // max-width: 448px;
+  margin: 0;
+  padding: 10px 5px;
+  background-color: #242526;
+  color: #ffffff;
+  font-size: 16px;
+  border-style: none;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: #ffffff;
+  // outline: none;
+
+  transition: border 250ms $timing-function;
+
+  &:focus {
+    border: 1px solid #ffffff;
+  }
+
+  &::placeholder {
+    font-size: 14px;
+    line-height: 1.1717;
+    letter-spacing: 0.01em;
+    color: #ffffff;
+  }
+}
+
+.login-button {
+  display: block;
+  border: none;
+  padding: 10px 32px;
+  margin: 50px auto 15px auto;
+  // margin-top: 50px;
+  // margin-left: auto;
+  // margin-bottom: 5px;
+  // margin-right: auto;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: $accent-border-color;
+
+  color: #ffffff;
+  text-transform: uppercase;
+  background-color: #242526;
+
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.88;
+  letter-spacing: 0.4em;
+  text-align: center;
+
+  cursor: pointer;
+}
+
+.registration-modal__close-btn {
+  position: absolute;
+  top: 2%;
+  right: 2%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  // background-image: url('../images/close-modal.svg');
+  // background-position: center;
+  // background-size: 60%;
+  // background-repeat: no-repeat;
+}

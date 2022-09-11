@@ -9,22 +9,22 @@ import paginationMarkup from '../pagination';
 export const watchedTabClickHandler = event => {
   refs.watchedTab.classList.add('tabs__btn--current');
   refs.queueTab.classList.remove('tabs__btn--current');
+
   refs.libraryGallery.innerHTML = '';
+
   const watchedMovieIds = storage.load(key.WATCHED_MOVIES);
 
-    processMovieIds(watchedMovieIds).then(data => {
-    
-      renderLibraryMoviesData(data);
-    });
-    
-    
+  processMovieIds(watchedMovieIds).then(data => {
+    renderLibraryMoviesData(data);
+  });
 };
 
-const processMovieIds = async ( ids )=> {
+const processMovieIds = async ids => {
   const movieRequests = ids.map(id => fetchMovieById(id));
   const result = await Promise.all(movieRequests);
   return result;
 };
+
 const renderLibraryMoviesData = movies => {
   paginationMarkup((movies.length / 20).toFixed(), libraryMovieConfigs.page);
 
