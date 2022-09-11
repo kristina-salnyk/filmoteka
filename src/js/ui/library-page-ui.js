@@ -34,8 +34,15 @@ const appendMovieMarkup = movie => {
   dynamicRefs().playTrailer.addEventListener('click', httpsYouTubeVideo);
 };
 
+function renderEmptyLibrary() {
+  const fillerLibrary =
+    '<p class="empty-page__text"> Nothing to see here<br>Add a movie please</p>';
+  refs.libraryGallery.insertAdjacentHTML('afterbegin', fillerLibrary);
+}
+
 export default {
   setLibraryEventListeners,
   appendGalleryMarkup,
   appendMovieMarkup,
+  renderEmptyLibrary,
 };

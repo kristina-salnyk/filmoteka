@@ -5,6 +5,8 @@
 }
 
 .modal-image {
+  margin-left: auto;
+  margin-right: auto;
   width: 240px;
   height: 357px;
   object-fit: cover;
@@ -12,7 +14,7 @@
 
   @include for-tablet-up {
     width: 264px;
-    height: 373.55px;
+    height: 460px;
   }
 
   @include for-desktop-only {
@@ -23,11 +25,14 @@
 
 .movie-description {
   @include for-phone-only {
+    width: 240px;
+    margin-left: auto;
+    margin-right: auto;
     margin-top: 20px;
   }
 
   @include for-tablet-up {
-    margin-left: 68px;
+    margin-left: 40px;
   }
 
   @include for-desktop-only {
@@ -58,6 +63,7 @@
 
   &__list {
     color: #8c8c8c;
+    white-space: nowrap;
     margin-right: 41px;
 
     @include for-desktop-only {
@@ -74,6 +80,7 @@
   }
 
   &__about-text {
+    text-align: justify;
     margin-bottom: 20px;
     font-weight: 500;
     font-size: 12px;
@@ -87,7 +94,7 @@
   gap: 20px;
 
   @include for-tablet-only {
-    gap: 32px;
+    gap: 22px;
   }
 
   @include for-desktop-only {
@@ -122,26 +129,10 @@
 
   background-size: 100% 100%;
 
-  &:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 0;
-    height: 42px;
-    background: rgba(55, 255, 158, 0.4);
-    border-radius: 5px;
-    transition: all 2s ease;
-  }
-
-  &:hover:before {
-    width: 100%;
-  }
-
   &:hover {
     color: red;
     border: 1px solid red;
-    transition-delay: 250ms;
+    transition-delay: 100ms;
   }
 
   &--current {
@@ -151,17 +142,51 @@
   }
 
   &--current:hover {
-    color: blue;
+    color: $primary-text-color;
     background-color: $btn-accent-hover-color;
-    border: none;
-    transition-delay: 250ms;
+    border: 1px solid $primary-text-color;
+    transition-delay: 100ms;
   }
 
   @include for-tablet-up {
-    width: 125.03px;
+    width: 130.03px;
   }
 
   @include for-desktop-only {
-    width: 136px;
+    width: 170px;
   }
+}
+
+.modal-tabs__btn--trailer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-style: none;
+  border: 1px solid #000000;
+
+  &:hover {
+    color: $primary-text-color;
+    background-color: #ea4640;
+    border-color: #ea4640;
+    transition-delay: 100ms;
+  }
+
+  width: 235px;
+  height: 42px;
+
+  margin-top: 10px;
+
+  @include for-tablet-up {
+    width: 277.06px;
+  }
+
+  @include for-desktop-only {
+    width: 351px;
+  }
+}
+
+.modal-tabs__youtube-icon {
+  width: 30px;
+  margin-right: 10px;
 }

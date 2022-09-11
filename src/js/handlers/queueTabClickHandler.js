@@ -15,10 +15,7 @@ export const queueTabClickHandler = event => {
 
   const queueMovieIds = storage.load(key.QUEUE_MOVIES);
   if (!queueMovieIds || queueMovieIds.length === 0)
-    return refs.libraryGallery.insertAdjacentHTML(
-      'afterbegin',
-      '<p class="empty-page__text"> Nothing to see here<br>Add a movie please</p>'
-    );
+    return libraryPageUi.renderEmptyLibrary();
 
   processMovieIds(queueMovieIds).then(data => {
     renderLibraryMoviesData(data);
