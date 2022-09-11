@@ -25,14 +25,14 @@ function rightBtnClick() {
 }
 
 function getNewPage(e) {
-  console.log(e.target);
+
   e.preventDefault();
   if (e.target.nodeName !== 'BUTTON') {
     return;
   }
 
-  if (e.target.innerHTML !== '...') {
-    const page = Number(e.target.innerHTML);
+  if (e.target.dataset.number !== '0') {
+    const page = Number(e.target.dataset.number);
     movieConfigs.page = page;
     refs.homeGallery.innerHTML = '';
     loadMovies();
@@ -59,23 +59,3 @@ async function loadMovies() {
    }
 }
 
-// const data = await fetchTrendingMovies();
-// const { results: movies, total_pages: totalPages } = data;
-
-// const moviesData = movies.map(item => {
-//   const newItem = { ...item };
-//   newItem.genres = item.genre_ids
-//     .map(id => movieConfigs.getGenreById(id))
-//     .join(', ');
-//   const releaseDate = new Date(item.release_date);
-//   newItem.year = releaseDate.getFullYear();
-//   if (item.vote_average === 0) {
-//     newItem.vote = 'votes not found';
-//   } else {
-//     newItem.vote = item.vote_average.toFixed(1);
-//   }
-//   return newItem;
-// });
-
-// homePageUi.appendGalleryMarkup(moviesData);
-// paginationMarup(totalPages, movieConfigs.page);
