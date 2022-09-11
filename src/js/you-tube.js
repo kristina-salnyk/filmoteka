@@ -3,22 +3,17 @@ import youTubeCard from '../templates/you-tube-card.hbs';
 import { dynamicRefs } from './refs/dynamicRefs';
 import { fetchMovieVideo } from './api/movie-api/fetchMovieVideo';
 import notifications from './notifications';
-import { spinner } from '../../src/index';
-
 
 export async function httpsYouTubeVideo(event) {
   const movieId = event.target.dataset.id;
 
   try {
-    spinner.spin(refs.homeGallery);
     const videoData = await fetchMovieVideo(movieId);
     const videoKey = videoData['results'].find(video => {
       if (video.name.toLowerCase().includes('trailer')) {
         return video.key;
       }
     });
-    spinner.stop();
-    
     const svg = `./images/icons.svg#icon-exit_door_closed`;
     markupModalYouTube(videoKey, svg);
   } catch (error) {

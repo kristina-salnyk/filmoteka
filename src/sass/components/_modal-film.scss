@@ -21,9 +21,10 @@ body.on-open-modal .modal__backdrop {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  padding: 20px;
+  padding: 48px 20px 40px 20px;
   width: 80%;
   max-height: 80%;
+  margin: auto;
   margin-bottom: 80px;
   overflow: auto;
   border: 1px solid rgba(0, 0, 0, 0);
@@ -34,7 +35,6 @@ body.on-open-modal .modal__backdrop {
   }
 
   @media screen and (min-width: 768px) {
-    padding: 48px 90px 40px 20px;
     margin-bottom: 80px;
     padding-bottom: 40px;
     display: flex;

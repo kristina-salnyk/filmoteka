@@ -6,8 +6,6 @@ import { libraryMovieConfigs } from '../../library';
 import libraryPageUi from '../ui/library-page-ui';
 import paginationMarkup from '../pagination';
 
-const spinner = new Spinner(spinnerConfigs);
-
 export const watchedTabClickHandler = event => {
   refs.watchedTab.classList.add('tabs__btn--current');
   refs.queueTab.classList.remove('tabs__btn--current');
@@ -17,7 +15,10 @@ export const watchedTabClickHandler = event => {
   const watchedMovieIds = storage.load(key.WATCHED_MOVIES);
   
   if (!watchedMovieIds || watchedMovieIds.length === 0)
-    return renderEmptyLibrary();
+    return refs.libraryGallery.insertAdjacentHTML(
+      'afterbegin',
+      '<p class="empty-page__text"> Nothing to see here<br>Add a movie please</p>'
+    );
     
     processMovieIds(watchedMovieIds).then(data => {
       renderLibraryMoviesData(data);
@@ -44,9 +45,3 @@ const renderLibraryMoviesData = movies => {
 
   libraryPageUi.appendGalleryMarkup(moviesData);
 };
-
-export default function renderEmptyLibrary() {
-  const fillerLibrary =
-    '<p class="empty-page__text"> Nothing to see here<br>Add a movie please</p>';
-  refs.libraryGallery.insertAdjacentHTML('afterbegin', fillerLibrary);
-}

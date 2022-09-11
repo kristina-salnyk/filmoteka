@@ -27,10 +27,18 @@
   }
 }
 
-.empty-page__text {
+.empty-page{
+  width: 100%;
+  margin: 0 auto;
+  border-radius: 24px;
+  background-color: #ffd610;
+
+  &__text {
     display: block;
     padding-top: 5vh;
-    font-size: 36px;
+    padding-bottom: 5vh;
+    font-weight: bold;
+    font-size: 24px;
     text-align: center;
-    color: rgb(99, 15, 15);
+}
 }

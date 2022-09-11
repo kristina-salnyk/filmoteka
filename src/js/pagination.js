@@ -6,7 +6,7 @@ export default async function paginationMarkup(amountPages, currentPage) {
   if (dynamicRefs().paginList) {
     dynamicRefs().paginList.innerHTML = '';
     paginationList = '';
-    
+
     ///////////////// Left Arrow////////////////////////
     if (currentPage !== 1)
       dynamicRefs().leftArrow.classList.remove('visually-hidden');

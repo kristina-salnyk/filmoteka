@@ -3,7 +3,6 @@ import { renderOneMovieData } from '../render/renderOneMovieData';
 import notifications from '../notifications';
 import homePageUi from '../ui/home-page-ui';
 
-
 export const homeGalleryClickHandler = async event => {
   event.preventDefault();
 
