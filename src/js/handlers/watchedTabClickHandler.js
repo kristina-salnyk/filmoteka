@@ -13,10 +13,8 @@ export const watchedTabClickHandler = event => {
   const watchedMovieIds = storage.load(key.WATCHED_MOVIES);
   console.log(watchedMovieIds);
     processMovieIds(watchedMovieIds).then(data => {
-      const test = {
-        results: data
-      };
-      renderLibraryMoviesData(test);
+    
+      renderLibraryMoviesData(data);
     });
     
     
@@ -27,14 +25,8 @@ const processMovieIds = async ( ids )=> {
   const result = await Promise.all(movieRequests);
   return result;
 };
-const renderLibraryMoviesData = data => {
-  const {
-    results: movies,
-    total_pages: totalPages,
-    total_results: totalResults,
-  } = data;
-
-  paginationMarkup(totalPages, libraryMovieConfigs.page);
+const renderLibraryMoviesData = movies => {
+  paginationMarkup((movies.length / 20).toFixed(), libraryMovieConfigs.page);
 
   const moviesData = movies.map(item => {
     const newItem = { ...item };
