@@ -2,6 +2,11 @@ import { movieConfigs } from '../../index';
 import refs from '../refs/refs';
 import { fetchSearchMovie } from '../api/movie-api/fetchSearchMovie';
 import { renderMoviesData } from '../render/renderMoviesData';
+import { Spinner } from 'spin.js';
+import 'spin.js/spin.css';
+import spinnerConfigs from '../spinnerConfig';
+
+const spinner = new Spinner(spinnerConfigs);
 
 export const searchFormSubmitHandler = async event => {
   event.preventDefault();
@@ -18,7 +23,9 @@ export const searchFormSubmitHandler = async event => {
   movieConfigs.setSearchQuery(searchQuery);
 
   try {
+    spinner.spin(refs.homeGallery);
     const searchData = await fetchSearchMovie();
+    spinner.stop()
     renderMoviesData(searchData);
   } catch (error) {
     refs.searchError.style.display = 'block';

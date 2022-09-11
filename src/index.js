@@ -9,7 +9,7 @@ import './js/footer-modal';
 import './js/loadPagePagination';
 import { Spinner } from 'spin.js';
 import 'spin.js/spin.css';
-import spinnerConfigs from './js/spinnerCofigs';
+import spinnerConfigs from './js/spinnerConfig.js';
 
 export const movieConfigs = new MovieConfigs();
 

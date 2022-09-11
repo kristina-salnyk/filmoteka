@@ -3,11 +3,17 @@ import youTubeCard from '../templates/you-tube-card.hbs';
 import { dynamicRefs } from './refs/dynamicRefs';
 import { fetchMovieVideo } from './api/movie-api/fetchMovieVideo';
 import notifications from './notifications';
+import { Spinner } from 'spin.js';
+import 'spin.js/spin.css';
+import spinnerConfigs from './spinnerConfig';
+
+const spinner = new Spinner(spinnerConfigs);
 
 export async function httpsYouTubeVideo(event) {
   const movieId = event.target.dataset.id;
 
   try {
+    spinner.spin(refs.homeGallery);
     const videoData = await fetchMovieVideo(movieId);
     const videoKey = videoData['results'].find(video => {
       if (video.name.toLowerCase().includes('trailer')) {
@@ -16,6 +22,8 @@ export async function httpsYouTubeVideo(event) {
     });
     // console.log(videoKey);
     markupModalYouTube(videoKey);
+    spinner.stop();
+    
   } catch (error) {
     notifications.failedRequest();
   }
