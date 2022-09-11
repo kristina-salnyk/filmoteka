@@ -4,9 +4,9 @@ import notifications from './js/notifications';
 import { fetchGenresList } from './js/api/movie-api/fetchGenresList';
 import { fetchTrendingMovies } from './js/api/movie-api/fetchTrendingMovies';
 import { renderMoviesData } from './js/render/renderMoviesData';
-// import './js/footer-modal';
+ import './js/footer-modal';
 import Swiper, { Navigation, Pagination } from 'swiper';
-// import './js/loadPagePagination'
+ import './js/loadPagePagination'
 // import 'swiper/css';
 // import 'swiper/css/navigation';
 // import 'swiper/css/pagination';
