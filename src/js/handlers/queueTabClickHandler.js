@@ -5,7 +5,7 @@ import { fetchMovieById } from '../api/movie-api/fetchMovieById';
 import { libraryMovieConfigs } from '../../library';
 import libraryPageUi from '../ui/library-page-ui';
 import paginationMarkup from '../pagination';
-import renderemptyLibrary from './watchedTabClickHandler';
+import renderEmptyLibrary from './watchedTabClickHandler';
 
 export const queueTabClickHandler = event => {
   refs.queueTab.classList.add('tabs__btn--current');
@@ -17,8 +17,8 @@ export const queueTabClickHandler = event => {
     localStorage.getItem(key.QUEUE_MOVIES) === null ||
     JSON.parse(localStorage.getItem(key.QUEUE_MOVIES)) === 0
   )
-    return renderemptyLibrary();
-    
+    return renderEmptyLibrary();
+
   processMovieIds(queueMovieIds).then(data => {
     renderLibraryMoviesData(data);
   });
