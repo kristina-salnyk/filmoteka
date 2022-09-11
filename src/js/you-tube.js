@@ -15,16 +15,17 @@ export async function httpsYouTubeVideo(event) {
       }
     });
     // console.log(videoKey);
-    markupModalYouTube(videoKey);
+    const svg = `./images/icons.svg#icon-exit_door_closed`;
+    console.log(svg);
+    markupModalYouTube(videoKey, svg);
   } catch (error) {
     notifications.failedRequest();
   }
 }
 
 //  рендер модального вікна
-function markupModalYouTube(then) {
-  removeYouTube();
-  refs.youTubeVideo.insertAdjacentHTML('beforeend', youTubeCard(then));
+function markupModalYouTube(videoKey, svg) {
+  refs.youTubeVideo.insertAdjacentHTML('beforeend', youTubeCard(videoKey, svg));
   refs.youTubeVideo.classList.remove('visually-hidden');
   dynamicRefs().btnCloseModalYoutybe.addEventListener('click', closeVideo);
 }
@@ -41,6 +42,8 @@ function keydown(e) {
 // закриття модалки по кнопці
 function closeVideo() {
   removeYouTube();
+  // document.getElementById('youTube_window').remove();
+  // document.getElementById('id1').remove();
 }
 // --------------
 
