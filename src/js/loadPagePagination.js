@@ -25,7 +25,6 @@ function rightBtnClick() {
 }
 
 function getNewPage(e) {
-
   e.preventDefault();
   if (e.target.nodeName !== 'BUTTON') {
     return;
@@ -40,22 +39,21 @@ function getNewPage(e) {
 }
 
 async function loadMovies() {
-   if (storege.load(key.LAST_FETCH) === 'TRENDING') {
-     try {
-       const trendingData = await fetchTrendingMovies();
-       renderMoviesData(trendingData);
-     } catch (error) {
-       notifications.failedRequest();
-     }
-   }
+  if (storege.load(key.LAST_FETCH) === 'TRENDING') {
+    try {
+      const trendingData = await fetchTrendingMovies();
+      renderMoviesData(trendingData);
+    } catch (error) {
+      notifications.failedRequest();
+    }
+  }
 
-   if (storege.load(key.LAST_FETCH) === 'SEARCH') {
-     try {
-       const data = await fetchSearchMovie();
-       renderMoviesData(data);
-     } catch (error) {
-       notifications.failedRequest();
-     }
-   }
+  if (storege.load(key.LAST_FETCH) === 'SEARCH') {
+    try {
+      const data = await fetchSearchMovie();
+      renderMoviesData(data);
+    } catch (error) {
+      notifications.failedRequest();
+    }
+  }
 }
-

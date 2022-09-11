@@ -32,7 +32,7 @@ function onRegistrationBackdropClick(event) {
 function onEscKeyPress(event) {
   const ESC_KEY_CODE = 'Escape';
   if (event.code === ESC_KEY_CODE) {
-    onCloseRegistartionBtn();
+    onCloseRegistrationBtn();
   }
 }
 

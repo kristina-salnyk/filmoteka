@@ -4,6 +4,7 @@ import notifications from '../../notifications';
 
 export const fetchMovieById = async id => {
   const url = `${REQUEST_URL.MOVIE}/${id}`;
+
   try {
     const response = await api.get(url);
     return response.data;
