@@ -1,6 +1,30 @@
 <div class='youTube__window'>
-  <button class='modal__btn' data-action='btn__close'>x</button>
+
   <div class='youTub__video'>
+    <div class='div__hover'>
+      <svg
+        class='svg__closed modal__btn-door-exit'
+        data-action='btn__close'
+        version='1.1'
+        xmlns='http://www.w3.org/2000/svg'
+        viewBox='0 0 32 32'
+      >
+        <title>EXIT</title>
+        <path
+          d='M24 20v-4h-10v-4h10v-4l6 6zM22 18v8h-10v6l-12-6v-26h22v10h-2v-8h-16l8 4v18h8v-6z'
+        ></path>
+      </svg>
+      <svg
+        class='svg__closed modal__btn-door-clocsed'
+        version='1.1'
+        xmlns='http://www.w3.org/2000/svg'
+        viewBox='0 0 24 24'
+      >
+        <path
+          d='M18 2.016h-12q-0.844 0-1.43 0.586t-0.586 1.383v18h16.031v-18q0-0.797-0.586-1.383t-1.43-0.586zM15.516 13.5q-0.656 0-1.078-0.445t-0.422-1.055 0.422-1.055 1.078-0.445q0.609 0 1.055 0.445t0.445 1.055-0.445 1.055-1.055 0.445z'
+        ></path>
+      </svg>
+    </div>
     <iframe
       src='https://www.youtube.com/embed/{{key}}?autoplay=1'
       title=' YouTube video player'

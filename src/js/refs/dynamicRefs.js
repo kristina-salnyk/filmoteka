@@ -13,4 +13,5 @@ export const dynamicRefs = () => ({
   paginList: document.querySelector('.pagination__list'),
   leftArrow: document.querySelector('[data-arrow="left"]'),
   rightArrow: document.querySelector('[data-arrow="right"]'),
+  youTube_window: document.querySelector('.youTube__window'),
 });
