@@ -12,5 +12,10 @@ initLibraryPage().catch(error => {
 
 async function initLibraryPage() {
   libraryPageUi.setLibraryEventListeners();
-  watchedTabClickHandler();
+  try {
+    watchedTabClickHandler();
+
+  } catch (error) {
+    notifications.failedRequest();
+  }
 }

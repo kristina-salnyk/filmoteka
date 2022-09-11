@@ -13,6 +13,7 @@ export const watchedTabClickHandler = event => {
   refs.libraryGallery.innerHTML = '';
 
   const watchedMovieIds = storage.load(key.WATCHED_MOVIES);
+
   processMovieIds(watchedMovieIds).then(data => {
     renderLibraryMoviesData(data);
   });
