@@ -1,4 +1,4 @@
-import { homeConfigs } from './js/HomeConfigs';
+import { siteConfigs } from './js/SiteConfigs';
 import homePageUi from './js/ui/home-page-ui';
 import notifications from './js/notifications';
 import { fetchGenresList } from './js/api/movie-api/fetchGenresList';
@@ -21,7 +21,7 @@ async function initHomePage() {
     spinner.spin(refs.homeGallery);
     const genresData = await fetchGenresList();
     const { genres } = genresData;
-    homeConfigs.genres = genres;
+    siteConfigs.genres = genres;
 
     const trendingData = await fetchTrendingMovies();
     spinner.stop();

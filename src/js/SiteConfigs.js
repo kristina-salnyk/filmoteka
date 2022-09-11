@@ -1,4 +1,4 @@
-class LibraryConfigs {
+class SiteConfigs {
   constructor() {
     this.genres = [];
     this.searchQuery = '';
@@ -31,4 +31,4 @@ class LibraryConfigs {
   }
 }
 
-export const libraryConfigs = new LibraryConfigs();
+export const siteConfigs = new SiteConfigs();

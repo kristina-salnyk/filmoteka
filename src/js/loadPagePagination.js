@@ -1,5 +1,5 @@
 import refs from './refs/refs';
-import { movieConfigs } from '../index';
+import { siteConfigs } from './SiteConfigs';
 import { dynamicRefs } from './refs/dynamicRefs';
 import { fetchTrendingMovies } from './api/movie-api/fetchTrendingMovies';
 import { renderMoviesData } from './render/renderMoviesData';
@@ -14,13 +14,13 @@ dynamicRefs().rightArrow.addEventListener('click', rightBtnClick);
 dynamicRefs().leftArrow.addEventListener('click', leftBtnClick);
 
 function leftBtnClick() {
-  movieConfigs.decrementPage();
+  siteConfigs.decrementPage();
   refs.homeGallery.innerHTML = '';
   loadMovies();
 }
 
 function rightBtnClick() {
-  movieConfigs.incrementPage();
+  siteConfigs.incrementPage();
   refs.homeGallery.innerHTML = '';
   loadMovies();
 }
@@ -33,7 +33,7 @@ function getNewPage(e) {
 
   if (e.target.dataset.number !== '0') {
     const page = Number(e.target.dataset.number);
-    movieConfigs.page = page;
+    siteConfigs.page = page;
     refs.homeGallery.innerHTML = '';
     loadMovies();
   }

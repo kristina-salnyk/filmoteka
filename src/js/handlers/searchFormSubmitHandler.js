@@ -1,4 +1,4 @@
-import { homeConfigs } from '../HomeConfigs';
+import { siteConfigs } from '../SiteConfigs';
 import refs from '../refs/refs';
 import { fetchSearchMovie } from '../api/movie-api/fetchSearchMovie';
 import { renderMoviesData } from '../render/renderMoviesData';
@@ -16,7 +16,7 @@ export const searchFormSubmitHandler = async event => {
     return;
   }
 
-  homeConfigs.setSearchQuery(searchQuery);
+  siteConfigs.setSearchQuery(searchQuery);
 
   try {
     spinner.spin(refs.homeGallery);

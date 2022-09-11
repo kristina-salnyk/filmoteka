@@ -2,7 +2,7 @@ import refs from '../refs/refs';
 import storage from '../local-storage/local-storage-service';
 import key from '../local-storage/local-storage-keys';
 import { fetchMovieById } from '../api/movie-api/fetchMovieById';
-import { libraryConfigs } from '../LibraryConfigs';
+import { siteConfigs } from '../SiteConfigs';
 import libraryPageUi from '../ui/library-page-ui';
 import paginationMarkup from '../pagination';
 import { spinner } from '../spinner';
@@ -34,7 +34,7 @@ const processMovieIds = ids => {
 };
 
 const renderLibraryMoviesData = movies => {
-  paginationMarkup((movies.length / 20).toFixed(), libraryConfigs.page);
+  paginationMarkup((movies.length / 20).toFixed(), siteConfigs.page);
 
   const moviesData = movies.map(item => {
     const newItem = { ...item };

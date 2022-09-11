@@ -1,4 +1,4 @@
-import { homeConfigs } from '../HomeConfigs';
+import { siteConfigs } from '../SiteConfigs';
 import refs from '../refs/refs';
 import homePageUi from '../ui/home-page-ui';
 import paginationMarkup from '../pagination';
@@ -15,12 +15,12 @@ export const renderMoviesData = data => {
     return;
   }
 
-  paginationMarkup(totalPages, homeConfigs.page);
+  paginationMarkup(totalPages, siteConfigs.page);
 
   const moviesData = movies.map(item => {
     const newItem = { ...item };
     newItem.genres = item['genre_ids']
-      .map(id => homeConfigs.getGenreById(id))
+      .map(id => siteConfigs.getGenreById(id))
       .join(', ');
     const releaseDate = new Date(item['release_date']);
     newItem.year = releaseDate.getFullYear();
