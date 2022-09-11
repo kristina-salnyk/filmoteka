@@ -3,12 +3,15 @@ import youTubeCard from '../templates/you-tube-card.hbs';
 import { dynamicRefs } from './refs/dynamicRefs';
 import { fetchMovieVideo } from './api/movie-api/fetchMovieVideo';
 import notifications from './notifications';
+import { spinner } from './spinner';
 
 export async function httpsYouTubeVideo(event) {
   const movieId = event.target.dataset.id;
 
   try {
+    spinner.spin(refs.homeGallery);
     const videoData = await fetchMovieVideo(movieId);
+    spinner.stop();
     const videoKey = videoData['results'].find(video => {
       if (video.name.toLowerCase().includes('trailer')) {
         return video.key;

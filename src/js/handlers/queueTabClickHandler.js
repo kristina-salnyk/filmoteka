@@ -5,6 +5,7 @@ import { fetchMovieById } from '../api/movie-api/fetchMovieById';
 import { libraryMovieConfigs } from '../../library';
 import libraryPageUi from '../ui/library-page-ui';
 import paginationMarkup from '../pagination';
+import { spinner } from '../spinner';
 
 export const queueTabClickHandler = event => {
   refs.queueTab.classList.add('tabs__btn--current');
@@ -18,15 +19,17 @@ export const queueTabClickHandler = event => {
       'afterbegin',
       '<p class="empty-page__text"> Nothing to see here<br>Add a movie please</p>'
     );
-    
+
   processMovieIds(queueMovieIds).then(data => {
     renderLibraryMoviesData(data);
   });
 };
 
 const processMovieIds = ids => {
+  spinner.spin(refs.libraryGallery);
   const movieRequests = ids.map(id => fetchMovieById(id));
   const result = Promise.all(movieRequests);
+  spinner.stop();
   return result;
 };
 

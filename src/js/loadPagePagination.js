@@ -7,6 +7,7 @@ import { fetchSearchMovie } from './api/movie-api/fetchSearchMovie';
 import notifications from './notifications';
 import storege from './local-storage/local-storage-service';
 import key from './local-storage/local-storage-keys';
+import { spinner } from './spinner';
 
 dynamicRefs().paginList.addEventListener('click', getNewPage);
 dynamicRefs().rightArrow.addEventListener('click', rightBtnClick);
@@ -41,7 +42,9 @@ function getNewPage(e) {
 async function loadMovies() {
   if (storege.load(key.LAST_FETCH) === 'TRENDING') {
     try {
+      spinner.spin(refs.homeGallery);
       const trendingData = await fetchTrendingMovies();
+      spinner.stop();
       renderMoviesData(trendingData);
     } catch (error) {
       notifications.failedRequest();
@@ -50,7 +53,9 @@ async function loadMovies() {
 
   if (storege.load(key.LAST_FETCH) === 'SEARCH') {
     try {
+      spinner.spin(refs.homeGallery);
       const data = await fetchSearchMovie();
+      spinner.stop();
       renderMoviesData(data);
     } catch (error) {
       notifications.failedRequest();

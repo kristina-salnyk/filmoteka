@@ -7,6 +7,8 @@ import { renderMoviesData } from './js/render/renderMoviesData';
 import './js/footer-modal';
 import './js/registration-modal';
 import './js/loadPagePagination';
+import { spinner } from './js/spinner';
+import refs from './js/refs/refs';
 
 export const movieConfigs = new MovieConfigs();
 
@@ -18,11 +20,13 @@ async function initHomePage() {
   homePageUi.setHomeEventListeners();
 
   try {
+    spinner.spin(refs.homeGallery);
     const genresData = await fetchGenresList();
     const { genres } = genresData;
     movieConfigs.genres = genres;
 
     const trendingData = await fetchTrendingMovies();
+    spinner.stop();
     renderMoviesData(trendingData);
   } catch (error) {
     notifications.failedRequest();
