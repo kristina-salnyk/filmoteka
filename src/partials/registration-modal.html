@@ -1,0 +1,36 @@
+<div class="registration-backdrop hidden" data-registration-modal>
+  <div class="registration-modal">
+    <!-- <button
+      type="button"
+      class="modal__close-btn"
+      data-action="close-modal"
+    ></button> -->
+    <h2 class="registration-modal__title">Signup and login form</h2>
+    <form name="form" class="form">
+      <div class="form__field">
+        <label class="form__label" for="user_email">Email</label>
+        <input
+          class="form__input"
+          type="email"
+          name="email"
+          id="user_email"
+          autofocus
+        />
+      </div>
+
+      <div class="form__field">
+        <label class="form__label" for="user_password">Password</label>
+        <input
+          class="form__input"
+          type="text"
+          name="password"
+          id="user_password"
+        />
+      </div>
+      <button class="login-button" type="submit">Submit</button>
+      <p class="registration-modal__text">
+        For signup or login your account - just enter your email and password
+      </p>
+    </form>
+  </div>
+</div>
