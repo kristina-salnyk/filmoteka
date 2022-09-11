@@ -6,6 +6,7 @@ import { libraryMovieConfigs } from '../../library';
 import libraryPageUi from '../ui/library-page-ui';
 import paginationMarkup from '../pagination';
 
+
 export const watchedTabClickHandler = event => {
   refs.watchedTab.classList.add('tabs__btn--current');
   refs.queueTab.classList.remove('tabs__btn--current');
@@ -15,10 +16,7 @@ export const watchedTabClickHandler = event => {
     localStorage.getItem(key.QUEUE_MOVIES) === null ||
     JSON.parse(localStorage.getItem(key.QUEUE_MOVIES)) === 0
   )
-    return refs.libraryGallery.insertAdjacentHTML(
-      'afterbegin',
-      '<p class="empty-page__text"> Nothing to see here<br>Add a movie please</p>'
-    );
+    return renderemptyLibrary();
     processMovieIds(watchedMovieIds).then(data => {
     
       renderLibraryMoviesData(data);
@@ -46,3 +44,11 @@ const renderLibraryMoviesData = movies => {
 
   libraryPageUi.appendGalleryMarkup(moviesData);
 };
+
+export default function renderemptyLibrary () {
+  const fillerLibrary = '<p class="empty-page__text"> Nothing to see here<br>Add a movie please</p>';
+  refs.libraryGallery.insertAdjacentHTML(
+    'afterbegin',
+    fillerLibrary
+  )
+}
