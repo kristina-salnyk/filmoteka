@@ -15,7 +15,7 @@ export const queueTabClickHandler = event => {
   processMovieIds(queueMovieIds).then(data => {
     const test = {
       results: data,
-      total_pages: data.length / 20,
+      total_pages: (data.length / 20).toFixed(0),
       total_results: data.length,
     };
     renderLibraryMoviesData(test);
