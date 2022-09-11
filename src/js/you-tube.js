@@ -25,6 +25,7 @@ export async function httpsYouTubeVideo(event) {
 function markupModalYouTube(then) {
   removeYouTube();
   refs.youTubeVideo.insertAdjacentHTML('beforeend', youTubeCard(then));
+  refs.youTubeVideo.classList.remove('visually-hidden');
   dynamicRefs().btnCloseModalYoutybe.addEventListener('click', closeVideo);
 }
 // ---------------
@@ -45,4 +46,5 @@ function closeVideo() {
 
 function removeYouTube() {
   refs.youTubeVideo.innerHTML = '';
+  refs.youTubeVideo.classList.add('visually-hidden');
 }
