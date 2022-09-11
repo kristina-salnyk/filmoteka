@@ -135,7 +135,10 @@
   &:hover {
     color: $hover-text-color;
   }
-
+  &--button {
+    background-color: transparent;
+    border-style: none;
+  }
   &--current {
     text-decoration: 3px underline $accent-border-color;
     text-underline-offset: 3px;

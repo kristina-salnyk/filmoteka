@@ -17,21 +17,20 @@ export async function httpsYouTubeVideo(event) {
         return video.key;
       }
     });
-    // console.log(videoKey);
-    markupModalYouTube(videoKey);
     spinner.stop();
     
+    const svg = `./images/icons.svg#icon-exit_door_closed`;
+    markupModalYouTube(videoKey, svg);
   } catch (error) {
     notifications.failedRequest();
   }
 }
 
 //  рендер модального вікна
-function markupModalYouTube(then) {
-  removeYouTube();
-  refs.youTubeVideo.insertAdjacentHTML('beforeend', youTubeCard(then));
+function markupModalYouTube(videoKey, svg) {
+  refs.youTubeVideo.insertAdjacentHTML('beforeend', youTubeCard(videoKey, svg));
   refs.youTubeVideo.classList.remove('visually-hidden');
-  dynamicRefs().btnCloseModalYoutybe.addEventListener('click', closeVideo);
+  dynamicRefs().btnCloseModalYouTube.addEventListener('click', closeVideo);
 }
 // ---------------
 

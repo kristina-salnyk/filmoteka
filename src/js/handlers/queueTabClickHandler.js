@@ -9,16 +9,18 @@ import paginationMarkup from '../pagination';
 export const queueTabClickHandler = event => {
   refs.queueTab.classList.add('tabs__btn--current');
   refs.watchedTab.classList.remove('tabs__btn--current');
+
   refs.libraryGallery.innerHTML = '';
+
   const queueMovieIds = storage.load(key.QUEUE_MOVIES);
-  console.log(queueMovieIds);
+  if (!queueMovieIds || queueMovieIds.length === 0)
+    return refs.libraryGallery.insertAdjacentHTML(
+      'afterbegin',
+      '<p class="empty-page__text"> Nothing to see here<br>Add a movie please</p>'
+    );
+    
   processMovieIds(queueMovieIds).then(data => {
-    const test = {
-      results: data,
-      total_pages: (data.length / 20).toFixed(0),
-      total_results: data.length,
-    };
-    renderLibraryMoviesData(test);
+    renderLibraryMoviesData(data);
   });
 };
 
@@ -28,14 +30,8 @@ const processMovieIds = ids => {
   return result;
 };
 
-const renderLibraryMoviesData = data => {
-  const {
-    results: movies,
-    total_pages: totalPages,
-    total_results: totalResults,
-  } = data;
-
-  paginationMarkup(totalPages, libraryMovieConfigs.page);
+const renderLibraryMoviesData = movies => {
+  paginationMarkup((movies.length / 20).toFixed(), libraryMovieConfigs.page);
 
   const moviesData = movies.map(item => {
     const newItem = { ...item };

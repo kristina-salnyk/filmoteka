@@ -1,65 +1,60 @@
 .pagination {
-    text-align: center;
-    padding: 30px 0;
+  text-align: center;
+  padding: 30px 0;
+  display: flex;
+  justify-content: center;
+
+  &__list {
+    padding: 0;
+    display: flex;
+  }
+  &__arrow {
+    display: none;
+    fill: black;
+    width: 40px;
+    height: 40px;
+    align-items: center;
     display: flex;
     justify-content: center;
+    background-color: #f7f7f7;
+    border: 4px;
+    border-radius: 3px;
+    cursor: pointer;
+    &:hover {
+      color: #f58d47;
+      fill: #f58d47;
+      border: 2px solid #f58d47;
+      border-radius: 3px;
+    }
+  }
 
-    &__list {
-        padding: 0;
-        display: flex;
+  &__svg {
+    stroke: currentColor;
+    width: 16px;
+    height: 16px;
+    stroke-width: 0;
+    stroke: currentColor;
+    fill: rgba(0, 0, 0, 0);
+    display: inline-block;
+  }
+  &__button {
+    width: 40px;
+    height: 40px;
+    color: black;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    border: 0px;
+    background-color: #ffffff;
+    cursor: pointer;
+    &:hover {
+      color: #f58d47;
+      border: 2px solid #f58d47;
+      border-radius: 3px;
     }
-    &__arrow{
-        display: none;
-        fill: black;
-        width: 40px;
-        height: 40px;
-        align-items: center;
-        display: flex;
-        justify-content: center;
-        background-color: #F7F7F7;
-        border: 4px;
-        border-radius: 3px;
-        cursor: pointer;
-        &:hover {
-            color: #f58d47;
-            fill: #f58d47;
-            border: 2px solid #f58d47;
-            border-radius: 3px;
-        }
-        
+    &--active {
+      background-color: #ff6b08;
+      border-radius: 3px;
     }
-    
-    &__svg {
-        stroke: currentColor;
-        width: 16px;
-        height: 16px;
-        stroke-width: 0;
-        stroke: currentColor;
-        fill: rgba(0, 0, 0, 0);
-        display: inline-block;
-    }
-    &__button {
-        width: 40px;
-        height: 40px;
-        color: black;
-        align-items: center;
-        display: flex;
-        justify-content: center;
-        border: 0px;
-        background-color: #ffffff;
-        cursor: pointer;
-        &:hover {
-            color: #f58d47;        
-            border: 2px solid #f58d47;
-            border-radius: 3px;
-        }
-        &--active {
-            background-color: #FF6B08;
-            border-radius: 3px;
-        }
+  }
 }
-
-   
-}
-
-

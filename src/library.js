@@ -1,7 +1,8 @@
 import MovieConfigs from './js/MovieConfigs';
 import libraryPageUi from './js/ui/library-page-ui';
 import notifications from './js/notifications';
-import { fetchGenresList } from './js/api/movie-api/fetchGenresList';
+import './js/registration-modal';
+import { watchedTabClickHandler } from './js/handlers/watchedTabClickHandler';
 
 export const libraryMovieConfigs = new MovieConfigs();
 
@@ -11,4 +12,10 @@ initLibraryPage().catch(error => {
 
 async function initLibraryPage() {
   libraryPageUi.setLibraryEventListeners();
+
+  try {
+    watchedTabClickHandler();
+  } catch (error) {
+    notifications.failedRequest();
+  }
 }
