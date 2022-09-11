@@ -12,11 +12,11 @@ export const queueTabClickHandler = event => {
   refs.libraryGallery.innerHTML = '';
   const queueMovieIds = storage.load(key.QUEUE_MOVIES);
   console.log(queueMovieIds);
-  processMovieIds(queueMovieIds).then(data => {
+  processMovieIds(queueMovieIds).then(dat => {
     const test = {
-      results: data,
-      total_pages: data.length / 20,
-      total_results: data.length,
+      results: dat,
+      // total_pages: data.length / 20,
+      // total_results: data.length,
     };
     renderLibraryMoviesData(test);
   });
