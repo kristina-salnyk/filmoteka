@@ -2,11 +2,11 @@ import { dynamicRefs } from './refs/dynamicRefs';
 
 let paginationList = '';
 
-export default async function paginationMarup(amountPages, currentPage) {
+export default async function paginationMarkup(amountPages, currentPage) {
   if (dynamicRefs().paginList) {
     dynamicRefs().paginList.innerHTML = '';
     paginationList = '';
-
+    
     ///////////////// Left Arrow////////////////////////
     if (currentPage !== 1)
       dynamicRefs().leftArrow.classList.remove('visually-hidden');
@@ -69,8 +69,7 @@ export default async function paginationMarup(amountPages, currentPage) {
             paginationList += `<button type="button" class="pagination__button" data-number='${i}'>${i}</button>`;
           }
           if (i === 6) {
-            paginationList +=
-              `<button type="button" class="pagination__button" data-number='0' >...</button>`;
+            paginationList += `<button type="button" class="pagination__button" data-number='0' >...</button>`;
           }
           if (i === amountPages) {
             paginationList += `<button type="button" class="pagination__button" data-number='${i}'>${i}</button>`;

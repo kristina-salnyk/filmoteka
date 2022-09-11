@@ -6,19 +6,22 @@ import { libraryMovieConfigs } from '../../library';
 import libraryPageUi from '../ui/library-page-ui';
 import paginationMarkup from '../pagination';
 
+const spinner = new Spinner(spinnerConfigs);
+
 export const watchedTabClickHandler = event => {
   refs.watchedTab.classList.add('tabs__btn--current');
   refs.queueTab.classList.remove('tabs__btn--current');
+
   refs.libraryGallery.innerHTML = '';
+
   const watchedMovieIds = storage.load(key.WATCHED_MOVIES);
-  if (
-    localStorage.getItem(key.QUEUE_MOVIES) === null ||
-    JSON.parse(localStorage.getItem(key.QUEUE_MOVIES)) === 0
-  )
+  
+  if (!watchedMovieIds || watchedMovieIds.length === 0)
     return renderEmptyLibrary();
-  processMovieIds(watchedMovieIds).then(data => {
-    renderLibraryMoviesData(data);
-  });
+    
+    processMovieIds(watchedMovieIds).then(data => {
+      renderLibraryMoviesData(data);
+    });
 };
 
 const processMovieIds = async ids => {
@@ -26,6 +29,7 @@ const processMovieIds = async ids => {
   const result = await Promise.all(movieRequests);
   return result;
 };
+
 const renderLibraryMoviesData = movies => {
   paginationMarkup((movies.length / 20).toFixed(), libraryMovieConfigs.page);
 

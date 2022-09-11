@@ -3,20 +3,23 @@ import youTubeCard from '../templates/you-tube-card.hbs';
 import { dynamicRefs } from './refs/dynamicRefs';
 import { fetchMovieVideo } from './api/movie-api/fetchMovieVideo';
 import notifications from './notifications';
+import { spinner } from '../../src/index';
+
 
 export async function httpsYouTubeVideo(event) {
   const movieId = event.target.dataset.id;
 
   try {
+    spinner.spin(refs.homeGallery);
     const videoData = await fetchMovieVideo(movieId);
     const videoKey = videoData['results'].find(video => {
       if (video.name.toLowerCase().includes('trailer')) {
         return video.key;
       }
     });
-    // console.log(videoKey);
+    spinner.stop();
+    
     const svg = `./images/icons.svg#icon-exit_door_closed`;
-    console.log(svg);
     markupModalYouTube(videoKey, svg);
   } catch (error) {
     notifications.failedRequest();
@@ -27,7 +30,7 @@ export async function httpsYouTubeVideo(event) {
 function markupModalYouTube(videoKey, svg) {
   refs.youTubeVideo.insertAdjacentHTML('beforeend', youTubeCard(videoKey, svg));
   refs.youTubeVideo.classList.remove('visually-hidden');
-  dynamicRefs().btnCloseModalYoutybe.addEventListener('click', closeVideo);
+  dynamicRefs().btnCloseModalYouTube.addEventListener('click', closeVideo);
 }
 // ---------------
 
@@ -42,8 +45,6 @@ function keydown(e) {
 // закриття модалки по кнопці
 function closeVideo() {
   removeYouTube();
-  // document.getElementById('youTube_window').remove();
-  // document.getElementById('id1').remove();
 }
 // --------------
 

@@ -1,7 +1,6 @@
-import homePageUi from '../ui/home-page-ui';
 import modalActions from '../modal-film-card';
 
-export const renderOneMovieData = data => {
+export const renderOneMovieData = (data, markupCallback) => {
   const movieGenres = data.genres.map(genre => genre.name).join(', ');
   const vote = data['vote_average'].toFixed(1);
   const popularity = data.popularity.toFixed(1);
@@ -19,5 +18,5 @@ export const renderOneMovieData = data => {
   };
 
   modalActions.onOpenModalBtn();
-  homePageUi.appendMovieMarkup(movie);
+  markupCallback(movie);
 };
