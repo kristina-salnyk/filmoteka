@@ -7,7 +7,7 @@ import { renderMoviesData } from './js/render/renderMoviesData';
 
 import './js/footer-modal';
 import './js/registration-modal';
-import Swiper, { Navigation, Pagination } from 'swiper';
+// import Swiper, { Navigation, Pagination } from 'swiper';
 import './js/loadPagePagination';
 
 // import 'swiper/css';
