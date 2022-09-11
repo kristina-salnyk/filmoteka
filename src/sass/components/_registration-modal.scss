@@ -69,7 +69,7 @@
 }
 
 .form__input {
-  max-width: 448px;
+  // max-width: 448px;
   margin: 0;
   padding: 10px 5px;
   background-color: #242526;
@@ -99,7 +99,6 @@
   display: block;
   border: none;
   padding: 10px 32px;
-  min-width: 200px;
   margin: 50px auto 15px auto;
   // margin-top: 50px;
   // margin-left: auto;
@@ -121,4 +120,24 @@
   text-align: center;
 
   cursor: pointer;
+}
+
+.registration-modal__close-btn {
+  position: absolute;
+  top: 2%;
+  right: 2%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  // background-image: url('../images/close-modal.svg');
+  // background-position: center;
+  // background-size: 60%;
+  // background-repeat: no-repeat;
 }

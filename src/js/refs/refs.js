@@ -7,5 +7,4 @@ export default {
   goTopBtn: document.getElementById('back-to-top'),
   youTubeVideo: document.querySelector('div[data-action="video"]'),
   openRegistrationBtn: document.querySelector('[data-registration-open]'),
-  registrationModal: document.querySelector('[data-registration-modal]'),
 };
