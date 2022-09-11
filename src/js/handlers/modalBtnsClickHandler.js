@@ -11,11 +11,11 @@ export const modalWatchedBtnClickHandler = event => {
 
   if (newWatchedMoviesIds.includes(movieId)) {
     newWatchedMoviesIds.splice(newWatchedMoviesIds.indexOf(movieId), 1);
-    event.target.classList.remove('tabs__btn--current');
+    event.target.classList.add('modal-tabs__btn--current');
     event.target.textContent = 'add to watched';
   } else {
     newWatchedMoviesIds.push(movieId);
-    event.target.classList.add('tabs__btn--current');
+    event.target.classList.remove('modal-tabs__btn--current');
     event.target.textContent = 'delete from watched';
   }
 
@@ -31,11 +31,11 @@ export const modalQueueBtnClickHandler = event => {
 
   if (newQueueMoviesIds.includes(movieId)) {
     newQueueMoviesIds.splice(newQueueMoviesIds.indexOf(movieId), 1);
-    event.target.classList.remove('tabs__btn--current');
+    event.target.classList.add('modal-tabs__btn--current');
     event.target.textContent = 'add to queue';
   } else {
     newQueueMoviesIds.push(movieId);
-    event.target.classList.add('tabs__btn--current');
+    event.target.classList.remove('modal-tabs__btn--current');
     event.target.textContent = 'delete from queue';
   }
 
@@ -43,10 +43,11 @@ export const modalQueueBtnClickHandler = event => {
 };
 
 export const onOpenModal = movieId => {
+
   const queueMoviesIds = localStorageService.load(keys.QUEUE_MOVIES);
   if (queueMoviesIds) {
     if (queueMoviesIds.includes(String(movieId))) {
-      dynamicRefs().queueBtn.classList.remove('tabs__btn--current');
+      dynamicRefs().queueBtn.classList.remove('modal-tabs__btn--current');
       dynamicRefs().queueBtn.textContent = 'delete from queue';
     }
   }
@@ -54,7 +55,7 @@ export const onOpenModal = movieId => {
   const watchedMoviesIds = localStorageService.load(keys.WATCHED_MOVIES);
   if (watchedMoviesIds) {
     if (watchedMoviesIds.includes(String(movieId))) {
-      dynamicRefs().watchedBtn.classList.remove('tabs__btn--current');
+      dynamicRefs().watchedBtn.classList.remove('modal-tabs__btn--current');
       dynamicRefs().watchedBtn.textContent = 'delete from watched';
     }
   }
