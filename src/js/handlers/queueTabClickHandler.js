@@ -11,7 +11,6 @@ export const queueTabClickHandler = event => {
   refs.watchedTab.classList.remove('tabs__btn--current');
   refs.libraryGallery.innerHTML = '';
   const queueMovieIds = storage.load(key.QUEUE_MOVIES);
-  console.log(queueMovieIds);
   processMovieIds(queueMovieIds).then(data => {
     renderLibraryMoviesData(data);
   });
