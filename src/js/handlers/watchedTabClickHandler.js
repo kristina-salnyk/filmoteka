@@ -11,7 +11,14 @@ export const watchedTabClickHandler = event => {
   refs.queueTab.classList.remove('tabs__btn--current');
   refs.libraryGallery.innerHTML = '';
   const watchedMovieIds = storage.load(key.WATCHED_MOVIES);
-  console.log(watchedMovieIds);
+  if (
+    localStorage.getItem(key.QUEUE_MOVIES) === null ||
+    JSON.parse(localStorage.getItem(key.QUEUE_MOVIES)) === 0
+  )
+    return refs.libraryGallery.insertAdjacentHTML(
+      'afterbegin',
+      '<p class="empty-page__text"> Nothing to see here<br>Add a movie please</p>'
+    );
     processMovieIds(watchedMovieIds).then(data => {
     
       renderLibraryMoviesData(data);
