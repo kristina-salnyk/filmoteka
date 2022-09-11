@@ -5,6 +5,12 @@ import { fetchMovieById } from '../api/movie-api/fetchMovieById';
 import { libraryMovieConfigs } from '../../library';
 import libraryPageUi from '../ui/library-page-ui';
 import paginationMarkup from '../pagination';
+// import { Spinner } from 'spin.js';
+// import 'spin.js/spin.css';
+// import spinnerConfigs from '../spinner';
+
+
+const spinner = new Spinner(spinnerConfigs);
 
 export const watchedTabClickHandler = event => {
   refs.watchedTab.classList.add('tabs__btn--current');
