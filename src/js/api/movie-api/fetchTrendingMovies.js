@@ -1,6 +1,6 @@
 import api from './api';
 import { REQUEST_URL } from '../../constants';
-import { movieConfigs } from '../../../index';
+import { homeConfigs } from '../../HomeConfigs';
 import notifications from '../../notifications';
 import storage from '../../local-storage/local-storage-service';
 import key from '../../local-storage/local-storage-keys';
@@ -8,11 +8,11 @@ import key from '../../local-storage/local-storage-keys';
 export const fetchTrendingMovies = async () => {
   const config = {
     params: {
-      page: movieConfigs.page,
+      page: homeConfigs.page,
     },
   };
 
-  const url = `${REQUEST_URL.TRENDING}/${movieConfigs.mediaType}/${movieConfigs.timeWindow}`;
+  const url = `${REQUEST_URL.TRENDING}/${homeConfigs.mediaType}/${homeConfigs.timeWindow}`;
 
   try {
     const response = await api.get(url, config);

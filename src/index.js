@@ -1,4 +1,4 @@
-import MovieConfigs from './js/MovieConfigs';
+import { homeConfigs } from './js/HomeConfigs';
 import homePageUi from './js/ui/home-page-ui';
 import notifications from './js/notifications';
 import { fetchGenresList } from './js/api/movie-api/fetchGenresList';
@@ -9,8 +9,6 @@ import './js/registration-modal';
 import './js/loadPagePagination';
 import { spinner } from './js/spinner';
 import refs from './js/refs/refs';
-
-export const movieConfigs = new MovieConfigs();
 
 initHomePage().catch(error => {
   notifications.failedRequest();
@@ -23,7 +21,7 @@ async function initHomePage() {
     spinner.spin(refs.homeGallery);
     const genresData = await fetchGenresList();
     const { genres } = genresData;
-    movieConfigs.genres = genres;
+    homeConfigs.genres = genres;
 
     const trendingData = await fetchTrendingMovies();
     spinner.stop();

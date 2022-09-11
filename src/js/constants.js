@@ -5,8 +5,3 @@ export const REQUEST_URL = {
   GENRES: '/genre/movie/list',
   VIDEOS: '/videos',
 };
-
-export const REQUEST_TYPES = {
-  TRENDING: 'trending-movies',
-  SEARCH: 'search-movie',
-};

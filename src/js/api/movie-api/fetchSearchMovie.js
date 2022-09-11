@@ -1,6 +1,6 @@
 import api from './api';
 import { REQUEST_URL } from '../../constants';
-import { movieConfigs } from '../../../index';
+import { homeConfigs } from '../../HomeConfigs';
 import notifications from '../../notifications';
 import storage from '../../local-storage/local-storage-service';
 import key from '../../local-storage/local-storage-keys';
@@ -8,9 +8,9 @@ import key from '../../local-storage/local-storage-keys';
 export const fetchSearchMovie = async () => {
   const config = {
     params: {
-      query: movieConfigs.searchQuery,
-      page: movieConfigs.page,
-      include_adult: movieConfigs.includeAdult,
+      query: homeConfigs.searchQuery,
+      page: homeConfigs.page,
+      include_adult: homeConfigs.includeAdult,
     },
   };
 
