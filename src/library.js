@@ -11,12 +11,4 @@ initLibraryPage().catch(error => {
 
 async function initLibraryPage() {
   libraryPageUi.setLibraryEventListeners();
-
-  try {
-    const genresData = await fetchGenresList();
-    const { genres } = genresData;
-    libraryMovieConfigs.genres = genres;
-  } catch (error) {
-    notifications.failedRequest();
-  }
 }
