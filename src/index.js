@@ -13,7 +13,7 @@ import spinnerConfigs from './js/spinnerConfig.js';
 
 export const movieConfigs = new MovieConfigs();
 
-const spinner = new Spinner(spinnerConfigs);
+export const spinner = new Spinner(spinnerConfigs);
 
 initHomePage().catch(error => {
   notifications.failedRequest();

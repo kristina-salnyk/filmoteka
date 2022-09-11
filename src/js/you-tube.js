@@ -3,11 +3,8 @@ import youTubeCard from '../templates/you-tube-card.hbs';
 import { dynamicRefs } from './refs/dynamicRefs';
 import { fetchMovieVideo } from './api/movie-api/fetchMovieVideo';
 import notifications from './notifications';
-import { Spinner } from 'spin.js';
-import 'spin.js/spin.css';
-import spinnerConfigs from './spinnerConfig';
+import { spinner } from '../../src/index';
 
-const spinner = new Spinner(spinnerConfigs);
 
 export async function httpsYouTubeVideo(event) {
   const movieId = event.target.dataset.id;

@@ -2,11 +2,8 @@ import { movieConfigs } from '../../index';
 import refs from '../refs/refs';
 import { fetchSearchMovie } from '../api/movie-api/fetchSearchMovie';
 import { renderMoviesData } from '../render/renderMoviesData';
-import { Spinner } from 'spin.js';
-import 'spin.js/spin.css';
-import spinnerConfigs from '../spinnerConfig';
+import { spinner } from '../../index';
 
-const spinner = new Spinner(spinnerConfigs);
 
 export const searchFormSubmitHandler = async event => {
   event.preventDefault();
