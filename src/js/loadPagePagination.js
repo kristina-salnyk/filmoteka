@@ -59,23 +59,3 @@ async function loadMovies() {
    }
 }
 
-// const data = await fetchTrendingMovies();
-// const { results: movies, total_pages: totalPages } = data;
-
-// const moviesData = movies.map(item => {
-//   const newItem = { ...item };
-//   newItem.genres = item.genre_ids
-//     .map(id => movieConfigs.getGenreById(id))
-//     .join(', ');
-//   const releaseDate = new Date(item.release_date);
-//   newItem.year = releaseDate.getFullYear();
-//   if (item.vote_average === 0) {
-//     newItem.vote = 'votes not found';
-//   } else {
-//     newItem.vote = item.vote_average.toFixed(1);
-//   }
-//   return newItem;
-// });
-
-// homePageUi.appendGalleryMarkup(moviesData);
-// paginationMarup(totalPages, movieConfigs.page);
