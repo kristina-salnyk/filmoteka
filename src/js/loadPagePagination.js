@@ -25,14 +25,14 @@ function rightBtnClick() {
 }
 
 function getNewPage(e) {
-  console.log(e.target);
+
   e.preventDefault();
   if (e.target.nodeName !== 'BUTTON') {
     return;
   }
 
-  if (e.target.innerHTML !== '...') {
-    const page = Number(e.target.innerHTML);
+  if (e.target.dataset.number !== '0') {
+    const page = Number(e.target.dataset.number);
     movieConfigs.page = page;
     refs.homeGallery.innerHTML = '';
     loadMovies();
