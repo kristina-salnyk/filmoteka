@@ -13,12 +13,7 @@ export const queueTabClickHandler = event => {
   const queueMovieIds = storage.load(key.QUEUE_MOVIES);
   console.log(queueMovieIds);
   processMovieIds(queueMovieIds).then(data => {
-    const test = {
-      results: data,
-      total_pages: (data.length / 20).toFixed(0),
-      total_results: data.length,
-    };
-    renderLibraryMoviesData(test);
+    renderLibraryMoviesData(data);
   });
 };
 
@@ -28,14 +23,8 @@ const processMovieIds = ids => {
   return result;
 };
 
-const renderLibraryMoviesData = data => {
-  const {
-    results: movies,
-    total_pages: totalPages,
-    total_results: totalResults,
-  } = data;
-
-  paginationMarkup(totalPages, libraryMovieConfigs.page);
+const renderLibraryMoviesData = movies => {
+  paginationMarkup((movies.length / 20).toFixed(), libraryMovieConfigs.page);
 
   const moviesData = movies.map(item => {
     const newItem = { ...item };
