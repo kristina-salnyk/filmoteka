@@ -16,9 +16,11 @@ export const queueTabClickHandler = async event => {
 
   const queueMovieIds = await loadDataFromStorage(key.QUEUE_MOVIES);
 
+  paginationMarkup(Math.ceil(queueMovieIds.length / 20), siteConfigs.queuePage);
   if (!queueMovieIds || queueMovieIds.length === 0)
-    return libraryPageUi.renderEmptyLibrary();
-
+    
+  return libraryPageUi.renderEmptyLibrary();
+ 
   processMovieIds(queueMovieIds).then(data => {
     renderLibraryMoviesData(data);
   });
@@ -29,13 +31,21 @@ const processMovieIds = ids => {
   const movieRequests = ids.map(id => fetchMovieById(id));
   const result = Promise.all(movieRequests);
   spinner.stop();
+  storage.save(key.LAST_FETCH, 'QUEUE');
+
   return result;
 };
 
 const renderLibraryMoviesData = movies => {
-  paginationMarkup(Math.ceil(movies.length / 20), siteConfigs.page);
+let renderMovies = [];
+  if (siteConfigs.queuePage === 1) renderMovies = movies.slice(0, 20);
 
-  const moviesData = movies.map(item => {
+  if (siteConfigs.queuePage > 1)
+    renderMovies = movies.slice(
+      siteConfigs.queuePage * 20 - 20,
+      siteConfigs.queuePage * 20
+    );
+  const moviesData = renderMovies.map(item => {
     const newItem = { ...item };
     newItem.genres = item.genres.map(genre => genre.name).join(', ');
     const releaseDate = new Date(item['release_date']);
