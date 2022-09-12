@@ -29,9 +29,14 @@ function markupModalYouTube(videoKey, svg) {
   refs.youTubeVideo.insertAdjacentHTML('beforeend', youTubeCard(videoKey, svg));
   refs.youTubeVideo.classList.remove('visually-hidden');
   refs.youTubeVideo.classList.add('active');
+  refs.youTubeVideo.addEventListener('click', backdrop);
   dynamicRefs().btnCloseModalYouTube.addEventListener('click', closeVideo);
 }
 // ---------------
+
+function backdrop(e) {
+  removeYouTube();
+}
 
 // закриття модалки по кнопці
 function closeVideo() {

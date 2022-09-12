@@ -24,8 +24,10 @@ function onBackdropClick(evn) {
 function onEscKeyPress(evn) {
   const ESC_KEY_CODE = 'Escape';
   if (refs.youTubeVideo.classList.contains('active')) {
-    removeYouTube();
-    return;
+    if (evn.code === ESC_KEY_CODE) {
+      removeYouTube();
+      return;
+    }
   }
   if (evn.code === ESC_KEY_CODE) {
     onCloseModalBtn();
