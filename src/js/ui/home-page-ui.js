@@ -5,6 +5,8 @@ import { dynamicRefs } from '../refs/dynamicRefs';
 import { trackScroll, backToTop } from '../handlers/scrollUpClickHandler';
 import movieCards from '../../templates/movie-card.hbs';
 import modalMovie from '../../templates/modal-for-movie.hbs';
+import { submitRegisterForm } from '../api/firebase/fireBase';
+
 import {
   modalWatchedBtnClickHandler,
   modalQueueBtnClickHandler,
@@ -18,6 +20,8 @@ const setHomeEventListeners = () => {
 
   refs.goTopBtn.addEventListener('click', backToTop);
   window.addEventListener('scroll', trackScroll);
+
+  refs.registerForm.addEventListener('submit', submitRegisterForm);
 };
 
 const appendGalleryMarkup = movies => {

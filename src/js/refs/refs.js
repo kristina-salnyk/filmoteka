@@ -8,4 +8,5 @@ export default {
   youTubeVideo: document.querySelector('div[data-action="video"]'),
   openRegistrationBtn: document.querySelector('[data-registration-open]'),
   libraryGallery: document.getElementById('library-gallery'),
+  registerForm :document.getElementById('register_form'),
 };

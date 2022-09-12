@@ -28,17 +28,15 @@ export async function httpsYouTubeVideo(event) {
 function markupModalYouTube(videoKey, svg) {
   refs.youTubeVideo.insertAdjacentHTML('beforeend', youTubeCard(videoKey, svg));
   refs.youTubeVideo.classList.remove('visually-hidden');
+  refs.youTubeVideo.classList.add('active');
+  refs.youTubeVideo.addEventListener('click', backdrop);
   dynamicRefs().btnCloseModalYouTube.addEventListener('click', closeVideo);
 }
 // ---------------
 
-// закриття моданки по Escape (пока не працює)
-function keydown(e) {
-  if (e.code === 'Escape') {
-    removeYouTube();
-  }
+function backdrop(e) {
+  removeYouTube();
 }
-// ----------------
 
 // закриття модалки по кнопці
 function closeVideo() {
@@ -46,7 +44,8 @@ function closeVideo() {
 }
 // --------------
 
-function removeYouTube() {
+export default function removeYouTube() {
   refs.youTubeVideo.innerHTML = '';
   refs.youTubeVideo.classList.add('visually-hidden');
+  refs.youTubeVideo.classList.remove('active');
 }
