@@ -15,7 +15,7 @@ export const watchedTabClickHandler = async event => {
 
   refs.libraryGallery.innerHTML = '';
 
-  const watchedMovieIds = storage.load(key.WATCHED_MOVIES);
+  const watchedMovieIds = await loadDataFromStorage(key.WATCHED_MOVIES);
 
   if (!watchedMovieIds || watchedMovieIds.length === 0)
     return libraryPageUi.renderEmptyLibrary();
@@ -34,7 +34,7 @@ const processMovieIds = async ids => {
 };
 
 const renderLibraryMoviesData = movies => {
- paginationMarkup(Math.ceil(movies.length / 20), siteConfigs.page);
+  paginationMarkup(Math.ceil(movies.length / 20), siteConfigs.page);
 
   const moviesData = movies.map(item => {
     const newItem = { ...item };
@@ -47,5 +47,3 @@ const renderLibraryMoviesData = movies => {
 
   libraryPageUi.appendGalleryMarkup(moviesData);
 };
-
-
