@@ -8,5 +8,8 @@ export default {
   youTubeVideo: document.querySelector('div[data-action="video"]'),
   openRegistrationBtn: document.querySelector('[data-registration-open]'),
   libraryGallery: document.getElementById('library-gallery'),
-  registerForm :document.getElementById('register_form'),
+  registerForm: document.getElementById('register_form'),
+  openModalBtn: document.querySelector('[data-footer-modal-open]'),
+  closeModalBtn: document.querySelector('[data-footer-modal-close]'),
+  footerModal: document.querySelector('[data-modal]'),
 };
