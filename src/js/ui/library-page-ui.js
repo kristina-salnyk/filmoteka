@@ -11,11 +11,13 @@ import {
   onOpenModal,
 } from '../handlers/modalBtnsClickHandler';
 import { httpsYouTubeVideo } from '../you-tube';
+import { submitRegisterForm } from '../api/firebase/fireBase';
 
 const setLibraryEventListeners = () => {
   refs.watchedTab.addEventListener('click', watchedTabClickHandler);
   refs.queueTab.addEventListener('click', queueTabClickHandler);
   refs.libraryGallery.addEventListener('click', libraryGalleryClickHandler);
+  refs.registerForm.addEventListener('submit', submitRegisterForm);
 };
 
 const appendGalleryMarkup = movies => {

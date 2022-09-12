@@ -5,20 +5,22 @@ import { fetchMovieById } from '../api/movie-api/fetchMovieById';
 import { libraryMovieConfigs } from '../../library';
 import libraryPageUi from '../ui/library-page-ui';
 import paginationMarkup from '../pagination';
+import { loadDataFromStorage } from '../loadDataFromStorage';
 
-export const queueTabClickHandler = event => {
+export const queueTabClickHandler = async event => {
   refs.queueTab.classList.add('tabs__btn--current');
   refs.watchedTab.classList.remove('tabs__btn--current');
 
   refs.libraryGallery.innerHTML = '';
 
-  const queueMovieIds = storage.load(key.QUEUE_MOVIES);
+  const queueMovieIds = await loadDataFromStorage(key.QUEUE_MOVIES);
+
   if (!queueMovieIds || queueMovieIds.length === 0)
     return refs.libraryGallery.insertAdjacentHTML(
       'afterbegin',
       '<p class="empty-page__text"> Nothing to see here<br>Add a movie please</p>'
     );
-    
+
   processMovieIds(queueMovieIds).then(data => {
     renderLibraryMoviesData(data);
   });
