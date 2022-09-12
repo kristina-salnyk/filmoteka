@@ -14,3 +14,4 @@ export const REQUEST_TYPES = {
   TRENDING: 'trending-movies',
   SEARCH: 'search-movie',
 };
+

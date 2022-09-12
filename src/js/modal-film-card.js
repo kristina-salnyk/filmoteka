@@ -1,4 +1,6 @@
 import { dynamicRefs } from './refs/dynamicRefs';
+import refs from './refs/refs';
+import removeYouTube from './you-tube';
 
 function onOpenModalBtn() {
   dynamicRefs().closeModalBtn.addEventListener('click', onCloseModalBtn);
@@ -21,6 +23,12 @@ function onBackdropClick(evn) {
 
 function onEscKeyPress(evn) {
   const ESC_KEY_CODE = 'Escape';
+  if (refs.youTubeVideo.classList.contains('active')) {
+    if (evn.code === ESC_KEY_CODE) {
+      removeYouTube();
+      return;
+    }
+  }
   if (evn.code === ESC_KEY_CODE) {
     onCloseModalBtn();
   }

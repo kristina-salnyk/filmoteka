@@ -3,12 +3,15 @@ import youTubeCard from '../templates/you-tube-card.hbs';
 import { dynamicRefs } from './refs/dynamicRefs';
 import { fetchMovieVideo } from './api/movie-api/fetchMovieVideo';
 import notifications from './notifications';
+import { spinner } from './spinner';
 
 export async function httpsYouTubeVideo(event) {
   const movieId = event.target.dataset.id;
 
   try {
+    spinner.spin(refs.homeGallery);
     const videoData = await fetchMovieVideo(movieId);
+    spinner.stop();
     const videoKey = videoData['results'].find(video => {
       if (video.name.toLowerCase().includes('trailer')) {
         return video.key;
@@ -25,17 +28,15 @@ export async function httpsYouTubeVideo(event) {
 function markupModalYouTube(videoKey, svg) {
   refs.youTubeVideo.insertAdjacentHTML('beforeend', youTubeCard(videoKey, svg));
   refs.youTubeVideo.classList.remove('visually-hidden');
+  refs.youTubeVideo.classList.add('active');
+  refs.youTubeVideo.addEventListener('click', backdrop);
   dynamicRefs().btnCloseModalYouTube.addEventListener('click', closeVideo);
 }
 // ---------------
 
-// закриття моданки по Escape (пока не працює)
-function keydown(e) {
-  if (e.code === 'Escape') {
-    removeYouTube();
-  }
+function backdrop(e) {
+  removeYouTube();
 }
-// ----------------
 
 // закриття модалки по кнопці
 function closeVideo() {
@@ -43,7 +44,8 @@ function closeVideo() {
 }
 // --------------
 
-function removeYouTube() {
+export default function removeYouTube() {
   refs.youTubeVideo.innerHTML = '';
   refs.youTubeVideo.classList.add('visually-hidden');
+  refs.youTubeVideo.classList.remove('active');
 }

@@ -2,10 +2,11 @@ import refs from '../refs/refs';
 import storage from '../local-storage/local-storage-service';
 import key from '../local-storage/local-storage-keys';
 import { fetchMovieById } from '../api/movie-api/fetchMovieById';
-import { libraryMovieConfigs } from '../../library';
+import { siteConfigs } from '../SiteConfigs';
 import libraryPageUi from '../ui/library-page-ui';
 import paginationMarkup from '../pagination';
 import { loadDataFromStorage } from '../loadDataFromStorage';
+import { spinner } from '../spinner';
 
 export const queueTabClickHandler = async event => {
   refs.queueTab.classList.add('tabs__btn--current');
@@ -16,10 +17,7 @@ export const queueTabClickHandler = async event => {
   const queueMovieIds = await loadDataFromStorage(key.QUEUE_MOVIES);
 
   if (!queueMovieIds || queueMovieIds.length === 0)
-    return refs.libraryGallery.insertAdjacentHTML(
-      'afterbegin',
-      '<p class="empty-page__text"> Nothing to see here<br>Add a movie please</p>'
-    );
+    return libraryPageUi.renderEmptyLibrary();
 
   processMovieIds(queueMovieIds).then(data => {
     renderLibraryMoviesData(data);
@@ -27,13 +25,15 @@ export const queueTabClickHandler = async event => {
 };
 
 const processMovieIds = ids => {
+  spinner.spin(refs.libraryGallery);
   const movieRequests = ids.map(id => fetchMovieById(id));
   const result = Promise.all(movieRequests);
+  spinner.stop();
   return result;
 };
 
 const renderLibraryMoviesData = movies => {
-  paginationMarkup((movies.length / 20).toFixed(), libraryMovieConfigs.page);
+  paginationMarkup(Math.ceil(movies.length / 20), siteConfigs.page);
 
   const moviesData = movies.map(item => {
     const newItem = { ...item };

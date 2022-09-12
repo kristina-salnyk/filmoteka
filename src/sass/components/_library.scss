@@ -17,28 +17,25 @@
 
   @include for-tablet-up {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(336px, 1fr));
+    grid-template-columns: 1fr 1fr;
     grid-gap: 32px;
   }
 
   @include for-desktop-only {
-    grid-template-columns: repeat(auto-fit, minmax(292px, 1fr));
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-column-gap: 16px;
   }
 }
 
-.empty-page{
-  width: 100%;
-  margin: 0 auto;
-  border-radius: 24px;
-  background-color: #ffd610;
+.empty-page__text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 
-  &__text {
-    display: block;
-    padding-top: 5vh;
-    padding-bottom: 5vh;
-    font-weight: bold;
-    font-size: 24px;
-    text-align: center;
-}
+  display: block;
+  padding-top: 5vh;
+  font-size: 36px;
+  text-align: center;
+  color: rgb(99, 15, 15);
 }

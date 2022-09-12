@@ -1,8 +1,5 @@
-import { REQUEST_TYPES } from './constants';
-
-export default class MovieConfigs {
+class SiteConfigs {
   constructor() {
-    this.queryType = REQUEST_TYPES.TRENDING;
     this.genres = [];
     this.searchQuery = '';
     this.page = 1;
@@ -33,3 +30,5 @@ export default class MovieConfigs {
     this.resetPage();
   }
 }
+
+export const siteConfigs = new SiteConfigs();
