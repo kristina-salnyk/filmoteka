@@ -1,7 +1,12 @@
 import refs from './refs/refs';
 import { dynamicRefs } from './refs/dynamicRefs';
+import { logOut } from './api/firebase/fireBase'
 
 function onRegistrationBtnClick() {
+  if (refs.openRegistrationBtn.textContent === 'Log Out') {
+    logOut()
+    return
+  }
   document.body.classList.toggle('open-registration-modal');
   dynamicRefs().registrationBackdrop.classList.toggle('hidden');
 
@@ -17,7 +22,7 @@ function onRegistrationBtnClick() {
   window.addEventListener('keydown', onEscKeyPress);
 }
 
-function onCloseRegistrationBtn() {
+export function onCloseRegistrationBtn() {
   window.removeEventListener('keydown', onEscKeyPress);
   document.body.classList.toggle('open-registration-modal');
   dynamicRefs().registrationBackdrop.classList.toggle('hidden');
