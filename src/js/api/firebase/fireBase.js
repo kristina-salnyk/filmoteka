@@ -10,9 +10,6 @@ import { getDoc,
   getFirestore,
   collection,
 } from "firebase/firestore";
-  
-import refs from '../../refs/refs'
-
 const firebaseConfig = {
   apiKey: "AIzaSyASac4aw0X2wCy6bkMcU6NA4fFTe0NTD7w",
   authDomain: "film-27a94.firebaseapp.com",
@@ -58,18 +55,6 @@ export function submitRegisterForm(e) {
   e.currentTarget.reset();
 }
 
-// signInWithEmailAndPassword(auth, email, password)
-//   .then((userCredential) => {
-//       post_db();
-//       const user = userCredential.user;
-      
-//     // ...
-//   })
-//   .catch((error) => {
-//     const errorCode = error.code;
-//     const errorMessage = error.message;
-//   });
-
 function singUser({ email, password }) {
   signInWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
@@ -95,26 +80,26 @@ export function submitLoginForm(e) {
 }
 
 
-onAuthStateChanged(auth, (user) => {
-  if (user) {
-    // User is signed in, see docs for a list of available properties
-    // https://firebase.google.com/docs/reference/js/firebase.User
-    const uid = user.uid;
-    // ...
-  } else {
-    // User is signed out
-    // ...
-  }
-});
+// onAuthStateChanged(auth, (user) => {
+//   if (user) {
+//     // User is signed in, see docs for a list of available properties
+//     // https://firebase.google.com/docs/reference/js/firebase.User
+//     const uid = user.uid;
+//     // ...
+//   } else {
+//     // User is signed out
+//     // ...
+//   }
+// });
 function changedUser() {
 
 }
 
  
 signOut(auth).then(() => {
-  // Sign-out successful.
+
 }).catch((error) => {
-  // An error happened.
+  
 });
 
 async function post_db() {
