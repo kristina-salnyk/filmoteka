@@ -32,12 +32,6 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 export const auth = getAuth(app);
 
-onAuthStateChanged(auth, user => {
-  watchedTabClickHandler().catch(error => {
-    notifications.failedRequest();
-  });
-});
-
 function createUser({ email, password }) {
   createUserWithEmailAndPassword(auth, email, password)
     .then(userCredential => {
