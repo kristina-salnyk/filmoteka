@@ -2,28 +2,49 @@ import Swiper from 'swiper/swiper-bundle';
 import 'swiper/swiper-bundle.css';
 
 export const swiper = new Swiper('.swiper', {
+  direction: 'horizontal',
+  loop: true,
+  grabCursor: true,
 
-    direction: 'horizontal',
-    loop: true,
+  keyboard: {
+    enabled: true,
+    pageUpDown: true,
+  },
 
-    slidesPerView: 3,
-    slidesPerGroup: 3,
-    loopFillGroupWithBlank: true,
-    // preventClicksPropagation: false,
-    setWrapperSize: true,
-    spaceBetween: 10,
-    speed: 500,
+  mousewheel: {
+    sensivity: 1,
+  },
 
-    pagination: {
-        el: '.swiper-pagination',
+  breakpoints: {
+    320: {
+      slidesPerView: 1,
+      slidesPerGroup: 1,
     },
 
-    navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
+    768: {
+      slidesPerView: 2,
+      slidesPerGroup: 2,
     },
+    1280: {
+      slidesPerView: 3,
+      slidesPerGroup: 3,
+    },
+  },
 
-    scrollbar: {
-        el: '.swiper-scrollbar',
-    },
+  loopFillGroupWithBlank: true,
+
+  setWrapperSize: true,
+  spaceBetween: 30,
+  speed: 500,
+
+  pagination: {
+    el: '.swiper-pagination',
+    clickable: true,
+    dynamicBullets: true,
+  },
+
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
 });
