@@ -16,6 +16,7 @@ import {
 import notifications from '../../notifications';
 import { FIRE_BASE_MESSAGES } from '../../constants';
 import localStorageKeys from '../../local-storage/local-storage-keys';
+import { watchedTabClickHandler } from '../../handlers/watchedTabClickHandler';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyASac4aw0X2wCy6bkMcU6NA4fFTe0NTD7w',
@@ -30,6 +31,12 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 export const auth = getAuth(app);
+
+onAuthStateChanged(auth, user => {
+  watchedTabClickHandler().catch(error => {
+    notifications.failedRequest();
+  });
+});
 
 function createUser({ email, password }) {
   createUserWithEmailAndPassword(auth, email, password)

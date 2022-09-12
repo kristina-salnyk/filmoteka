@@ -9,7 +9,6 @@ import { spinner } from '../spinner';
 import { siteConfigs } from '../SiteConfigs';
 
 export const watchedTabClickHandler = async event => {
-  console.log(1);
   refs.watchedTab.classList.add('tabs__btn--current');
   refs.queueTab.classList.remove('tabs__btn--current');
 
