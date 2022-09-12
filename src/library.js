@@ -2,6 +2,7 @@ import libraryPageUi from './js/ui/library-page-ui';
 import notifications from './js/notifications';
 import './js/api/firebase/fireBase';
 import './js/registration-modal';
+import './js/loadPagePagination';
 import { onAuthStateChanged } from 'firebase/auth';
 import { watchedTabClickHandler } from './js/handlers/watchedTabClickHandler';
 import { auth } from './js/api/firebase/fireBase';

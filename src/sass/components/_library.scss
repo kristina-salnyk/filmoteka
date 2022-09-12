@@ -8,6 +8,8 @@
 }
 
 .library__gallery {
+  position: relative;
+
   @include for-phone-only {
     display: flex;
     flex-direction: column;
