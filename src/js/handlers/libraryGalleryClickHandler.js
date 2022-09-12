@@ -7,6 +7,14 @@ import refs from '../refs/refs';
 
 export const libraryGalleryClickHandler = async event => {
   event.preventDefault();
+  if (
+    event.target.nodeName !== 'IMG' &&
+    event.target.nodeName !== 'H2' &&
+    event.target.nodeName !== 'SPAN'
+    ) {
+      return;
+    }
+  
 
   const movieId = event.target.closest('a').dataset.id;
 

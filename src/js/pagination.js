@@ -4,6 +4,7 @@ let paginationList = '';
 
 export default async function paginationMarkup(amountPages, currentPage) {
   if (dynamicRefs().paginList) {
+   
     dynamicRefs().paginList.innerHTML = '';
     paginationList = '';
 
@@ -38,7 +39,7 @@ export default async function paginationMarkup(amountPages, currentPage) {
             paginationList += `<button type="button" class="pagination__button" data-number='${i}'>${i}</button>`;
 
           if (i === amountPages - 6)
-            paginationList += `<button type="button" class="pagination__button" data-number='0' >...</button>`;
+            paginationList += `<div><p class='pagination__dots'>...<p></div>`;
         }
         if (currentPage >= 5 && currentPage <= amountPages - 4) {
           if (i === currentPage) {
@@ -49,10 +50,10 @@ export default async function paginationMarkup(amountPages, currentPage) {
             paginationList += `<button type="button" class="pagination__button" data-number='${i}'>${i}</button>`;
 
           if (i === currentPage - 3)
-            paginationList += `<button type="button" class="pagination__button" data-number='0' >...</button>`;
+            paginationList += `<div><p class='pagination__dots'>...<p></div>`;
 
           if (i === currentPage + 3)
-            paginationList += `<button type="button" class="pagination__button" data-number='0' >...</button>`;
+            paginationList += `<div><p class='pagination__dots'>...<p></div>`;
 
           if (i < currentPage - 2 && i > currentPage + 2) {
             continue;
@@ -69,7 +70,7 @@ export default async function paginationMarkup(amountPages, currentPage) {
             paginationList += `<button type="button" class="pagination__button" data-number='${i}'>${i}</button>`;
           }
           if (i === 6) {
-            paginationList += `<button type="button" class="pagination__button" data-number='0' >...</button>`;
+            paginationList += `<div><p class='pagination__dots'>...<p></div>`;
           }
           if (i === amountPages) {
             paginationList += `<button type="button" class="pagination__button" data-number='${i}'>${i}</button>`;

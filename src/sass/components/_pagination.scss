@@ -27,7 +27,14 @@
       border-radius: 3px;
     }
   }
-
+&__dots{
+  width: 40px;
+    height: 40px;
+    color: black;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
   &__svg {
     stroke: currentColor;
     width: 16px;
@@ -55,6 +62,7 @@
     &--active {
       background-color: #ff6b08;
       border-radius: 3px;
+      color: #ffffff;
     }
   }
 }

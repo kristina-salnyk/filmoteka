@@ -20,7 +20,12 @@ export const watchedTabClickHandler = async event => {
     return libraryPageUi.renderEmptyLibrary();
 
   processMovieIds(watchedMovieIds).then(data => {
-    renderLibraryMoviesData(data);
+      
+      renderLibraryMoviesData(data);
+      paginationMarkup(
+        Math.ceil(watchedMovieIds.length / 20),
+        siteConfigs.watchedPage
+      );
   });
 };
 
@@ -28,14 +33,25 @@ const processMovieIds = async ids => {
   spinner.spin(refs.libraryGallery);
   const movieRequests = ids.map(id => fetchMovieById(id));
   const result = await Promise.all(movieRequests);
+
   spinner.stop();
+  storage.save(key.LAST_FETCH, 'WATCHED');
+
   return result;
 };
 
-const renderLibraryMoviesData = movies => {
-  paginationMarkup(Math.ceil(movies.length / 20), siteConfigs.page);
+export const renderLibraryMoviesData = async movies => {
+ 
+  let renderMovies = [];
 
-  const moviesData = movies.map(item => {
+  if (siteConfigs.watchedPage === 1) renderMovies = movies.slice(0, 20);
+
+  if (siteConfigs.watchedPage > 1)
+   renderMovies =  movies.slice(
+      siteConfigs.watchedPage * 20 - 20,
+      siteConfigs.watchedPage * 20
+    );
+  const moviesData = renderMovies.map(item => {
     const newItem = { ...item };
     newItem.genres = item.genres.map(genre => genre.name).join(', ');
     const releaseDate = new Date(item['release_date']);
