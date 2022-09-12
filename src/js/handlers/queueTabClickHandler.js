@@ -31,7 +31,7 @@ const processMovieIds = ids => {
 };
 
 const renderLibraryMoviesData = movies => {
-  paginationMarkup((movies.length / 20).toFixed(), siteConfigs.page);
+  paginationMarkup(Math.ceil(movies.length / 20), siteConfigs.page);
 
   const moviesData = movies.map(item => {
     const newItem = { ...item };
