@@ -32,7 +32,7 @@ const processMovieIds = async ids => {
 };
 
 const renderLibraryMoviesData = movies => {
-  paginationMarkup((movies.length / 20).toFixed(), siteConfigs.page);
+ paginationMarkup(Math.ceil(movies.length / 20), siteConfigs.page);
 
   const moviesData = movies.map(item => {
     const newItem = { ...item };
@@ -45,3 +45,5 @@ const renderLibraryMoviesData = movies => {
 
   libraryPageUi.appendGalleryMarkup(moviesData);
 };
+
+
