@@ -17,6 +17,8 @@ import notifications from '../../notifications';
 import { FIRE_BASE_MESSAGES } from '../../constants';
 import localStorageKeys from '../../local-storage/local-storage-keys';
 import { watchedTabClickHandler } from '../../handlers/watchedTabClickHandler';
+import refs from '../../refs/refs';
+import { onCloseRegistrationBtn } from '../../registration-modal'
 
 const firebaseConfig = {
   apiKey: 'AIzaSyASac4aw0X2wCy6bkMcU6NA4fFTe0NTD7w',
@@ -64,6 +66,7 @@ export function submitRegisterForm(e) {
   });
 
   e.currentTarget.reset();
+  onCloseRegistrationBtn();
 }
 
 function singUser({ email, password, newUser }) {
@@ -73,6 +76,7 @@ function singUser({ email, password, newUser }) {
       if (newUser) {
         initStorage();
       }
+refs.openRegistrationBtn.textContent = 'Log Out'
     })
     .catch(error => {
       notifications.showCustomMessage('Login is failed. Try again later.');
@@ -112,4 +116,17 @@ export async function getDataFromStorage(key) {
       'Failed to load movies from database storage.'
     );
   }
+}
+
+export function logOut() {
+  signOut(auth).then(() => {
+    notifications.showCustomMessage(
+      'Bye.'
+    );
+    // Sign-out successful.
+  }).catch((error) => {
+    // An error happened.
+  });
+  refs.openRegistrationBtn.textContent = 'Log In'
+  return
 }
