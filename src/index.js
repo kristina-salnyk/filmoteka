@@ -10,7 +10,7 @@ import './js/registration-modal';
 import './js/loadPagePagination';
 import { spinner } from './js/spinner';
 import refs from './js/refs/refs';
-import { swiper } from './js/swiper-slider';
+import './js/swiper-slider';
 
 initHomePage().catch(error => {
   notifications.failedRequest();
