@@ -12,7 +12,7 @@ import {
   modalQueueBtnClickHandler,
   onOpenModal,
 } from '../handlers/modalBtnsClickHandler';
-import { httpsYouTubeVideo } from '../you-tube';
+import { httpsYouTubeVideo } from '../youTube';
 
 const setHomeEventListeners = () => {
   refs.searchForm.addEventListener('submit', searchFormSubmitHandler);

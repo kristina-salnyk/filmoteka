@@ -1,9 +1,11 @@
 import refs from './refs/refs';
-import youTubeCard from '../templates/you-tube-card.hbs';
+import youTubeCard from '../templates/youTube-card.hbs';
 import { dynamicRefs } from './refs/dynamicRefs';
 import { fetchMovieVideo } from './api/movie-api/fetchMovieVideo';
 import notifications from './notifications';
 import { spinner } from './spinner';
+
+const youTubeVideo = refs.youTubeVideo;
 
 export async function httpsYouTubeVideo(event) {
   const movieId = event.target.dataset.id;
@@ -13,23 +15,23 @@ export async function httpsYouTubeVideo(event) {
     const videoData = await fetchMovieVideo(movieId);
     spinner.stop();
     const videoKey = videoData['results'].find(video => {
-      if (video.name.toLowerCase().includes('trailer')) {
+      if (video.type.toLowerCase().includes('trailer')) {
         return video.key;
       }
     });
-    const svg = `./images/icons.svg#icon-exit_door_closed`;
-    markupModalYouTube(videoKey, svg);
+
+    markupModalYouTube(videoKey);
   } catch (error) {
     notifications.failedRequest();
   }
 }
 
 //  рендер модального вікна
-function markupModalYouTube(videoKey, svg) {
-  refs.youTubeVideo.insertAdjacentHTML('beforeend', youTubeCard(videoKey, svg));
-  refs.youTubeVideo.classList.remove('visually-hidden');
-  refs.youTubeVideo.classList.add('active');
-  refs.youTubeVideo.addEventListener('click', backdrop);
+function markupModalYouTube(videoKey) {
+  youTubeVideo.insertAdjacentHTML('beforeend', youTubeCard(videoKey));
+  youTubeVideo.classList.remove('visually-hidden');
+  youTubeVideo.classList.add('active');
+  youTubeVideo.addEventListener('click', backdrop);
   dynamicRefs().btnCloseModalYouTube.addEventListener('click', closeVideo);
 }
 // ---------------
@@ -45,7 +47,7 @@ function closeVideo() {
 // --------------
 
 export default function removeYouTube() {
-  refs.youTubeVideo.innerHTML = '';
-  refs.youTubeVideo.classList.add('visually-hidden');
-  refs.youTubeVideo.classList.remove('active');
+  youTubeVideo.innerHTML = '';
+  youTubeVideo.classList.add('visually-hidden');
+  youTubeVideo.classList.remove('active');
 }
