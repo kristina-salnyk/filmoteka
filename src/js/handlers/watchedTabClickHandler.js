@@ -4,10 +4,12 @@ import key from '../local-storage/local-storage-keys';
 import { fetchMovieById } from '../api/movie-api/fetchMovieById';
 import libraryPageUi from '../ui/library-page-ui';
 import paginationMarkup from '../pagination';
+import { loadDataFromStorage } from '../loadDataFromStorage';
 import { spinner } from '../spinner';
 import { siteConfigs } from '../SiteConfigs';
 
-export const watchedTabClickHandler = event => {
+export const watchedTabClickHandler = async event => {
+  console.log(1);
   refs.watchedTab.classList.add('tabs__btn--current');
   refs.queueTab.classList.remove('tabs__btn--current');
 

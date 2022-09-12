@@ -1,6 +1,7 @@
 import { siteConfigs } from './js/SiteConfigs';
 import homePageUi from './js/ui/home-page-ui';
 import notifications from './js/notifications';
+import './js/api/firebase/fireBase'
 import { fetchGenresList } from './js/api/movie-api/fetchGenresList';
 import { fetchTrendingMovies } from './js/api/movie-api/fetchTrendingMovies';
 import { renderMoviesData } from './js/render/renderMoviesData';

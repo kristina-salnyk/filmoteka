@@ -11,7 +11,7 @@ async function initLibraryPage() {
   libraryPageUi.setLibraryEventListeners();
 
   try {
-    watchedTabClickHandler();
+    await watchedTabClickHandler();
   } catch (error) {
     notifications.failedRequest();
   }
