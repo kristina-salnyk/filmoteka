@@ -45,21 +45,21 @@
   transition: transform 0.25s linear;
 }
 
-//.movie-card__thumb {
-//  padding: 10px 15px 20px 15px;
-//
-//  @include for-phone-only {
-//    height: 660px;
-//  }
-//
-//  @include for-tablet-up {
-//    height: 504px;
-//  }
-//
-//  @include for-desktop-only {
-//    height: 438px;
-//  }
-//}
+.movie-card__thumb {
+  padding: 10px 15px 20px 15px;
+
+  @include for-phone-only {
+    height: 660px;
+  }
+
+  @include for-tablet-up {
+    height: 504px;
+  }
+
+  @include for-desktop-only {
+    height: 438px;
+  }
+}
 
 .movie-card__image {
   width: 100%;
@@ -93,6 +93,7 @@
 
 .movie-card__genres {
   margin-right: 8px;
+  line-height: 1.5
 }
 
 .movie-card__vote {
