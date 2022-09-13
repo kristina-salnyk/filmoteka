@@ -3,7 +3,7 @@ import notifications from '../../notifications';
 import refs from '../../refs/refs';
 import { auth } from './fire-base-service';
 
-export function logOut() {
+export function signOutUser() {
   signOut(auth)
     .then(() => {
       notifications.showCustomMessage('Bye.');
