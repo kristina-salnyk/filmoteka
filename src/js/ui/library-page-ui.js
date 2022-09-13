@@ -13,6 +13,7 @@ import {
 } from '../handlers/modalBtnsClickHandler';
 import { httpsYouTubeVideo } from '../youTube';
 import { registerFormSubmitHandler } from '../handlers/registerFormSubmitHandler';
+import { onRegistrationBtnClick } from '../registration-modal';
 
 const setLibraryEventListeners = () => {
   refs.watchedTab.addEventListener('click', watchedTabClickHandler);
@@ -21,6 +22,7 @@ const setLibraryEventListeners = () => {
   refs.libraryGallery.addEventListener('click', libraryGalleryClickHandler);
 
   refs.registerForm.addEventListener('submit', registerFormSubmitHandler);
+  refs.openRegistrationBtn.addEventListener('click', onRegistrationBtnClick);
 
   refs.goTopBtn.addEventListener('click', backToTop);
   window.addEventListener('scroll', trackScroll);

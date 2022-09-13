@@ -3,16 +3,39 @@ import notifications from './js/notifications';
 import './js/api/firebase/fire-base-service';
 import './js/registration-modal';
 import './js/load-page-pagination';
-import { onAuthStateChanged } from 'firebase/auth';
-import { watchedTabClickHandler } from './js/handlers/watchedTabClickHandler';
 import './js/footer-modal';
 import './js/swiper-slider';
+import { onAuthStateChanged } from 'firebase/auth';
+import refs from './js/refs/refs';
+import { watchedTabClickHandler } from './js/handlers/watchedTabClickHandler';
 import { auth } from './js/api/firebase/fire-base-service';
+import storage from './js/local-storage-service';
+import { STORAGE_KEYS } from './js/constants';
+import { queueTabClickHandler } from './js/handlers/queueTabClickHandler';
+import { siteConfigs } from './js/SiteConfigs';
 
 onAuthStateChanged(auth, user => {
-  watchedTabClickHandler().catch(error => {
-    notifications.failedRequest();
-  });
+  if (auth.currentUser) {
+    refs.openRegistrationBtn.textContent = 'Log out';
+  } else {
+    refs.openRegistrationBtn.textContent = 'Log in';
+  }
+
+  if (!siteConfigs.storageCreated) return;
+
+  if (auth.currentUser) {
+    refs.openRegistrationBtn.textContent = 'Log out';
+
+    if (storage.load(STORAGE_KEYS.LAST_FETCH) === 'QUEUE')
+      queueTabClickHandler().catch(error => {
+        notifications.failedRequest();
+        return;
+      });
+
+    watchedTabClickHandler().catch(error => {
+      notifications.failedRequest();
+    });
+  }
 });
 
 initLibraryPage().catch(error => {

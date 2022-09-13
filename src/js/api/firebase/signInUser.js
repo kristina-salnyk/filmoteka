@@ -4,18 +4,23 @@ import refs from '../../refs/refs';
 import { auth, db } from './fire-base-service';
 import { STORAGE_KEYS } from '../../constants';
 import { doc, setDoc } from 'firebase/firestore';
+import { siteConfigs } from '../../SiteConfigs';
 
-export function signInUser({ email, password, newUser }) {
+export async function signInUser({ email, password, newUser }) {
   signInWithEmailAndPassword(auth, email, password)
-    .then(userCredential => {
-      notifications.showCustomMessage('You are signed in!');
+    .then(async userCredential => {
+      notifications.showCustomSuccessMessage(
+        'You are signed in to FireBase account.'
+      );
       if (newUser) {
-        initStorage();
+        await initStorage();
       }
       refs.openRegistrationBtn.textContent = 'Log Out';
     })
     .catch(error => {
-      notifications.showCustomMessage('Login is failed. Try again later.');
+      notifications.showCustomFailedMessage(
+        'Sign in is failed. Try again later.'
+      );
     });
 }
 
@@ -27,10 +32,12 @@ async function initStorage() {
     };
     const userData = doc(db, 'users', auth.currentUser.uid);
     await setDoc(userData, usersFilmsObj, { merge: true });
+
+    siteConfigs.storageCreated = true;
     notifications.showCustomMessage('You database storage ready to use.');
   } catch (error) {
-    notifications.showCustomMessage(
-      'Initialization of database storage was failed.'
+    notifications.showCustomFailedMessage(
+      'Initialization of FireBase storage was failed.'
     );
   }
 }

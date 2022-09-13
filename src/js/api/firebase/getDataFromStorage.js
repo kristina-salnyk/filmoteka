@@ -11,12 +11,12 @@ export async function getDataFromStorage(key) {
       return usersFilmsObj[key];
     } else {
       notifications.showCustomMessage(
-        'Failed to load movies from database storage.'
+        'Failed to load movies from FireBase storage.'
       );
     }
   } catch (error) {
     notifications.showCustomMessage(
-      'Failed to load movies from database storage.'
+      'Failed to load movies from FireBase storage.'
     );
   }
 }

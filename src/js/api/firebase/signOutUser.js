@@ -1,17 +1,13 @@
 import { signOut } from 'firebase/auth';
 import notifications from '../../notifications';
-import refs from '../../refs/refs';
 import { auth } from './fire-base-service';
 
 export function signOutUser() {
   signOut(auth)
     .then(() => {
-      notifications.showCustomMessage('Bye.');
-      // Sign-out successful.
+      notifications.showCustomMessage('You sign out from FireBase account.');
     })
     .catch(error => {
-      // An error happened.
+      notifications.showCustomMessage('Sign out was failed. Please try again.');
     });
-  refs.openRegistrationBtn.textContent = 'Log In';
-  return;
 }

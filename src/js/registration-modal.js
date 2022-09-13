@@ -1,15 +1,16 @@
 import refs from './refs/refs';
 import { dynamicRefs } from './refs/dynamicRefs';
 import { signOutUser } from './api/firebase/signOutUser';
+import { auth } from './api/firebase/fire-base-service';
 
-function onRegistrationBtnClick() {
-  if (refs.openRegistrationBtn.textContent === 'Log Out') {
+export function onRegistrationBtnClick() {
+  if (auth.currentUser) {
     signOutUser();
     return;
   }
+
   document.body.classList.toggle('open-registration-modal');
   dynamicRefs().registrationBackdrop.classList.toggle('hidden');
-
   dynamicRefs().closeRegistrationBtn.addEventListener(
     'click',
     onCloseRegistrationBtn
@@ -40,5 +41,3 @@ function onEscKeyPress(event) {
     onCloseRegistrationBtn();
   }
 }
-
-refs.openRegistrationBtn.addEventListener('click', onRegistrationBtnClick);

@@ -29,4 +29,12 @@ export default {
   showCustomMessage(message) {
     Notify.info(message);
   },
+
+  showCustomSuccessMessage(message) {
+    Notify.success(message);
+  },
+
+  showCustomFailedMessage(message) {
+    Notify.failure(message);
+  },
 };
