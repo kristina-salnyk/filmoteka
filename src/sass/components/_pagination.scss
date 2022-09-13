@@ -17,9 +17,11 @@
     display: flex;
     justify-content: center;
     background-color: #f7f7f7;
-    border: 4px;
+    border: 2px solid #f7f7f7;
     border-radius: 3px;
     cursor: pointer;
+    transition: color 250ms $timing-function, fill 250ms $timing-function,
+      border-color 250ms $timing-function;
     &:hover {
       color: #f58d47;
       fill: #f58d47;
@@ -27,14 +29,14 @@
       border-radius: 3px;
     }
   }
-&__dots{
-  width: 40px;
+  &__dots {
+    width: 40px;
     height: 40px;
     color: black;
     align-items: center;
     display: flex;
     justify-content: center;
-}
+  }
   &__svg {
     stroke: currentColor;
     width: 16px;
@@ -51,18 +53,24 @@
     align-items: center;
     display: flex;
     justify-content: center;
-    border: 0px;
+    border: 2px solid #ffffff;
+    border-radius: 3px;
     background-color: #ffffff;
     cursor: pointer;
+    transition: color 250ms $timing-function,
+      border-color 250ms $timing-function;
     &:hover {
       color: #f58d47;
       border: 2px solid #f58d47;
-      border-radius: 3px;
     }
     &--active {
       background-color: #ff6b08;
-      border-radius: 3px;
       color: #ffffff;
+
+      &:hover {
+        border-color: #9a9191;
+        color: #ffffff;
+      }
     }
   }
 }
