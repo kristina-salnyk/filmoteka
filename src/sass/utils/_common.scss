@@ -1,5 +1,36 @@
 @import '~node_modules/modern-normalize/modern-normalize.css';
 
+::-webkit-scrollbar {
+  width: 6px;
+  height: auto;
+
+  @media (max-width: 480px) {
+    width: 3px;
+    height: auto;
+  }
+}
+
+::-webkit-scrollbar-thumb {
+  background: #f87e2c;
+  border-radius: 50px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ff6b08;
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: #d85905;
+}
+
+// ::-webkit-scrollbar-track {
+//   background: #e2e1e7;
+// }
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
 body.on-open-modal {
   overflow: hidden;
 }
