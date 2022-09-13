@@ -173,8 +173,8 @@
   transition: background-color 250ms $timing-function;
 
   &:hover {
-    background-color: #ea4640;
-    border: 1px solid #565353;
+    background-color: #e53f33;
+    border: 1px solid white;
     color: $secondary-text-color;
     transition: background-color 250ms $timing-function,
       color 250ms $timing-function;
