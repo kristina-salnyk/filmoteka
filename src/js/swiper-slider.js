@@ -15,6 +15,16 @@ export const swiper = new Swiper('.swiper', {
     sensivity: 1,
   },
 
+  // Swiper-lazy-loading START
+  preloadImages: false,
+
+  lazy: {
+    loadOnTransitionStart: false,
+    loadPrevNext: false,
+    watchSlidesProgress: true,
+    watchSlidesVisibility: true,
+  },
+
   breakpoints: {
     320: {
       slidesPerView: 1,

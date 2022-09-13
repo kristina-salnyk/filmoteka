@@ -69,17 +69,15 @@
 }
 
 .form__input {
-  // max-width: 448px;
   margin: 0;
   padding: 10px 5px;
-  background-color: $accent-text-color;
+  background-color: #242526;
   color: #ffffff;
   font-size: 16px;
   border-style: none;
   border-bottom-width: 1px;
   border-bottom-style: solid;
   border-bottom-color: #ffffff;
-  // outline: none;
 
   transition: border 250ms $timing-function;
 
@@ -100,10 +98,6 @@
   border: none;
   padding: 10px 32px;
   margin: 50px auto 15px auto;
-  // margin-top: 50px;
-  // margin-left: auto;
-  // margin-bottom: 5px;
-  // margin-right: auto;
   border-bottom-width: 1px;
   border-bottom-style: solid;
   border-bottom-color: $accent-border-color;
@@ -136,8 +130,4 @@
   border: none;
   background-color: transparent;
   cursor: pointer;
-  // background-image: url('../images/close-modal.svg');
-  // background-position: center;
-  // background-size: 60%;
-  // background-repeat: no-repeat;
 }
