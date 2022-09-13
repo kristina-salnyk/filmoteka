@@ -15,11 +15,3 @@ export const dynamicRefs = () => ({
   rightArrow: document.querySelector('[data-arrow="right"]'),
   youTube_window: document.querySelector('.youTube__window'),
 });
-
-
-// const elByID = document.querySelector(`[data-id='${movieId}']`);
-
-// if (elByID.nodeName !== 'BUTTON') {
-//   const deleteElement = elByID.parentElement;
-//   deleteElement.remove();
-// }

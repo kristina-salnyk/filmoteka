@@ -21,5 +21,11 @@ export const REQUEST_TYPES = {
 const WATCHED_MOVIES = 'watched-movies';
 const QUEUE_MOVIES = 'queue-movies';
 const LAST_FETCH = 'last_fetch';
+const MODAL_MOVIE = 'modal_movie';
 
-export const STORAGE_KEYS = { WATCHED_MOVIES, QUEUE_MOVIES, LAST_FETCH };
+export const STORAGE_KEYS = {
+  WATCHED_MOVIES,
+  QUEUE_MOVIES,
+  LAST_FETCH,
+  MODAL_MOVIE,
+};

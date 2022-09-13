@@ -1,8 +1,7 @@
 import { dynamicRefs } from './refs/dynamicRefs';
 import refs from './refs/refs';
 import removeYouTube from './youTube';
-import { deleteMoviCard } from './ui/library-page-ui'
-
+import { deleteMovieCard } from './ui/library-page-ui';
 
 export function onOpenModalBtn() {
   dynamicRefs().closeModalBtn.addEventListener('click', onCloseModalBtn);
@@ -13,7 +12,7 @@ export function onOpenModalBtn() {
 }
 
 function onCloseModalBtn() {
-  deleteMoviCard();
+  deleteMovieCard();
   window.removeEventListener('keydown', onEscKeyPress);
   document.body.classList.remove('on-open-modal');
 }
