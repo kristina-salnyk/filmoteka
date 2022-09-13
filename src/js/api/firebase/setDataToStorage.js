@@ -11,7 +11,6 @@ export async function setDataToStorage(key, usersFilmsObj) {
       'Movies was saved in FireBase storage.'
     );
   } catch (error) {
-    console.log(error.message);
     notifications.showCustomFailedMessage(
       'Saving movies in FireBase storage was failed.'
     );

@@ -22,17 +22,15 @@ onAuthStateChanged(auth, user => {
     refs.openRegistrationBtn.textContent = 'Log in';
   }
 
-  if (auth.currentUser && !siteConfigs.storageInit) {
-    if (storage.load(STORAGE_KEYS.LAST_FETCH) === 'QUEUE')
-      queueTabClickHandler().catch(error => {
-        notifications.failedRequest();
-        return;
-      });
-
-    watchedTabClickHandler().catch(error => {
+  if (storage.load(STORAGE_KEYS.LAST_FETCH) === 'QUEUE')
+    queueTabClickHandler().catch(error => {
       notifications.failedRequest();
+      return;
     });
-  }
+
+  watchedTabClickHandler().catch(error => {
+    notifications.failedRequest();
+  });
 });
 
 initLibraryPage().catch(error => {

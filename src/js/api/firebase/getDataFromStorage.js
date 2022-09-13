@@ -8,7 +8,6 @@ export async function getDataFromStorage() {
     const docSnap = await getDoc(userData);
     if (docSnap.exists()) {
       const usersFilmsObj = docSnap.data();
-      console.log(usersFilmsObj);
       return usersFilmsObj;
     }
     // else {
