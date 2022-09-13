@@ -6,8 +6,10 @@ export const modalWatchedBtnClickHandler = event => {
   const movieId = event.target.dataset.id;
 
   const watchedMoviesIds = localStorageService.load(keys.WATCHED_MOVIES);
+  const queueMoviesIds = localStorageService.load(keys.QUEUE_MOVIES);
 
   const newWatchedMoviesIds = watchedMoviesIds ? [...watchedMoviesIds] : [];
+  const newQueueMoviesIds = queueMoviesIds ? [...queueMoviesIds] : [];
 
   if (newWatchedMoviesIds.includes(movieId)) {
     newWatchedMoviesIds.splice(newWatchedMoviesIds.indexOf(movieId), 1);
@@ -19,6 +21,14 @@ export const modalWatchedBtnClickHandler = event => {
     event.target.textContent = 'delete from watched';
   }
 
+  if (newQueueMoviesIds.includes(movieId)) {
+    newQueueMoviesIds.splice(newQueueMoviesIds.indexOf(movieId), 1);
+    localStorageService.save(keys.QUEUE_MOVIES, newQueueMoviesIds);
+
+    dynamicRefs().queueBtn.classList.add('modal-tabs__btn--current');
+    dynamicRefs().queueBtn.textContent = 'add to queue';
+  }
+
   localStorageService.save(keys.WATCHED_MOVIES, newWatchedMoviesIds);
 };
 
@@ -26,8 +36,10 @@ export const modalQueueBtnClickHandler = event => {
   const movieId = event.target.dataset.id;
 
   const queueMoviesIds = localStorageService.load(keys.QUEUE_MOVIES);
+  const watchedMoviesIds = localStorageService.load(keys.WATCHED_MOVIES);
 
   const newQueueMoviesIds = queueMoviesIds ? [...queueMoviesIds] : [];
+  const newWatchedMoviesIds = watchedMoviesIds ? [...watchedMoviesIds] : [];
 
   if (newQueueMoviesIds.includes(movieId)) {
     newQueueMoviesIds.splice(newQueueMoviesIds.indexOf(movieId), 1);
@@ -37,6 +49,12 @@ export const modalQueueBtnClickHandler = event => {
     newQueueMoviesIds.push(movieId);
     event.target.classList.remove('modal-tabs__btn--current');
     event.target.textContent = 'delete from queue';
+  }
+  if (newWatchedMoviesIds.includes(movieId)) {
+    newWatchedMoviesIds.splice(newWatchedMoviesIds.indexOf(movieId), 1);
+    localStorageService.save(keys.WATCHED_MOVIES, newWatchedMoviesIds);
+    dynamicRefs().watchedBtn.classList.add('modal-tabs__btn--current');
+    dynamicRefs().watchedBtn.textContent = 'add to watched';
   }
 
   localStorageService.save(keys.QUEUE_MOVIES, newQueueMoviesIds);
