@@ -2,7 +2,7 @@ import libraryPageUi from './js/ui/library-page-ui';
 import notifications from './js/notifications';
 import './js/api/firebase/fire-base-service';
 import './js/registration-modal';
-import './js/loadPagePagination';
+import './js/load-page-pagination';
 import { onAuthStateChanged } from 'firebase/auth';
 import { watchedTabClickHandler } from './js/handlers/watchedTabClickHandler';
 import './js/footer-modal';

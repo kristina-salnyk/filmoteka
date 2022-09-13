@@ -7,7 +7,7 @@ import { fetchTrendingMovies } from './js/api/movie-api/fetchTrendingMovies';
 import { renderMoviesData } from './js/render/renderMoviesData';
 import './js/footer-modal';
 import './js/registration-modal';
-import './js/loadPagePagination';
+import './js/load-page-pagination';
 import { spinner } from './js/spinner';
 import refs from './js/refs/refs';
 import './js/swiper-slider';
