@@ -9,6 +9,6 @@ export const fetchMovieVideo = async id => {
     const response = await api.get(url);
     return response.data;
   } catch (error) {
-    notifications.showCustomMessage('Kina ne bude.');
+    notifications.failedRequest();
   }
 };
