@@ -1,3 +1,6 @@
+export const BASE_URL = 'https://api.themoviedb.org/3';
+export const API_KEY = '3db99de6ff3e5f2ef6de763ae547f586';
+
 export const REQUEST_URL = {
   TRENDING: '/trending',
   SEARCH: '/search/movie',
@@ -15,12 +18,8 @@ export const REQUEST_TYPES = {
   SEARCH: 'search-movie',
 };
 
-export const FIREBASE_CONFIGS = {
-  apiKey: 'AIzaSyASac4aw0X2wCy6bkMcU6NA4fFTe0NTD7w',
-  authDomain: 'film-27a94.firebaseapp.com',
-  databaseURL: 'https://film-27a94-default-rtdb.firebaseio.com',
-  projectId: 'film-27a94',
-  storageBucket: 'film-27a94.appspot.com',
-  messagingSenderId: '56123334425',
-  appId: '1:56123334425:web:349d0e439f19e0f99def88',
-};
+const WATCHED_MOVIES = 'watched-movies';
+const QUEUE_MOVIES = 'queue-movies';
+const LAST_FETCH = 'last_fetch';
+
+export const STORAGE_KEYS = { WATCHED_MOVIES, QUEUE_MOVIES, LAST_FETCH };

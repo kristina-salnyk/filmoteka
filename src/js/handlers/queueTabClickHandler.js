@@ -1,6 +1,6 @@
 import refs from '../refs/refs';
-import storage from '../local-storage/local-storage-service';
-import key from '../local-storage/local-storage-keys';
+import storage from '../local-storage-service';
+import { STORAGE_KEYS } from '../constants';
 import { fetchMovieById } from '../api/movie-api/fetchMovieById';
 import { siteConfigs } from '../SiteConfigs';
 import libraryPageUi from '../ui/library-page-ui';
@@ -14,13 +14,12 @@ export const queueTabClickHandler = async event => {
 
   refs.libraryGallery.innerHTML = '';
 
-  const queueMovieIds = await loadDataFromStorage(key.QUEUE_MOVIES);
+  const queueMovieIds = await loadDataFromStorage(STORAGE_KEYS.QUEUE_MOVIES);
 
   paginationMarkup(Math.ceil(queueMovieIds.length / 20), siteConfigs.queuePage);
   if (!queueMovieIds || queueMovieIds.length === 0)
-    
-  return libraryPageUi.renderEmptyLibrary();
- 
+    return libraryPageUi.renderEmptyLibrary();
+
   processMovieIds(queueMovieIds).then(data => {
     renderLibraryMoviesData(data);
   });
@@ -31,13 +30,13 @@ const processMovieIds = ids => {
   const movieRequests = ids.map(id => fetchMovieById(id));
   const result = Promise.all(movieRequests);
   spinner.stop();
-  storage.save(key.LAST_FETCH, 'QUEUE');
+  storage.save(STORAGE_KEYS.LAST_FETCH, 'QUEUE');
 
   return result;
 };
 
 const renderLibraryMoviesData = movies => {
-let renderMovies = [];
+  let renderMovies = [];
   if (siteConfigs.queuePage === 1) renderMovies = movies.slice(0, 20);
 
   if (siteConfigs.queuePage > 1)

@@ -1,6 +1,6 @@
 import refs from '../refs/refs';
-import storage from '../local-storage/local-storage-service';
-import key from '../local-storage/local-storage-keys';
+import storage from '../local-storage-service';
+import { STORAGE_KEYS } from '../constants';
 import { fetchMovieById } from '../api/movie-api/fetchMovieById';
 import libraryPageUi from '../ui/library-page-ui';
 import paginationMarkup from '../pagination';
@@ -14,18 +14,19 @@ export const watchedTabClickHandler = async event => {
 
   refs.libraryGallery.innerHTML = '';
 
-  const watchedMovieIds = await loadDataFromStorage(key.WATCHED_MOVIES);
+  const watchedMovieIds = await loadDataFromStorage(
+    STORAGE_KEYS.WATCHED_MOVIES
+  );
 
   if (!watchedMovieIds || watchedMovieIds.length === 0)
     return libraryPageUi.renderEmptyLibrary();
 
   processMovieIds(watchedMovieIds).then(data => {
-      
-      renderLibraryMoviesData(data);
-      paginationMarkup(
-        Math.ceil(watchedMovieIds.length / 20),
-        siteConfigs.watchedPage
-      );
+    renderLibraryMoviesData(data);
+    paginationMarkup(
+      Math.ceil(watchedMovieIds.length / 20),
+      siteConfigs.watchedPage
+    );
   });
 };
 
@@ -35,19 +36,18 @@ const processMovieIds = async ids => {
   const result = await Promise.all(movieRequests);
 
   spinner.stop();
-  storage.save(key.LAST_FETCH, 'WATCHED');
+  storage.save(STORAGE_KEYS.LAST_FETCH, 'WATCHED');
 
   return result;
 };
 
 export const renderLibraryMoviesData = async movies => {
- 
   let renderMovies = [];
 
   if (siteConfigs.watchedPage === 1) renderMovies = movies.slice(0, 20);
 
   if (siteConfigs.watchedPage > 1)
-   renderMovies =  movies.slice(
+    renderMovies = movies.slice(
       siteConfigs.watchedPage * 20 - 20,
       siteConfigs.watchedPage * 20
     );

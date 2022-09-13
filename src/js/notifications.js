@@ -23,7 +23,7 @@ export default {
   },
 
   noVideoYouTube() {
-    Notify.info('sorry no official trailer');
+    Notify.info('Sorry, no official trailer for this movie');
   },
 
   showCustomMessage(message) {

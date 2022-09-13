@@ -11,10 +11,9 @@ export const libraryGalleryClickHandler = async event => {
     event.target.nodeName !== 'IMG' &&
     event.target.nodeName !== 'H2' &&
     event.target.nodeName !== 'SPAN'
-    ) {
-      return;
-    }
-  
+  ) {
+    return;
+  }
 
   const movieId = event.target.closest('a').dataset.id;
 

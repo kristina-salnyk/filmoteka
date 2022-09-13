@@ -16,7 +16,7 @@ export async function httpsYouTubeVideo(event) {
     spinner.spin(refs.homeGallery);
     const videoData = await fetchMovieVideo(movieId);
     spinner.stop();
-    if (videoData.results.length === 0) {
+    if (videoData['results'].length === 0) {
       notifications.noVideoYouTube();
       return;
     }

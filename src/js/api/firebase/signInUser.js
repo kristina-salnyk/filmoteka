@@ -2,7 +2,7 @@ import { signInWithEmailAndPassword } from 'firebase/auth';
 import notifications from '../../notifications';
 import refs from '../../refs/refs';
 import { auth, db } from './fire-base-service';
-import localStorageKeys from '../../local-storage/local-storage-keys';
+import { STORAGE_KEYS } from '../../constants';
 import { doc, setDoc } from 'firebase/firestore';
 
 export function signInUser({ email, password, newUser }) {
@@ -22,8 +22,8 @@ export function signInUser({ email, password, newUser }) {
 async function initStorage() {
   try {
     let usersFilmsObj = {
-      [localStorageKeys.WATCHED_MOVIES]: [],
-      [localStorageKeys.QUEUE_MOVIES]: [],
+      [STORAGE_KEYS.WATCHED_MOVIES]: [],
+      [STORAGE_KEYS.QUEUE_MOVIES]: [],
     };
     const userData = doc(db, 'users', auth.currentUser.uid);
     await setDoc(userData, usersFilmsObj, { merge: true });

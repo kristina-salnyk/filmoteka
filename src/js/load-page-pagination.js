@@ -5,8 +5,8 @@ import { fetchTrendingMovies } from './api/movie-api/fetchTrendingMovies';
 import { renderMoviesData } from './render/renderMoviesData';
 import { fetchSearchMovie } from './api/movie-api/fetchSearchMovie';
 import notifications from './notifications';
-import storage from './local-storage/local-storage-service';
-import key from './local-storage/local-storage-keys';
+import storage from './local-storage-service';
+import { STORAGE_KEYS } from './constants';
 import { spinner } from './spinner';
 import { watchedTabClickHandler } from './handlers/watchedTabClickHandler';
 import { queueTabClickHandler } from './handlers/queueTabClickHandler';
@@ -16,9 +16,9 @@ dynamicRefs().rightArrow.addEventListener('click', rightBtnClick);
 dynamicRefs().leftArrow.addEventListener('click', leftBtnClick);
 
 function leftBtnClick() {
-  if (storage.load(key.LAST_FETCH) === 'WATCHED')
+  if (storage.load(STORAGE_KEYS.LAST_FETCH) === 'WATCHED')
     siteConfigs.decrementWatchedPage();
-  if (storage.load(key.LAST_FETCH) === 'QUEUE')
+  if (storage.load(STORAGE_KEYS.LAST_FETCH) === 'QUEUE')
     siteConfigs.decrementQueuePage();
 
   siteConfigs.decrementPage();
@@ -29,9 +29,10 @@ function leftBtnClick() {
 }
 
 function rightBtnClick() {
-  if (storage.load(key.LAST_FETCH) === 'WATCHED')
+  if (storage.load(STORAGE_KEYS.LAST_FETCH) === 'WATCHED')
     siteConfigs.incrementWatchedPage();
-  if (storage.load(key.LAST_FETCH) === 'QUEUE') siteConfigs.incrementPage();
+  if (storage.load(STORAGE_KEYS.LAST_FETCH) === 'QUEUE')
+    siteConfigs.incrementPage();
   siteConfigs.incrementPage();
   if (refs.homeGallery) refs.homeGallery.innerHTML = '';
   if (refs.libraryGallery) refs.libraryGallery.innerHTML = '';
@@ -44,9 +45,10 @@ function getNewPage(e) {
 
   if (e.target.dataset.number !== '0') {
     const page = Number(e.target.dataset.number);
-    if (storage.load(key.LAST_FETCH) === 'WATCHED')
+    if (storage.load(STORAGE_KEYS.LAST_FETCH) === 'WATCHED')
       siteConfigs.watchedPage = page;
-    if (storage.load(key.LAST_FETCH) === 'QUEUE') siteConfigs.queuePage = page;
+    if (storage.load(STORAGE_KEYS.LAST_FETCH) === 'QUEUE')
+      siteConfigs.queuePage = page;
     siteConfigs.page = page;
     if (refs.homeGallery) refs.homeGallery.innerHTML = '';
     if (refs.libraryGallery) refs.libraryGallery.innerHTML = '';
@@ -55,7 +57,7 @@ function getNewPage(e) {
 }
 
 async function loadMovies() {
-  if (storage.load(key.LAST_FETCH) === 'TRENDING') {
+  if (storage.load(STORAGE_KEYS.LAST_FETCH) === 'TRENDING') {
     try {
       spinner.spin(refs.homeGallery);
       const trendingData = await fetchTrendingMovies();
@@ -66,7 +68,7 @@ async function loadMovies() {
     }
   }
 
-  if (storage.load(key.LAST_FETCH) === 'SEARCH') {
+  if (storage.load(STORAGE_KEYS.LAST_FETCH) === 'SEARCH') {
     try {
       spinner.spin(refs.homeGallery);
       const data = await fetchSearchMovie();
@@ -76,7 +78,7 @@ async function loadMovies() {
       notifications.failedRequest();
     }
   }
-  if (storage.load(key.LAST_FETCH) === 'WATCHED') {
+  if (storage.load(STORAGE_KEYS.LAST_FETCH) === 'WATCHED') {
     try {
       spinner.spin(refs.libraryGallery);
       const data = await watchedTabClickHandler();
@@ -85,7 +87,7 @@ async function loadMovies() {
       notifications.failedRequest();
     }
   }
-  if (storage.load(key.LAST_FETCH) === 'QUEUE') {
+  if (storage.load(STORAGE_KEYS.LAST_FETCH) === 'QUEUE') {
     try {
       spinner.spin(refs.libraryGallery);
       const data = await queueTabClickHandler();

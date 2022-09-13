@@ -2,8 +2,8 @@ import api from './api';
 import { REQUEST_URL } from '../../constants';
 import { siteConfigs } from '../../SiteConfigs';
 import notifications from '../../notifications';
-import storage from '../../local-storage/local-storage-service';
-import key from '../../local-storage/local-storage-keys';
+import storage from '../../local-storage-service';
+import { STORAGE_KEYS } from '../../constants';
 
 export const fetchSearchMovie = async () => {
   const config = {
@@ -14,11 +14,9 @@ export const fetchSearchMovie = async () => {
     },
   };
 
-  const url = REQUEST_URL.SEARCH;
-
   try {
-    const response = await api.get(url, config);
-    storage.save(key.LAST_FETCH, 'SEARCH');
+    const response = await api.get(REQUEST_URL.SEARCH, config);
+    storage.save(STORAGE_KEYS.LAST_FETCH, 'SEARCH');
     return response.data;
   } catch (error) {
     notifications.failedRequest();

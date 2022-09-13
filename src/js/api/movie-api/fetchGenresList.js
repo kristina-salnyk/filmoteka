@@ -3,10 +3,8 @@ import { REQUEST_URL } from '../../constants';
 import notifications from '../../notifications';
 
 export const fetchGenresList = async () => {
-  const url = `${REQUEST_URL.GENRES}`;
-
   try {
-    const response = await api.get(url);
+    const response = await api.get(REQUEST_URL.GENRES);
     return response.data;
   } catch (error) {
     notifications.failedRequest();
