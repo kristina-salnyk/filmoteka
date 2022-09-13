@@ -2,7 +2,7 @@ import { dynamicRefs } from './refs/dynamicRefs';
 import refs from './refs/refs';
 import removeYouTube from './youTube';
 
-function onOpenModalBtn() {
+export function onOpenModalBtn() {
   dynamicRefs().closeModalBtn.addEventListener('click', onCloseModalBtn);
   dynamicRefs().backdrop.addEventListener('click', onBackdropClick);
 
@@ -33,7 +33,3 @@ function onEscKeyPress(evn) {
     onCloseModalBtn();
   }
 }
-
-export default {
-  onOpenModalBtn,
-};

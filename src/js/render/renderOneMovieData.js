@@ -1,4 +1,4 @@
-import modalActions from '../modal-film-card';
+import { onOpenModalBtn } from '../onOpenModalBtn';
 
 export const renderOneMovieData = (data, markupCallback) => {
   const movieGenres = data.genres.map(genre => genre.name).join(', ');
@@ -17,6 +17,6 @@ export const renderOneMovieData = (data, markupCallback) => {
     id: data.id,
   };
 
-  modalActions.onOpenModalBtn();
+  onOpenModalBtn();
   markupCallback(movie);
 };
