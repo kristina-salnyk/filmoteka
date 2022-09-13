@@ -61,7 +61,9 @@ export const modalQueueBtnClickHandler = event => {
 };
 
 export const onOpenModal = movieId => {
+   localStorageService.save(keys.MODAL_MOVIE, movieId);
   const queueMoviesIds = localStorageService.load(keys.QUEUE_MOVIES);
+  
   if (queueMoviesIds) {
     if (queueMoviesIds.includes(String(movieId))) {
       dynamicRefs().queueBtn.classList.remove('modal-tabs__btn--current');
@@ -77,3 +79,4 @@ export const onOpenModal = movieId => {
     }
   }
 };
+
