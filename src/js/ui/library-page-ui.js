@@ -16,6 +16,7 @@ import { registerFormSubmitHandler } from '../handlers/registerFormSubmitHandler
 import { onRegistrationBtnClick } from '../registration-modal';
 import localStorageService from '../local-storage-service';
 import { STORAGE_KEYS } from '../constants';
+import { loadDataFromStorage } from '../loadDataFromStorage';
 
 const setLibraryEventListeners = () => {
   refs.watchedTab.addEventListener('click', watchedTabClickHandler);
@@ -52,35 +53,21 @@ function renderEmptyLibrary() {
     '<p class="empty-page__text"> Nothing to see here<br>Add a movie please</p>';
   refs.libraryGallery.insertAdjacentHTML('afterbegin', fillerLibrary);
 }
+
 const scrollToTop = () => {
   window.scrollBy(0, 0);
 };
 
-export function deleteMovieCard() {
+export async function deleteMovieCard() {
   const movieId = localStorageService.load(STORAGE_KEYS.MODAL_MOVIE);
 
-  const watchedMoviesIds = localStorageService.load(
-    STORAGE_KEYS.WATCHED_MOVIES
-  );
-  const queueMoviesIds = localStorageService.load(STORAGE_KEYS.QUEUE_MOVIES);
   const elByID = document.querySelector(`[data-id='${movieId}']`);
 
-  if (
-    !watchedMoviesIds.includes(String(movieId)) &&
-    elByID &&
-    refs.libraryGallery
-  ) {
+  try {
     const deleteElement = elByID.parentElement;
     deleteElement.remove();
-  }
-  if (
-    !queueMoviesIds.includes(String(movieId)) &&
-    elByID &&
-    refs.libraryGallery
-  ) {
-    const deleteElement = elByID.parentElement;
-    deleteElement.remove();
-  }
+    localStorageService.save(STORAGE_KEYS.MODAL_MOVIE, '');
+  } catch {}
 }
 
 export default {

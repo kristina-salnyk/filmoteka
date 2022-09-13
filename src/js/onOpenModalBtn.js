@@ -12,9 +12,9 @@ export function onOpenModalBtn() {
 }
 
 function onCloseModalBtn() {
-  deleteMovieCard();
   window.removeEventListener('keydown', onEscKeyPress);
   document.body.classList.remove('on-open-modal');
+  deleteMovieCard();
 }
 
 function onBackdropClick(evn) {

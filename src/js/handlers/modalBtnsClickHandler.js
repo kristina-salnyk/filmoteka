@@ -40,6 +40,13 @@ export const modalWatchedBtnClickHandler = async event => {
     [STORAGE_KEYS.WATCHED_MOVIES]: newWatchedMoviesIds,
     [STORAGE_KEYS.QUEUE_MOVIES]: newQueueMoviesIds,
   });
+
+  const currIdToDel = localStorageService.load(STORAGE_KEYS.MODAL_MOVIE);
+  if (movieId === currIdToDel) {
+    localStorageService.save(STORAGE_KEYS.MODAL_MOVIE, '');
+  } else {
+    localStorageService.save(STORAGE_KEYS.MODAL_MOVIE, movieId);
+  }
 };
 
 export const modalQueueBtnClickHandler = async event => {
@@ -77,11 +84,17 @@ export const modalQueueBtnClickHandler = async event => {
     [STORAGE_KEYS.WATCHED_MOVIES]: newWatchedMoviesIds,
     [STORAGE_KEYS.QUEUE_MOVIES]: newQueueMoviesIds,
   });
+
+  const currIdToDel = localStorageService.load(STORAGE_KEYS.MODAL_MOVIE);
+
+  if (movieId === currIdToDel) {
+    localStorageService.save(STORAGE_KEYS.MODAL_MOVIE, '');
+  } else {
+    localStorageService.save(STORAGE_KEYS.MODAL_MOVIE, movieId);
+  }
 };
 
 export const onOpenModal = async movieId => {
-  localStorageService.save(STORAGE_KEYS.MODAL_MOVIE, movieId);
-
   const usersFilmsObj = await loadDataFromStorage('usersFilmsObj');
 
   if (usersFilmsObj && usersFilmsObj[STORAGE_KEYS.QUEUE_MOVIES]) {
