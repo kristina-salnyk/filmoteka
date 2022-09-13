@@ -1,10 +1,10 @@
 import { Notify } from 'notiflix';
 
 Notify.init({
-  width: '300px',
+  width: '400px',
   position: 'right-bottom',
   distance: '10px',
-  timeout: 2000,
+  timeout: 3000,
 });
 
 export default {

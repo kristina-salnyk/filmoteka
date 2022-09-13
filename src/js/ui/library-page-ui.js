@@ -14,6 +14,8 @@ import {
 import { httpsYouTubeVideo } from '../youTube';
 import { registerFormSubmitHandler } from '../handlers/registerFormSubmitHandler';
 import { onRegistrationBtnClick } from '../registration-modal';
+import localStorageService from '../local-storage-service';
+import { STORAGE_KEYS } from '../constants';
 
 const setLibraryEventListeners = () => {
   refs.watchedTab.addEventListener('click', watchedTabClickHandler);
@@ -40,6 +42,7 @@ const appendMovieMarkup = movie => {
     modalWatchedBtnClickHandler
   );
   dynamicRefs().queueBtn.addEventListener('click', modalQueueBtnClickHandler);
+
   onOpenModal(movie.id);
   dynamicRefs().playTrailer.addEventListener('click', httpsYouTubeVideo);
 };
@@ -52,6 +55,33 @@ function renderEmptyLibrary() {
 const scrollToTop = () => {
   window.scrollBy(0, 0);
 };
+
+export function deleteMovieCard() {
+  const movieId = localStorageService.load(STORAGE_KEYS.MODAL_MOVIE);
+
+  const watchedMoviesIds = localStorageService.load(
+    STORAGE_KEYS.WATCHED_MOVIES
+  );
+  const queueMoviesIds = localStorageService.load(STORAGE_KEYS.QUEUE_MOVIES);
+  const elByID = document.querySelector(`[data-id='${movieId}']`);
+
+  if (
+    !watchedMoviesIds.includes(String(movieId)) &&
+    elByID &&
+    refs.libraryGallery
+  ) {
+    const deleteElement = elByID.parentElement;
+    deleteElement.remove();
+  }
+  if (
+    !queueMoviesIds.includes(String(movieId)) &&
+    elByID &&
+    refs.libraryGallery
+  ) {
+    const deleteElement = elByID.parentElement;
+    deleteElement.remove();
+  }
+}
 
 export default {
   setLibraryEventListeners,

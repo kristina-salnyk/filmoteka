@@ -2,6 +2,7 @@ import { STORAGE_KEYS } from '../constants';
 import { dynamicRefs } from '../refs/dynamicRefs';
 import { loadDataToStorage } from '../loadDataToStorage';
 import { loadDataFromStorage } from '../loadDataFromStorage';
+import localStorageService from '../local-storage-service';
 
 export const modalWatchedBtnClickHandler = async event => {
   const movieId = event.target.dataset.id;
@@ -79,6 +80,8 @@ export const modalQueueBtnClickHandler = async event => {
 };
 
 export const onOpenModal = async movieId => {
+  localStorageService.save(STORAGE_KEYS.MODAL_MOVIE, movieId);
+
   const usersFilmsObj = await loadDataFromStorage('usersFilmsObj');
 
   if (usersFilmsObj && usersFilmsObj[STORAGE_KEYS.QUEUE_MOVIES]) {
