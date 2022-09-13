@@ -22,6 +22,10 @@ export default {
     Notify.info('Search results are already displayed.');
   },
 
+  noVideoYouTube() {
+    Notify.info('sorry no official trailer');
+  },
+
   showCustomMessage(message) {
     Notify.info(message);
   },

@@ -23,6 +23,7 @@
     cursor: pointer;
     transition: color 250ms $timing-function, fill 250ms $timing-function,
       border-color 250ms $timing-function;
+
     &:hover {
       color: #f58d47;
       fill: #f58d47;
@@ -30,6 +31,7 @@
       border-radius: 3px;
     }
   }
+
   &__dots {
     width: 40px;
     height: 40px;
@@ -38,6 +40,7 @@
     display: flex;
     justify-content: center;
   }
+
   &__svg {
     stroke: currentColor;
     width: 16px;
@@ -60,11 +63,11 @@
     cursor: pointer;
     border: 2px solid #ffffff;
     border-radius: 3px;
-    background-color: #ffffff;
+    // background-color: #ffffff;
     cursor: pointer;
     transition: color 250ms $timing-function,
-    border-color 250ms $timing-function;
-    
+      border-color 250ms $timing-function;
+
     &:hover {
       color: #f58d47;
       border: 2px solid #f58d47;
