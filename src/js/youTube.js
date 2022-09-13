@@ -14,7 +14,11 @@ export async function httpsYouTubeVideo(event) {
     spinner.spin(refs.homeGallery);
     const videoData = await fetchMovieVideo(movieId);
     spinner.stop();
-    const videoKey = videoData['results'].find(video => {
+    if (videoData.results.length === 0) {
+      notifications.noVideoYouTube();
+      return;
+    }
+    const videoKey = await videoData['results'].find(video => {
       if (video.type.toLowerCase().includes('trailer')) {
         return video.key;
       }
