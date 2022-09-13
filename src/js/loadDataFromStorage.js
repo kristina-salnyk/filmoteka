@@ -3,9 +3,9 @@ import storage from './local-storage-service';
 import { getDataFromStorage } from './api/firebase/getDataFromStorage';
 
 export const loadDataFromStorage = async key => {
-  console.log(auth.currentUser);
   if (auth.currentUser) {
-    return await getDataFromStorage(key);
+    const data = await getDataFromStorage();
+    return data;
   } else {
     return storage.load(key);
   }

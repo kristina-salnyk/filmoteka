@@ -14,17 +14,20 @@ export const queueTabClickHandler = async event => {
 
   refs.libraryGallery.innerHTML = '';
 
-  const queueMovieIds = await loadDataFromStorage(STORAGE_KEYS.QUEUE_MOVIES);
+  const usersFilmsObj = await loadDataFromStorage('usersFilmsObj');
+  const queueMovieIds = usersFilmsObj
+    ? usersFilmsObj[STORAGE_KEYS.QUEUE_MOVIES]
+    : usersFilmsObj;
 
-  paginationMarkup(
-    Math.ceil(queueMovieIds.length / siteConfigs.perPage),
-    siteConfigs.queuePage
-  );
   if (!queueMovieIds || queueMovieIds.length === 0)
     return libraryPageUi.renderEmptyLibrary();
 
   processMovieIds(queueMovieIds).then(data => {
     renderLibraryMoviesData(data);
+    paginationMarkup(
+      Math.ceil(queueMovieIds.length / siteConfigs.perPage),
+      siteConfigs.queuePage
+    );
   });
 };
 
@@ -40,6 +43,7 @@ const processMovieIds = ids => {
 
 const renderLibraryMoviesData = movies => {
   let renderMovies = [];
+
   if (siteConfigs.queuePage === 1)
     renderMovies = movies.slice(0, siteConfigs.perPage);
 

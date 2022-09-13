@@ -41,7 +41,10 @@ initLibraryPage().catch(error => {
 async function initLibraryPage() {
   libraryPageUi.setLibraryEventListeners();
 
-  watchedTabClickHandler().catch(error => {
-    notifications.failedRequest();
-  });
+  setTimeout(() => {
+    if (!auth.currentUser)
+      watchedTabClickHandler().catch(error => {
+        notifications.failedRequest();
+      });
+  }, 2000);
 }

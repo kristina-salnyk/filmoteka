@@ -14,9 +14,10 @@ export const watchedTabClickHandler = async event => {
 
   refs.libraryGallery.innerHTML = '';
 
-  const watchedMovieIds = await loadDataFromStorage(
-    STORAGE_KEYS.WATCHED_MOVIES
-  );
+  const usersFilmsObj = await loadDataFromStorage('usersFilmsObj');
+  const watchedMovieIds = usersFilmsObj
+    ? usersFilmsObj[STORAGE_KEYS.WATCHED_MOVIES]
+    : usersFilmsObj;
 
   if (!watchedMovieIds || watchedMovieIds.length === 0)
     return libraryPageUi.renderEmptyLibrary();

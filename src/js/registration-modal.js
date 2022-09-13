@@ -1,4 +1,3 @@
-import refs from './refs/refs';
 import { dynamicRefs } from './refs/dynamicRefs';
 import { signOutUser } from './api/firebase/signOutUser';
 import { auth } from './api/firebase/fire-base-service';

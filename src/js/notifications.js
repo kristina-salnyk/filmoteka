@@ -2,7 +2,7 @@ import { Notify } from 'notiflix';
 
 Notify.init({
   width: '300px',
-  position: 'right-top',
+  position: 'right-bottom',
   distance: '10px',
   timeout: 2000,
 });
