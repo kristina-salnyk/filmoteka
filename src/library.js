@@ -5,6 +5,7 @@ import './js/registration-modal';
 import './js/load-page-pagination';
 import './js/footer-modal';
 import './js/swiper-slider';
+import './js/theme';
 import { onAuthStateChanged } from 'firebase/auth';
 import refs from './js/refs/refs';
 import { watchedTabClickHandler } from './js/handlers/watchedTabClickHandler';
