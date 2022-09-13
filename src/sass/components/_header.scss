@@ -138,6 +138,7 @@
   &--button {
     background-color: transparent;
     border-style: none;
+    cursor: pointer;
   }
   &--current {
     text-decoration: 3px underline $accent-border-color;
