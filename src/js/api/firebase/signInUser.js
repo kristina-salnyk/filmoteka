@@ -1,7 +1,7 @@
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import notifications from '../../notifications';
 import refs from '../../refs/refs';
-import { auth } from './fire-base-service';
+import { auth, db } from './fire-base-service';
 import localStorageKeys from '../../local-storage/local-storage-keys';
 import { doc, setDoc } from 'firebase/firestore';
 
