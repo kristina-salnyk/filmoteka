@@ -16,7 +16,7 @@ export const modalWatchedBtnClickHandler = event => {
     event.target.classList.add('modal-tabs__btn--current');
     event.target.textContent = 'add to watched';
   } else {
-    newWatchedMoviesIds.push(movieId);
+    newWatchedMoviesIds.unshift(movieId);
     event.target.classList.remove('modal-tabs__btn--current');
     event.target.textContent = 'delete from watched';
   }
@@ -46,7 +46,7 @@ export const modalQueueBtnClickHandler = event => {
     event.target.classList.add('modal-tabs__btn--current');
     event.target.textContent = 'add to queue';
   } else {
-    newQueueMoviesIds.push(movieId);
+    newQueueMoviesIds.unshift(movieId);
     event.target.classList.remove('modal-tabs__btn--current');
     event.target.textContent = 'delete from queue';
   }
