@@ -1,4 +1,5 @@
 import refs from './refs/refs';
+
 (() => {
   refs.openModalBtn.addEventListener('click', toggleModal);
   refs.closeModalBtn.addEventListener('click', toggleModal);

@@ -1,11 +1,11 @@
 import refs from './refs/refs';
 import { dynamicRefs } from './refs/dynamicRefs';
-import { logOut } from './api/firebase/fireBase'
+import { signOutUser } from './api/firebase/signOutUser';
 
 function onRegistrationBtnClick() {
   if (refs.openRegistrationBtn.textContent === 'Log Out') {
-    logOut()
-    return
+    signOutUser();
+    return;
   }
   document.body.classList.toggle('open-registration-modal');
   dynamicRefs().registrationBackdrop.classList.toggle('hidden');
