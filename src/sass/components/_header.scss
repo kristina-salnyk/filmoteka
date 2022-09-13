@@ -297,3 +297,42 @@
     }
   }
 }
+
+// theme
+  .themetoggle {
+    position: absolute;
+    margin-top: -30px;
+    margin-left: 10px;
+  }
+  .theme-swicher {
+    color: #ff6b02;
+      font-family: 'Material Icons';
+      font-weight: normal;
+      font-style: normal;
+      font-size: 20px;
+      display: inline-block;
+      line-height: 1;
+      text-transform: none;
+      letter-spacing: normal;
+      word-wrap: normal;
+      white-space: nowrap;
+      direction: ltr;
+        filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.25)) drop-shadow(0 4px 4px rgba(0, 0, 0, 0.25));
+          transition: all 500ms ease-in-out;
+        &:hover,
+          &:focus {
+            color: #ffffff;
+          }
+}
+
+.dark {
+  background-color: #3c3c3c;
+}
+
+.modal__backdrop .dark{
+  background-color: #3c3c3c;
+}
+
+.movie-card .dark{
+  background-color: #3c3c3c;
+}
