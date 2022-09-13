@@ -8,6 +8,7 @@ class SiteConfigs {
     this.mediaType = 'movie';
     this.timeWindow = 'day';
     this.includeAdult = false;
+    this.perPage = 20;
   }
 
   getGenreById(id) {
@@ -33,8 +34,6 @@ class SiteConfigs {
   decrementPage() {
     this.page -= 1;
   }
-
- 
 
   resetPage() {
     this.page = 1;

@@ -24,7 +24,7 @@ export const watchedTabClickHandler = async event => {
   processMovieIds(watchedMovieIds).then(data => {
     renderLibraryMoviesData(data);
     paginationMarkup(
-      Math.ceil(watchedMovieIds.length / 20),
+      Math.ceil(watchedMovieIds.length / siteConfigs.perPage),
       siteConfigs.watchedPage
     );
   });
@@ -44,12 +44,13 @@ const processMovieIds = async ids => {
 export const renderLibraryMoviesData = async movies => {
   let renderMovies = [];
 
-  if (siteConfigs.watchedPage === 1) renderMovies = movies.slice(0, 20);
+  if (siteConfigs.watchedPage === 1)
+    renderMovies = movies.slice(0, siteConfigs.perPage);
 
   if (siteConfigs.watchedPage > 1)
     renderMovies = movies.slice(
-      siteConfigs.watchedPage * 20 - 20,
-      siteConfigs.watchedPage * 20
+      siteConfigs.watchedPage * siteConfigs.perPage - siteConfigs.perPage,
+      siteConfigs.watchedPage * siteConfigs.perPage
     );
   const moviesData = renderMovies.map(item => {
     const newItem = { ...item };

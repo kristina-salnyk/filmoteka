@@ -40,6 +40,7 @@ function markupModalYouTube(videoKey) {
   refs.youTubeVideo.addEventListener('click', backdrop);
   dynamicRefs().btnCloseModalYouTube.addEventListener('click', closeVideo);
 }
+
 // ---------------
 
 function backdrop(e) {
@@ -50,6 +51,7 @@ function backdrop(e) {
 function closeVideo() {
   removeYouTube();
 }
+
 // --------------
 
 export default function removeYouTube() {

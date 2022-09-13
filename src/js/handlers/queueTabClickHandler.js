@@ -16,7 +16,10 @@ export const queueTabClickHandler = async event => {
 
   const queueMovieIds = await loadDataFromStorage(STORAGE_KEYS.QUEUE_MOVIES);
 
-  paginationMarkup(Math.ceil(queueMovieIds.length / 20), siteConfigs.queuePage);
+  paginationMarkup(
+    Math.ceil(queueMovieIds.length / siteConfigs.perPage),
+    siteConfigs.queuePage
+  );
   if (!queueMovieIds || queueMovieIds.length === 0)
     return libraryPageUi.renderEmptyLibrary();
 
@@ -37,12 +40,13 @@ const processMovieIds = ids => {
 
 const renderLibraryMoviesData = movies => {
   let renderMovies = [];
-  if (siteConfigs.queuePage === 1) renderMovies = movies.slice(0, 20);
+  if (siteConfigs.queuePage === 1)
+    renderMovies = movies.slice(0, siteConfigs.perPage);
 
   if (siteConfigs.queuePage > 1)
     renderMovies = movies.slice(
-      siteConfigs.queuePage * 20 - 20,
-      siteConfigs.queuePage * 20
+      siteConfigs.queuePage * siteConfigs.perPage - siteConfigs.perPage,
+      siteConfigs.queuePage * siteConfigs.perPage
     );
   const moviesData = renderMovies.map(item => {
     const newItem = { ...item };
