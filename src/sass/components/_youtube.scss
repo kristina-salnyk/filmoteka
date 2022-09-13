@@ -70,6 +70,10 @@
   position: absolute;
   top: -54px;
   right: 6px;
+
+  @media (max-width: 480px) {
+    right: -14;
+  }
 }
 
 .div__hover:hover .modal__btn-door-exit {

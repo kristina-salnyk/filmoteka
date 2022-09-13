@@ -87,6 +87,7 @@
 
 .logo {
   color: $secondary-text-color;
+  transition: color 250ms $timing-function;
 
   &:hover {
     color: $hover-text-color;
@@ -133,6 +134,7 @@
 
   color: $secondary-text-color;
   text-transform: uppercase;
+  transition: color 250ms $timing-function;
 
   &:hover {
     color: $hover-text-color;
@@ -255,12 +257,14 @@
 
   text-transform: uppercase;
   cursor: pointer;
+  transition: background-color 250ms $timing-function;
 
   &:hover {
     background-color: $btn-hover-color;
   }
 
   &--current {
+    transition: background-color 250ms $timing-function;
     background-color: $btn-accent-color;
     border: none;
   }
