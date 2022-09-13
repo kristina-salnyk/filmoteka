@@ -12,7 +12,6 @@ import { spinner } from './js/spinner';
 import refs from './js/refs/refs';
 import './js/swiper-slider';
 import { onAuthStateChanged } from 'firebase/auth';
-import { watchedTabClickHandler } from './js/handlers/watchedTabClickHandler';
 import { auth } from './js/api/firebase/fire-base-service';
 
 onAuthStateChanged(auth, user => {

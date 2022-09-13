@@ -21,11 +21,7 @@ onAuthStateChanged(auth, user => {
     refs.openRegistrationBtn.textContent = 'Log in';
   }
 
-  if (!siteConfigs.storageCreated) return;
-
   if (auth.currentUser) {
-    refs.openRegistrationBtn.textContent = 'Log out';
-
     if (storage.load(STORAGE_KEYS.LAST_FETCH) === 'QUEUE')
       queueTabClickHandler().catch(error => {
         notifications.failedRequest();
