@@ -3,6 +3,8 @@
   height: 112px;
   background-color: $footer-brg-color;
 
+  box-shadow: rgba(100, 100, 111, 0.6) 0 -0.1rem .6rem .3px;
+
   @include for-tablet-up {
     height: 86px;
   }

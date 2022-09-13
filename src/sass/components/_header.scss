@@ -8,6 +8,8 @@
   background-position: center;
   background-size: cover;
 
+  box-shadow: rgba(100, 100, 111, 0.6) 0 0.4rem 1rem 0;
+
   @include for-tablet-up {
     height: 220px;
   }
@@ -135,11 +137,13 @@
   &:hover {
     color: $hover-text-color;
   }
+
   &--button {
     background-color: transparent;
     border-style: none;
     cursor: pointer;
   }
+
   &--current {
     text-decoration: 3px underline $accent-border-color;
     text-underline-offset: 3px;
