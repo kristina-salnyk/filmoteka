@@ -1,4 +1,4 @@
-import { auth, getDataFromStorage } from './api/firebase/fireBase';
+import { auth, getDataFromStorage } from './api/firebase/fire-base-service';
 import storage from './local-storage/local-storage-service';
 
 export const loadDataFromStorage = async key => {

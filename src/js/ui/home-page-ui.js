@@ -5,14 +5,14 @@ import { dynamicRefs } from '../refs/dynamicRefs';
 import { trackScroll, backToTop } from '../handlers/scrollUpClickHandler';
 import movieCards from '../../templates/movie-card.hbs';
 import modalMovie from '../../templates/modal-for-movie.hbs';
-import { submitRegisterForm } from '../api/firebase/fireBase';
-
+import { submitRegisterForm } from '../api/firebase/fire-base-service';
 import {
   modalWatchedBtnClickHandler,
   modalQueueBtnClickHandler,
   onOpenModal,
 } from '../handlers/modalBtnsClickHandler';
 import { httpsYouTubeVideo } from '../youTube';
+import { registerFormSubmitHandler } from '../handlers/registerFormSubmitHandler';
 
 const setHomeEventListeners = () => {
   refs.searchForm.addEventListener('submit', searchFormSubmitHandler);
@@ -21,7 +21,7 @@ const setHomeEventListeners = () => {
   refs.goTopBtn.addEventListener('click', backToTop);
   window.addEventListener('scroll', trackScroll);
 
-  refs.registerForm.addEventListener('submit', submitRegisterForm);
+  refs.registerForm.addEventListener('submit', registerFormSubmitHandler);
 };
 
 const appendGalleryMarkup = movies => {

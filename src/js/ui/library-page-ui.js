@@ -12,13 +12,16 @@ import {
   onOpenModal,
 } from '../handlers/modalBtnsClickHandler';
 import { httpsYouTubeVideo } from '../youTube';
-import { submitRegisterForm } from '../api/firebase/fireBase';
+import { registerFormSubmitHandler } from '../handlers/registerFormSubmitHandler';
 
 const setLibraryEventListeners = () => {
   refs.watchedTab.addEventListener('click', watchedTabClickHandler);
   refs.queueTab.addEventListener('click', queueTabClickHandler);
+
   refs.libraryGallery.addEventListener('click', libraryGalleryClickHandler);
-  refs.registerForm.addEventListener('submit', submitRegisterForm);
+
+  refs.registerForm.addEventListener('submit', registerFormSubmitHandler);
+
   refs.goTopBtn.addEventListener('click', backToTop);
   window.addEventListener('scroll', trackScroll);
 };
