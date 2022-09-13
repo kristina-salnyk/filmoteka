@@ -11,7 +11,7 @@ import {
   modalWatchedBtnClickHandler,
   onOpenModal,
 } from '../handlers/modalBtnsClickHandler';
-import { httpsYouTubeVideo } from '../you-tube';
+import { httpsYouTubeVideo } from '../youTube';
 import { submitRegisterForm } from '../api/firebase/fireBase';
 
 const setLibraryEventListeners = () => {
