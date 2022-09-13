@@ -175,8 +175,14 @@
   &:hover {
     background-color: #ea4640;
     border: 1px solid #565353;
-    color: $primary-text-color;
-    transition: background-color 250ms $timing-function;
+    color: $secondary-text-color;
+    transition: background-color 250ms $timing-function,
+      color 250ms $timing-function;
+
+    .modal-tabs__youtube-icon {
+      fill: #ffffff;
+      transition: fill 250ms $timing-function;
+    }
   }
 
   width: 235px;
@@ -196,4 +202,5 @@
 .modal-tabs__youtube-icon {
   width: 30px;
   margin-right: 10px;
+  transition: fill 250ms $timing-function;
 }
