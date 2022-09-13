@@ -1,6 +1,7 @@
 import localStorageService from '../local-storage-service';
 import { STORAGE_KEYS } from '../constants';
 import { dynamicRefs } from '../refs/dynamicRefs';
+import { loadDataToStorage } from '../loadDataToStorage';
 
 export const modalWatchedBtnClickHandler = event => {
   const movieId = event.target.dataset.id;
@@ -25,13 +26,13 @@ export const modalWatchedBtnClickHandler = event => {
 
   if (newQueueMoviesIds.includes(movieId)) {
     newQueueMoviesIds.splice(newQueueMoviesIds.indexOf(movieId), 1);
-    localStorageService.save(STORAGE_KEYS.QUEUE_MOVIES, newQueueMoviesIds);
+    loadDataToStorage(STORAGE_KEYS.QUEUE_MOVIES, newQueueMoviesIds);
 
     dynamicRefs().queueBtn.classList.add('modal-tabs__btn--current');
     dynamicRefs().queueBtn.textContent = 'add to queue';
   }
 
-  localStorageService.save(STORAGE_KEYS.WATCHED_MOVIES, newWatchedMoviesIds);
+  loadDataToStorage(STORAGE_KEYS.WATCHED_MOVIES, newWatchedMoviesIds);
 };
 
 export const modalQueueBtnClickHandler = event => {
@@ -56,12 +57,12 @@ export const modalQueueBtnClickHandler = event => {
   }
   if (newWatchedMoviesIds.includes(movieId)) {
     newWatchedMoviesIds.splice(newWatchedMoviesIds.indexOf(movieId), 1);
-    localStorageService.save(STORAGE_KEYS.WATCHED_MOVIES, newWatchedMoviesIds);
+    loadDataToStorage(STORAGE_KEYS.WATCHED_MOVIES, newWatchedMoviesIds);
     dynamicRefs().watchedBtn.classList.add('modal-tabs__btn--current');
     dynamicRefs().watchedBtn.textContent = 'add to watched';
   }
 
-  localStorageService.save(STORAGE_KEYS.QUEUE_MOVIES, newQueueMoviesIds);
+  loadDataToStorage(STORAGE_KEYS.QUEUE_MOVIES, newQueueMoviesIds);
 };
 
 export const onOpenModal = movieId => {

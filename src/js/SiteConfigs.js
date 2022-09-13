@@ -9,7 +9,7 @@ class SiteConfigs {
     this.timeWindow = 'day';
     this.includeAdult = false;
     this.perPage = 20;
-    this.storageCreated = false;
+    this.storageInit = false;
   }
 
   getGenreById(id) {

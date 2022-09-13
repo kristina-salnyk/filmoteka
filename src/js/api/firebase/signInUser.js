@@ -12,9 +12,11 @@ export async function signInUser({ email, password, newUser }) {
       notifications.showCustomSuccessMessage(
         'You are signed in to FireBase account.'
       );
-      if (newUser) {
-        await initStorage();
-      }
+      // if (newUser) {
+      // siteConfigs.init = true;
+      // await initStorage();
+      // siteConfigs.init = false;
+      // }
       refs.openRegistrationBtn.textContent = 'Log Out';
     })
     .catch(error => {
@@ -33,7 +35,6 @@ async function initStorage() {
     const userData = doc(db, 'users', auth.currentUser.uid);
     await setDoc(userData, usersFilmsObj, { merge: true });
 
-    siteConfigs.storageCreated = true;
     notifications.showCustomMessage('You database storage ready to use.');
   } catch (error) {
     notifications.showCustomFailedMessage(

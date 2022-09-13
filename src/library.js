@@ -21,7 +21,7 @@ onAuthStateChanged(auth, user => {
     refs.openRegistrationBtn.textContent = 'Log in';
   }
 
-  if (auth.currentUser) {
+  if (auth.currentUser && !siteConfigs.storageInit) {
     if (storage.load(STORAGE_KEYS.LAST_FETCH) === 'QUEUE')
       queueTabClickHandler().catch(error => {
         notifications.failedRequest();
@@ -41,9 +41,7 @@ initLibraryPage().catch(error => {
 async function initLibraryPage() {
   libraryPageUi.setLibraryEventListeners();
 
-  if (!auth.currentUser) {
-    watchedTabClickHandler().catch(error => {
-      notifications.failedRequest();
-    });
-  }
+  watchedTabClickHandler().catch(error => {
+    notifications.failedRequest();
+  });
 }
