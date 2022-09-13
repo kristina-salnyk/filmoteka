@@ -8,6 +8,8 @@
   background-position: center;
   background-size: cover;
 
+  box-shadow: rgba(100, 100, 111, 0.6) 0 0.4rem 1rem 0;
+
   @include for-tablet-up {
     height: 220px;
   }
@@ -85,6 +87,7 @@
 
 .logo {
   color: $secondary-text-color;
+  transition: color 250ms $timing-function;
 
   &:hover {
     color: $hover-text-color;
@@ -131,15 +134,18 @@
 
   color: $secondary-text-color;
   text-transform: uppercase;
+  transition: color 250ms $timing-function;
 
   &:hover {
     color: $hover-text-color;
   }
+
   &--button {
     background-color: transparent;
     border-style: none;
     cursor: pointer;
   }
+
   &--current {
     text-decoration: 3px underline $accent-border-color;
     text-underline-offset: 3px;
@@ -251,12 +257,14 @@
 
   text-transform: uppercase;
   cursor: pointer;
+  transition: background-color 250ms $timing-function;
 
   &:hover {
     background-color: $btn-hover-color;
   }
 
   &--current {
+    transition: background-color 250ms $timing-function;
     background-color: $btn-accent-color;
     border: none;
   }

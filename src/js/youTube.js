@@ -5,16 +5,22 @@ import { fetchMovieVideo } from './api/movie-api/fetchMovieVideo';
 import notifications from './notifications';
 import { spinner } from './spinner';
 
-const youTubeVideo = refs.youTubeVideo;
-
 export async function httpsYouTubeVideo(event) {
   const movieId = event.target.dataset.id;
+
+  if (!movieId) {
+    return;
+  }
 
   try {
     spinner.spin(refs.homeGallery);
     const videoData = await fetchMovieVideo(movieId);
     spinner.stop();
-    const videoKey = videoData['results'].find(video => {
+    if (videoData.results.length === 0) {
+      notifications.noVideoYouTube();
+      return;
+    }
+    const videoKey = await videoData['results'].find(video => {
       if (video.type.toLowerCase().includes('trailer')) {
         return video.key;
       }
@@ -28,10 +34,10 @@ export async function httpsYouTubeVideo(event) {
 
 //  рендер модального вікна
 function markupModalYouTube(videoKey) {
-  youTubeVideo.insertAdjacentHTML('beforeend', youTubeCard(videoKey));
-  youTubeVideo.classList.remove('visually-hidden');
-  youTubeVideo.classList.add('active');
-  youTubeVideo.addEventListener('click', backdrop);
+  refs.youTubeVideo.insertAdjacentHTML('beforeend', youTubeCard(videoKey));
+  refs.youTubeVideo.classList.remove('visually-hidden');
+  refs.youTubeVideo.classList.add('active');
+  refs.youTubeVideo.addEventListener('click', backdrop);
   dynamicRefs().btnCloseModalYouTube.addEventListener('click', closeVideo);
 }
 // ---------------
@@ -47,7 +53,7 @@ function closeVideo() {
 // --------------
 
 export default function removeYouTube() {
-  youTubeVideo.innerHTML = '';
-  youTubeVideo.classList.add('visually-hidden');
-  youTubeVideo.classList.remove('active');
+  refs.youTubeVideo.innerHTML = '';
+  refs.youTubeVideo.classList.add('visually-hidden');
+  refs.youTubeVideo.classList.remove('active');
 }

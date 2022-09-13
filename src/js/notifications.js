@@ -1,5 +1,12 @@
 import { Notify } from 'notiflix';
 
+Notify.init({
+  width: '400px',
+  position: 'right-top',
+  distance: '10px',
+  timeout: 3000,
+});
+
 export default {
   failedRequest() {
     Notify.failure('Failed to get data, please try again later.');
@@ -13,6 +20,10 @@ export default {
 
   repeatedRequest() {
     Notify.info('Search results are already displayed.');
+  },
+
+  noVideoYouTube() {
+    Notify.info('sorry no official trailer');
   },
 
   showCustomMessage(message) {

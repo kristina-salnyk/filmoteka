@@ -129,7 +129,7 @@
 
   &:hover {
     color: red;
-    border-color: red;
+    border: 1px solid red;
     transition: color 250ms $timing-function,
       border-color 250ms $timing-function;
   }
@@ -146,7 +146,7 @@
   &--current:hover {
     color: #ffffff;
     background-color: $btn-accent-hover-color;
-    border-color: #565353;
+    border: none;
     transition-delay: 100ms;
     transition: color 250ms $timing-function,
       background-color 250ms $timing-function,
@@ -168,13 +168,12 @@
   justify-content: center;
   color: $primary-text-color;
 
-  border-style: none;
   border: 1px solid #565353;
   transition: background-color 250ms $timing-function;
 
   &:hover {
     background-color: #e53f33;
-    border: 1px solid #565353;
+    border: none;
     color: $secondary-text-color;
     transition: background-color 250ms $timing-function,
       color 250ms $timing-function;
