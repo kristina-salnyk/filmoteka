@@ -22,12 +22,16 @@ export const queueTabClickHandler = async event => {
   if (!queueMovieIds || queueMovieIds.length === 0)
     return libraryPageUi.renderEmptyLibrary();
 
+  if (queueMovieIds.length < 20 || queueMovieIds.length === 0)
+    refs.pagination.classList.add('pagination--off');
+  
   processMovieIds(queueMovieIds).then(data => {
     renderLibraryMoviesData(data);
-    paginationMarkup(
-      Math.ceil(queueMovieIds.length / siteConfigs.perPage),
-      siteConfigs.queuePage
-    );
+    if (queueMovieIds.length>20)
+      paginationMarkup(
+        Math.ceil(queueMovieIds.length / siteConfigs.perPage),
+        siteConfigs.queuePage
+      );
   });
 };
 

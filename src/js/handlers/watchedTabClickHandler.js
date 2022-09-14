@@ -22,12 +22,15 @@ export const watchedTabClickHandler = async event => {
   if (!watchedMovieIds || watchedMovieIds.length === 0)
     return libraryPageUi.renderEmptyLibrary();
 
+  if (watchedMovieIds.length < 20 || watchedMovieIds.length === 0)
+    refs.pagination.classList.add('pagination--off');
   processMovieIds(watchedMovieIds).then(data => {
     renderLibraryMoviesData(data);
-    paginationMarkup(
-      Math.ceil(watchedMovieIds.length / siteConfigs.perPage),
-      siteConfigs.watchedPage
-    );
+    if (watchedMovieIds.length > 20)
+      paginationMarkup(
+        Math.ceil(watchedMovieIds.length / siteConfigs.perPage),
+        siteConfigs.watchedPage
+      );
   });
 };
 
