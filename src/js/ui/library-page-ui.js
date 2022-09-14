@@ -17,6 +17,11 @@ import { onRegistrationBtnClick } from '../registration-modal';
 import localStorageService from '../local-storage-service';
 import { STORAGE_KEYS } from '../constants';
 import { loadDataFromStorage } from '../loadDataFromStorage';
+import { async } from '@firebase/util';
+import paginationMarkup from '../pagination';
+import { siteConfigs } from '../SiteConfigs';
+
+
 
 const setLibraryEventListeners = () => {
   refs.watchedTab.addEventListener('click', watchedTabClickHandler);
@@ -60,20 +65,65 @@ const scrollToTop = () => {
 
 export async function deleteMovieCard() {
   const movieId = localStorageService.load(STORAGE_KEYS.MODAL_MOVIE);
-
   const elByID = document.querySelector(`[data-id='${movieId}']`);
+  
+  
+
 
   try {
+
     const deleteElement = elByID.parentElement;
     deleteElement.remove();
     localStorageService.save(STORAGE_KEYS.MODAL_MOVIE, '');
 
     console.log(refs.libraryGallery.children);
-
+reRender()
     if (refs.libraryGallery.children.length === 0) {
       renderEmptyLibrary();
     }
   } catch {}
+}
+
+async function reRender() {
+console.log("out")
+  const usersFilmsObj = await loadDataFromStorage('usersFilmsObj');
+   const queueMovieIds = usersFilmsObj
+     ? usersFilmsObj[STORAGE_KEYS.QUEUE_MOVIES]
+    : usersFilmsObj;
+  const watchedMovieIds = usersFilmsObj
+    ? usersFilmsObj[STORAGE_KEYS.WATCHED_MOVIES]
+    : usersFilmsObj;
+
+  if (
+    localStorageService.load(STORAGE_KEYS.LAST_FETCH) === 'WATCHED'
+    &&
+    watchedMovieIds.length > refs.libraryGallery.children.length
+  ) {
+    console.log("in WATCHED")
+      paginationMarkup(
+        Math.ceil(watchedMovieIds.length / siteConfigs.perPage),
+        siteConfigs.watchedPage
+      );
+      if (watchedMovieIds.length <= 20)
+        refs.pagination.classList.add('pagination--off');
+      console.log('in QUEUE');
+      watchedTabClickHandler();
+   
+    
+  }
+  if (
+    localStorageService.load(STORAGE_KEYS.LAST_FETCH) === 'QUEUE' &&
+    queueMovieIds.length > refs.libraryGallery.children.length
+  ) {
+    paginationMarkup(
+      Math.ceil(queueMovieIds.length / siteConfigs.perPage),
+      siteConfigs.queuePage
+    );
+    if (queueMovieIds.length <= 20)refs.pagination.classList.add('pagination--off');
+      console.log('in QUEUE');
+    queueTabClickHandler();
+  }
+  
 }
 
 export default {
