@@ -51,6 +51,14 @@ export const modalWatchedBtnClickHandler = async event => {
       localStorageService.save(STORAGE_KEYS.MODAL_MOVIE, movieId);
     }
   }
+  if (lastFetch === 'WATCHED') {
+    const currIdToDel = localStorageService.load(STORAGE_KEYS.MODAL_MOVIE);
+    if (movieId === currIdToDel) {
+      localStorageService.save(STORAGE_KEYS.MODAL_MOVIE, '');
+    } else {
+      localStorageService.save(STORAGE_KEYS.MODAL_MOVIE, movieId);
+    }
+  }
 };
 
 export const modalQueueBtnClickHandler = async event => {
@@ -94,6 +102,15 @@ export const modalQueueBtnClickHandler = async event => {
   if (lastFetch === 'WATCHED') {
     const currIdToDel = localStorageService.load(STORAGE_KEYS.MODAL_MOVIE);
 
+    if (movieId === currIdToDel) {
+      localStorageService.save(STORAGE_KEYS.MODAL_MOVIE, '');
+    } else {
+      localStorageService.save(STORAGE_KEYS.MODAL_MOVIE, movieId);
+    }
+  }
+
+  if (lastFetch === 'QUEUE') {
+    const currIdToDel = localStorageService.load(STORAGE_KEYS.MODAL_MOVIE);
     if (movieId === currIdToDel) {
       localStorageService.save(STORAGE_KEYS.MODAL_MOVIE, '');
     } else {
