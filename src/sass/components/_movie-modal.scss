@@ -12,9 +12,15 @@
   object-fit: cover;
   border-radius: 5px;
 
-  @include for-tablet-up {
-    width: 264px;
-    height: 460px;
+
+  @include for-tablet-up{
+    width: 215px;
+    height: 300px;
+  }
+
+  @include for-tablet-down{
+    width: 215px;
+    height: 300px;
   }
 
   @include for-desktop-only {
