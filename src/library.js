@@ -38,6 +38,8 @@ initLibraryPage().catch(error => {
 });
 
 async function initLibraryPage() {
+  storage.save(STORAGE_KEYS.LAST_FETCH, 'WATCHED');
+
   libraryPageUi.setLibraryEventListeners();
 
   setTimeout(() => {
