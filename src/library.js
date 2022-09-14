@@ -50,5 +50,5 @@ async function initLibraryPage() {
         notifications.failedRequest();
       });
     spinner.stop();
-  }, 2000);
+  }, 1500);
 }
