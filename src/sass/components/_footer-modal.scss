@@ -181,6 +181,7 @@ img {
     width: 245px;
     height: 280px;
   }
+
 }
 
 .member-name {
@@ -188,6 +189,10 @@ img {
   align-items: center;
   justify-content: center;
   padding-top: 15px;
+
+  @include for-phone-only{
+    padding-top: 30px;
+  }
 }
 
 .member-position {
