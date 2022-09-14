@@ -10,6 +10,7 @@ import { STORAGE_KEYS } from './constants';
 import { spinner } from './spinner';
 import { watchedTabClickHandler } from './handlers/watchedTabClickHandler';
 import { queueTabClickHandler } from './handlers/queueTabClickHandler';
+import { addDarkClassToHTML } from './theme'
 
 dynamicRefs().paginList.addEventListener('click', getNewPage);
 dynamicRefs().rightArrow.addEventListener('click', rightBtnClick);
@@ -96,4 +97,5 @@ async function loadMovies() {
       notifications.failedRequest();
     }
   }
+    addDarkClassToHTML();
 }
