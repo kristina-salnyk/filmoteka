@@ -14,6 +14,7 @@ export function addDarkClassToHTML() {
     if (localStorage.getItem('theme') === 'dark') {
       document.querySelector('.themetoggle span').textContent = 'dark_mode';
       document.querySelector('main').classList.add('dark');
+      document.querySelector('body').classList.add('dark');
       document.querySelector('.modal__film').classList.add('dark');
       document.querySelector('.footer').classList.add('dark');
       document.querySelector('.footer-modal').classList.add('dark');
@@ -28,6 +29,7 @@ export function addDarkClassToHTML() {
     else {
       document.querySelector('.themetoggle span').textContent = 'wb_sunny';
       document.querySelector('main').classList.remove('dark');
+      document.querySelector('body').classList.remove('dark');
       document.querySelector('.modal__film').classList.remove('dark');
       document.querySelector('.footer').classList.remove('dark');
       document.querySelector('.footer-modal').classList.remove('dark');
