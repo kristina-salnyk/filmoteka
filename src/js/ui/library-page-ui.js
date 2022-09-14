@@ -67,6 +67,12 @@ export async function deleteMovieCard() {
     const deleteElement = elByID.parentElement;
     deleteElement.remove();
     localStorageService.save(STORAGE_KEYS.MODAL_MOVIE, '');
+
+    console.log(refs.libraryGallery.children);
+
+    if (refs.libraryGallery.children.length === 0) {
+      renderEmptyLibrary();
+    }
   } catch {}
 }
 
