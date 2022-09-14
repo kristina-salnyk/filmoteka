@@ -14,6 +14,7 @@ import storage from './js/local-storage-service';
 import { STORAGE_KEYS } from './js/constants';
 import { queueTabClickHandler } from './js/handlers/queueTabClickHandler';
 import { siteConfigs } from './js/SiteConfigs';
+import { spinner } from './js/spinner';
 
 onAuthStateChanged(auth, user => {
   if (auth.currentUser) {
@@ -42,10 +43,12 @@ async function initLibraryPage() {
 
   libraryPageUi.setLibraryEventListeners();
 
+  spinner.spin(refs.libraryGallery);
   setTimeout(() => {
     if (!auth.currentUser)
       watchedTabClickHandler().catch(error => {
         notifications.failedRequest();
       });
+    spinner.stop();
   }, 2000);
 }
