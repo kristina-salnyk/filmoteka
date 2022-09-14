@@ -17,9 +17,11 @@ export function addDarkClassToHTML() {
       document.querySelector('.modal__film').classList.add('dark');
       document.querySelector('.footer').classList.add('dark');
       document.querySelector('.footer-modal').classList.add('dark');
+      document.querySelector('.footer-modal__icon-close').classList.add('dark');
       document.querySelector('.copy-rights__btn').classList.add('dark');
       document.querySelectorAll('.pagination__arrow').forEach(el => el.classList.add('dark'));
       document.querySelectorAll('.pagination__button').forEach(el => el.classList.add('dark'));
+      document.querySelectorAll('.movie-card__info').forEach(el => el.classList.add('dark'));
       document.querySelector('.pagination__button--active').classList.remove('dark');
       
     }
@@ -29,9 +31,11 @@ export function addDarkClassToHTML() {
       document.querySelector('.modal__film').classList.remove('dark');
       document.querySelector('.footer').classList.remove('dark');
       document.querySelector('.footer-modal').classList.remove('dark');
+      document.querySelector('.footer-modal__icon-close').classList.remove('dark');
       document.querySelector('.copy-rights__btn').classList.remove('dark');
       document.querySelectorAll('.pagination__arrow').forEach(el => el.classList.remove('dark'))
       document.querySelectorAll('.pagination__button').forEach(el => el.classList.remove('dark'))
+      document.querySelectorAll('.movie-card__info').forEach(el => el.classList.remove('dark'))
     }
   } catch (err) { }
 }
