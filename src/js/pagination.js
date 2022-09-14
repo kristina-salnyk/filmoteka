@@ -1,8 +1,10 @@
 import { dynamicRefs } from './refs/dynamicRefs';
+import refs from './refs/refs';
 
 let paginationList = '';
 
 export default async function paginationMarkup(amountPages, currentPage) {
+  refs.pagination.classList.remove('pagination--off');
   if (dynamicRefs().paginList) {
    
     dynamicRefs().paginList.innerHTML = '';

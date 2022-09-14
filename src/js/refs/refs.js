@@ -12,4 +12,5 @@ export default {
   openModalBtn: document.querySelector('[data-footer-modal-open]'),
   closeModalBtn: document.querySelector('[data-footer-modal-close]'),
   footerModal: document.querySelector('[data-modal]'),
+  pagination: document.querySelector('[data-el="pagination"]'),
 };

@@ -32,7 +32,7 @@ function rightBtnClick() {
   if (storage.load(STORAGE_KEYS.LAST_FETCH) === 'WATCHED')
     siteConfigs.incrementWatchedPage();
   if (storage.load(STORAGE_KEYS.LAST_FETCH) === 'QUEUE')
-    siteConfigs.incrementPage();
+    siteConfigs.incrementQueuePage();
   siteConfigs.incrementPage();
   if (refs.homeGallery) refs.homeGallery.innerHTML = '';
   if (refs.libraryGallery) refs.libraryGallery.innerHTML = '';
