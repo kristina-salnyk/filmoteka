@@ -76,7 +76,7 @@ export async function deleteMovieCard() {
     deleteElement.remove();
     localStorageService.save(STORAGE_KEYS.MODAL_MOVIE, '');
 
-    console.log(refs.libraryGallery.children);
+   
 reRender()
     if (refs.libraryGallery.children.length === 0) {
       renderEmptyLibrary();
@@ -85,7 +85,7 @@ reRender()
 }
 
 async function reRender() {
-console.log("out")
+
   const usersFilmsObj = await loadDataFromStorage('usersFilmsObj');
    const queueMovieIds = usersFilmsObj
      ? usersFilmsObj[STORAGE_KEYS.QUEUE_MOVIES]
@@ -99,14 +99,14 @@ console.log("out")
     &&
     watchedMovieIds.length > refs.libraryGallery.children.length
   ) {
-    console.log("in WATCHED")
+    
       paginationMarkup(
         Math.ceil(watchedMovieIds.length / siteConfigs.perPage),
         siteConfigs.watchedPage
       );
       if (watchedMovieIds.length <= 20)
         refs.pagination.classList.add('pagination--off');
-      console.log('in QUEUE');
+      
       watchedTabClickHandler();
    
     
@@ -120,7 +120,7 @@ console.log("out")
       siteConfigs.queuePage
     );
     if (queueMovieIds.length <= 20)refs.pagination.classList.add('pagination--off');
-      console.log('in QUEUE');
+      
     queueTabClickHandler();
   }
   
