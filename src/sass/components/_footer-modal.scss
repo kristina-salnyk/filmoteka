@@ -2,7 +2,7 @@ body.modal-open {
   overflow: hidden;
 }
 
-img {
+.swiper-img {
   margin: 0;
   padding: 0;
 
@@ -190,7 +190,7 @@ img {
   justify-content: center;
   padding-top: 15px;
 
-  @include for-phone-only{
+  @include for-phone-only {
     padding-top: 30px;
   }
 }
