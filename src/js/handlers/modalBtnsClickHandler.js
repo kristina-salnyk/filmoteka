@@ -43,7 +43,7 @@ export const modalWatchedBtnClickHandler = async event => {
 
   const lastFetch = localStorageService.load(STORAGE_KEYS.LAST_FETCH);
 
-  if (lastFetch === 'WATCHED') {
+  if (lastFetch === 'QUEUE') {
     const currIdToDel = localStorageService.load(STORAGE_KEYS.MODAL_MOVIE);
     if (movieId === currIdToDel) {
       localStorageService.save(STORAGE_KEYS.MODAL_MOVIE, '');
@@ -91,7 +91,7 @@ export const modalQueueBtnClickHandler = async event => {
 
   const lastFetch = localStorageService.load(STORAGE_KEYS.LAST_FETCH);
 
-  if (lastFetch === 'QUEUE') {
+  if (lastFetch === 'WATCHED') {
     const currIdToDel = localStorageService.load(STORAGE_KEYS.MODAL_MOVIE);
 
     if (movieId === currIdToDel) {
