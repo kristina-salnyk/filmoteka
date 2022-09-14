@@ -41,11 +41,15 @@ export const modalWatchedBtnClickHandler = async event => {
     [STORAGE_KEYS.QUEUE_MOVIES]: newQueueMoviesIds,
   });
 
-  const currIdToDel = localStorageService.load(STORAGE_KEYS.MODAL_MOVIE);
-  if (movieId === currIdToDel) {
-    localStorageService.save(STORAGE_KEYS.MODAL_MOVIE, '');
-  } else {
-    localStorageService.save(STORAGE_KEYS.MODAL_MOVIE, movieId);
+  const lastFetch = localStorageService.load(STORAGE_KEYS.LAST_FETCH);
+
+  if (lastFetch === 'WATCHED') {
+    const currIdToDel = localStorageService.load(STORAGE_KEYS.MODAL_MOVIE);
+    if (movieId === currIdToDel) {
+      localStorageService.save(STORAGE_KEYS.MODAL_MOVIE, '');
+    } else {
+      localStorageService.save(STORAGE_KEYS.MODAL_MOVIE, movieId);
+    }
   }
 };
 
@@ -85,12 +89,16 @@ export const modalQueueBtnClickHandler = async event => {
     [STORAGE_KEYS.QUEUE_MOVIES]: newQueueMoviesIds,
   });
 
-  const currIdToDel = localStorageService.load(STORAGE_KEYS.MODAL_MOVIE);
+  const lastFetch = localStorageService.load(STORAGE_KEYS.LAST_FETCH);
 
-  if (movieId === currIdToDel) {
-    localStorageService.save(STORAGE_KEYS.MODAL_MOVIE, '');
-  } else {
-    localStorageService.save(STORAGE_KEYS.MODAL_MOVIE, movieId);
+  if (lastFetch === 'QUEUE') {
+    const currIdToDel = localStorageService.load(STORAGE_KEYS.MODAL_MOVIE);
+
+    if (movieId === currIdToDel) {
+      localStorageService.save(STORAGE_KEYS.MODAL_MOVIE, '');
+    } else {
+      localStorageService.save(STORAGE_KEYS.MODAL_MOVIE, movieId);
+    }
   }
 };
 
