@@ -99,7 +99,14 @@ async function reRender() {
     &&
     watchedMovieIds.length > refs.libraryGallery.children.length
   ) {
-    
+   
+    if (
+      refs.libraryGallery.children.length === 1 &&
+      refs.libraryGallery.children[0].nodeName!=='DIV'
+    ) {
+     
+      siteConfigs.decrementWatchedPage()
+    }
       paginationMarkup(
         Math.ceil(watchedMovieIds.length / siteConfigs.perPage),
         siteConfigs.watchedPage
@@ -111,14 +118,23 @@ async function reRender() {
    
     
   }
+  
   if (
     localStorageService.load(STORAGE_KEYS.LAST_FETCH) === 'QUEUE' &&
     queueMovieIds.length > refs.libraryGallery.children.length
   ) {
-    paginationMarkup(
-      Math.ceil(queueMovieIds.length / siteConfigs.perPage),
-      siteConfigs.queuePage
-    );
+    
+    if (
+      refs.libraryGallery.children.length === 1 &&
+      refs.libraryGallery.children[0].nodeName !== 'DIV'
+    ) {
+      siteConfigs.decrementQueuePage();
+     
+    }
+      paginationMarkup(
+        Math.ceil(queueMovieIds.length / siteConfigs.perPage),
+        siteConfigs.queuePage
+      );
     if (queueMovieIds.length <= 20)refs.pagination.classList.add('pagination--off');
       
     queueTabClickHandler();
