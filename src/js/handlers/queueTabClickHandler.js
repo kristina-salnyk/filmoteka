@@ -19,8 +19,10 @@ export const queueTabClickHandler = async event => {
     ? usersFilmsObj[STORAGE_KEYS.QUEUE_MOVIES]
     : usersFilmsObj;
 
-  if (!queueMovieIds || queueMovieIds.length === 0)
+  if (!queueMovieIds || queueMovieIds.length === 0) {
+      refs.pagination.classList.add('pagination--off');
     return libraryPageUi.renderEmptyLibrary();
+  }
 
   if (queueMovieIds.length < 20 || queueMovieIds.length === 0)
     refs.pagination.classList.add('pagination--off');

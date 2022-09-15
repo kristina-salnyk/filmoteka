@@ -19,8 +19,10 @@ export const watchedTabClickHandler = async event => {
     ? usersFilmsObj[STORAGE_KEYS.WATCHED_MOVIES]
     : usersFilmsObj;
 
-  if (!watchedMovieIds || watchedMovieIds.length === 0)
+  if (!watchedMovieIds || watchedMovieIds.length === 0) {
+     refs.pagination.classList.add('pagination--off');
     return libraryPageUi.renderEmptyLibrary();
+  }
 
   if (watchedMovieIds.length < 20 || watchedMovieIds.length === 0)
     refs.pagination.classList.add('pagination--off');
