@@ -13,4 +13,6 @@ export default {
   closeModalBtn: document.querySelector('[data-footer-modal-close]'),
   footerModal: document.querySelector('[data-modal]'),
   pagination: document.querySelector('[data-el="pagination"]'),
+  searchInput: document.getElementById('search-input'),
+  searchResults: document.getElementById('search-results'),
 };

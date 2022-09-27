@@ -1,6 +1,9 @@
 export const BASE_URL = 'https://api.themoviedb.org/3';
 export const API_KEY = '3db99de6ff3e5f2ef6de763ae547f586';
 
+export const DEBOUNCE_DELAY = 300;
+export const SEARCH_RESULTS_NUMBER = 5;
+
 export const REQUEST_URL = {
   TRENDING: '/trending',
   SEARCH: '/search/movie',

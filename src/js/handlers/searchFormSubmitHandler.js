@@ -22,6 +22,7 @@ export const searchFormSubmitHandler = async event => {
     spinner.spin(refs.homeGallery);
     const searchData = await fetchSearchMovie();
     spinner.stop();
+
     renderMoviesData(searchData);
   } catch (error) {
     refs.searchError.style.display = 'block';

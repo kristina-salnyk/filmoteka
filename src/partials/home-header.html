@@ -14,7 +14,7 @@
       <ul class="pages nav__pages">
         <li class="pages__item">
           <a class="pages__link pages__link--current" href="./index.html"
-          >Home</a
+            >Home</a
           >
         </li>
         <li class="pages__item">
@@ -25,7 +25,8 @@
             type="button"
             class="pages__link pages__link--button"
             data-registration-open
-          >Log in
+          >
+            Log in
           </button>
         </li>
       </ul>
@@ -34,12 +35,15 @@
     <form id="search-form" class="search-form">
       <div class="search-form__container">
         <input
+          id="search-input"
           class="search-form__input"
           type="text"
           name="searchQuery"
           autocomplete="off"
           placeholder="Search movie..."
+          list="search-results"
         />
+        <datalist id="search-results"></datalist>
         <button class="search-form__btn" type="submit">
           <svg class="search-form__icon" aria-label="Search">
             <use

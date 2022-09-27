@@ -13,6 +13,9 @@ import {
 import { httpsYouTubeVideo } from '../youTube';
 import { registerFormSubmitHandler } from '../handlers/registerFormSubmitHandler';
 import { onRegistrationBtnClick } from '../registration-modal';
+import debounce from 'debounce';
+import { DEBOUNCE_DELAY } from '../constants';
+import { searchInputHandler } from '../handlers/searchInputHandler';
 
 const setHomeEventListeners = () => {
   refs.searchForm.addEventListener('submit', searchFormSubmitHandler);
@@ -23,6 +26,11 @@ const setHomeEventListeners = () => {
 
   refs.registerForm.addEventListener('submit', registerFormSubmitHandler);
   refs.openRegistrationBtn.addEventListener('click', onRegistrationBtnClick);
+
+  refs.searchInput.addEventListener(
+    'input',
+    debounce(searchInputHandler, DEBOUNCE_DELAY)
+  );
 };
 
 const appendGalleryMarkup = movies => {
