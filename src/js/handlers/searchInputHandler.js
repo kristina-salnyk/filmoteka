@@ -48,5 +48,5 @@ const renderSearchResults = data => {
 const appendSearchResults = data => {
   refs.searchResults.innerHTML = data
     .map(item => `<option value="${item}">${item}</option>`)
-    .join();
+    .join('');
 };
