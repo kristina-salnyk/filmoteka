@@ -7,7 +7,7 @@ This is a web application designed to provide users with a seamless and personal
 - **Dynamic Header:** HTML and CSS are employed to create a responsive and visually pleasing header that adapts seamlessly to mobile, tablet, and desktop displays.
 - **Home Navigation:** JavaScript enhances navigation by enabling users to return to the main page with a simple click on the logo or "Home" button.
 - **Paginated Movie Display:** JavaScript facilitates paginated movie listings on the main page, optimizing the user experience during exploration.
-- **Responsive Movie Cards:** Utilizing CSS media queries, MovieHub ensures that movie cards are presented in a visually appealing and organized manner on any screen size.
+- **Responsive Movie Cards:** Utilizing CSS media queries, Filmoteka ensures that movie cards are presented in a visually appealing and organized manner on any screen size.
 - **Interactive Movie Modals:** JavaScript orchestrates the dynamic creation of modals, delivering detailed movie information in an interactive and user-friendly manner.
 - **Movie Trailers:** JavaScript integrates seamlessly with external APIs to fetch and display movie trailers, elevating the user experience with immersive cinematic previews.
 - **Firebase Integration:** Real-time data updates are achieved through seamless integration with Firebase, ensuring data integrity and user privacy and allowing users to add movies to their watched list or queue effortlessly.
