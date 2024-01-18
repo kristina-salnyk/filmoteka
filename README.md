@@ -1,101 +1,62 @@
-**Read in other languages: [Русский](README.md), [Polski](README.pl.md).**
 
-# Parcel template
+# Filmoteka
 
-Этот проект был создан при помощи Parcel. Для знакомства и настройки
-дополнительных возможностей [обратись к документации](https://parceljs.org/).
+This is a web application designed to provide users with a seamless and personalized movie exploration experience. Developed with precision and user-centricity in mind, Filmoteka leverages modern web technologies to deliver a feature-rich platform for discovering, managing, and enjoying your favorite films. This movie catalog implemented using a combination of HTML, CSS, and JavaScript, ensuring a robust and performant user interface across various devices.
+## Features
 
-## Подготовка нового проекта
+- **Dynamic Header:** HTML and CSS are employed to create a responsive and visually pleasing header that adapts seamlessly to mobile, tablet, and desktop displays.
+- **Home Navigation:** JavaScript enhances navigation by enabling users to return to the main page with a simple click on the logo or "Home" button.
+- **Paginated Movie Display:** JavaScript facilitates paginated movie listings on the main page, optimizing the user experience during exploration.
+- **Responsive Movie Cards:** Utilizing CSS media queries, MovieHub ensures that movie cards are presented in a visually appealing and organized manner on any screen size.
+- **Interactive Movie Modals:** JavaScript orchestrates the dynamic creation of modals, delivering detailed movie information in an interactive and user-friendly manner.
+- **Movie Trailers:** JavaScript integrates seamlessly with external APIs to fetch and display movie trailers, elevating the user experience with immersive cinematic previews.
+- **Firebase Integration:** Real-time data updates are achieved through seamless integration with Firebase, ensuring data integrity and user privacy and allowing users to add movies to their watched list or queue effortlessly.
+## Tech Stack
 
-1. Убедись что на компьютере установлена LTS-версия Node.js.
-   [Скачай и установи](https://nodejs.org/en/) её если необходимо.
-2. Склонируй этот репозиторий.
-3. Измени имя папки с `parcel-project-template` на имя своего проекта.
-4. Создай новый пустой репозиторий на GitHub.
-5. Открой проект в VSCode, запусти терминал и свяжи проект с GitHub-репозиторием
-   [по инструкции](https://docs.github.com/en/get-started/getting-started-with-git/managing-remote-repositories#changing-a-remote-repositorys-url).
-6. Установи зависимости проекта в терминале командой `npm install` .
-7. Запусти режим разработки, выполнив команду `npm start`.
-8. Перейди в браузере по адресу [http://localhost:1234](http://localhost:1234).
-   Эта страница будет автоматически перезагружаться после сохранения изменений в
-   файлах проекта.
+- **HTML:** The foundation of Filmoteka's content structuring, providing a clear and organized document structure.
+- **CSS:** Responsible for the aesthetic presentation, styling, and layout intricacies to create visually appealing designs.
+- **SASS:** Enhances CSS by introducing features like variables, nesting, and mixins, streamlining the stylesheet development process.
+- **JavaScript:** Drives dynamic interactions, user experiences, and real-time updates across various functionalities within Filmoteka.
+- **Parcel:** A web application bundler that streamlines the build process, optimizing code for production.
+- **Firebase:** Empowers Filmoteka with secure user authentication, real-time database updates, and seamless integration for user-related functionalities.
+- **Axios:** Facilitates asynchronous HTTP requests, enabling seamless communication with external APIs for data retrieval.
+- **Notiflix:** Provides a user-friendly notification interface for real-time feedback and alerts.
+- **Handlebars:** A templating engine used to dynamically generate HTML content for movie details modals.
+- **Swiper:** Enhances the user experience by providing a responsive and touch-enabled slider for intuitive navigation.
 
-## Файлы и папки
 
-- Все паршалы файлов стилей должны лежать в папке `src/sass` и импортироваться в
-  файлы стилей страниц. Например, для `index.html` файл стилей называется
-  `index.scss`.
-- Изображения добавляй в папку `src/images`. Сборщик оптимизирует их, но только
-  при деплое продакшн версии проекта. Все это происходит в облаке, чтобы не
-  нагружать твой компьютер, так как на слабых машинах это может занять много
-  времени.
 
-## Деплой
 
-Для настройки деплоя проекта необходимо выполнить несколько дополнительных шагов
-по настройке твоего репозитория. Зайди во вкладку `Settings` и в подсекции
-`Actions` выбери выбери пункт `General`.
+## Run Locally
 
-![GitHub actions settings](./assets/actions-config-step-1.png)
+To run the project locally, follow these steps:
 
-Пролистай страницу до последней секции, в которой убедись что выбраны опции как
-на следующем изображении и нажми `Save`. Без этих настроек у сборки будет
-недостаточно прав для автоматизации процесса деплоя.
+1. Clone the project:
+```bash
+  git clone https://github.com/kristina-salnyk/filmoteka.git
+```
+2. Go to the project directory:
 
-![GitHub actions settings](./assets/actions-config-step-2.png)
-
-Продакшн версия проекта будет автоматически собираться и деплоиться на GitHub
-Pages, в ветку `gh-pages`, каждый раз когда обновляется ветка `main`. Например,
-после прямого пуша или принятого пул-реквеста. Для этого необходимо в файле
-`package.json` отредактировать поле `homepage` и скрипт `build`, заменив
-`your_username` и `your_repo_name` на свои, и отправить изменения на GitHub.
-
-```json
-"homepage": "https://your_username.github.io/your_repo_name/",
-"scripts": {
-  "build": "parcel build src/*.html --public-url /your_repo_name/"
-},
+```bash
+  cd filmoteka
 ```
 
-Далее необходимо зайти в настройки GitHub-репозитория (`Settings` > `Pages`) и
-выставить раздачу продакшн версии файлов из папки `/root` ветки `gh-pages`, если
-это небыло сделано автоматически.
+3. Install dependencies:
 
-![GitHub Pages settings](./assets/repo-settings.png)
+```bash
+  npm install
+```
 
-### Статус деплоя
+4. Start the development server:
 
-Статус деплоя крайнего коммита отображается иконкой возле его идентификатора.
+```bash
+  npm start
+```
+This will launch the application on http://localhost:1234. Open your web browser and navigate to this address to explore Filmoteka locally.
 
-- **Желтый цвет** - выполняется сборка и деплой проекта.
-- **Зеленый цвет** - деплой завершился успешно.
-- **Красный цвет** - во время линтинга, сборки или деплоя произошла ошибка.
 
-Более детальную информацию о статусе можно посмотреть кликнув по иконке, и в
-выпадающем окне перейти по ссылке `Details`.
+## Deployment
 
-![Deployment status](./assets/status.png)
+The Filmoteka web application has already been successfully deployed and is accessible at [Filmoteka](https://kristina-salnyk.github.io/filmoteka/).
 
-### Живая страница
-
-Через какое-то время, обычно пару минут, живую страницу можно будет посмотреть
-по адресу указанному в отредактированном свойстве `homepage`. Например, вот
-ссылка на живую версию для этого репозитория
-[https://goitacademy.github.io/parcel-project-template](https://goitacademy.github.io/parcel-project-template).
-
-Если открывается пустая страница, убедись что во вкладке `Console` нет ошибок
-связанных с неправильными путями к CSS и JS файлам проекта (**404**). Скорее
-всего у тебя неправильное значение свойства `homepage` или скрипта `build` в
-файле `package.json`.
-
-## Как это работает
-
-![How it works](./assets/how-it-works.png)
-
-1. После каждого пуша в ветку `main` GitHub-репозитория, запускается специальный
-   скрипт (GitHub Action) из файла `.github/workflows/deploy.yml`.
-2. Все файлы репозитория копируются на сервер, где проект инициализируется и
-   проходит сборку перед деплоем.
-3. Если все шаги прошли успешно, собранная продакшн версия файлов проекта
-   отправляется в ветку `gh-pages`. В противном случае, в логе выполнения
-   скрипта будет указано в чем проблема.
+Sign up and explore the world of movies, where innovative technology meets your passion for film. Whether managing your library, discovering new releases, or enjoying the details of your favorite films, MovieHub promises an unparalleled and cutting-edge movie-watching experience.
